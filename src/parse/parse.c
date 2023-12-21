@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2023/12/22 00:05:47 by jordan           ###   ########.fr       */
+/*   Updated: 2023/12/22 00:42:12 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,19 @@ char	**add_tab(char **src, char *str)
 	char	**new_tab;
 
 	i = 0;
-	while (src[i])
+	while (src && src[i])
+		i++;
+	new_tab = malloc(sizeof(char *) * (i + 2));
+	i = 0;
+	while (src && src[i])
 	{
 		new_tab[i] = ft_strdup(src[i]);
 		i++;
 	}
 	new_tab[i++] = ft_strdup(str);
 	new_tab[i] = NULL;
-	free_tab(src);
+	if (src)
+		free_tab(src);
 	return (new_tab);
 }
 
@@ -92,6 +97,7 @@ int	parse_file(int file, t_level *lvl)
 	info("Parsing map");
 	state = TEXTURE;
 	tmp = get_next_line(file);
+	(void)lvl;
 	while (tmp)
 	{
 		sz = ft_strlen(tmp);
@@ -101,7 +107,7 @@ int	parse_file(int file, t_level *lvl)
 			if (state == TEXTURE)
 				lvl->data.texture = add_texture(lvl->data.texture, tmp);
 			else if (state == COLORS)
-				lvl->data.colors = parse_texture(lvl->data.colors, tmp);
+				lvl->data.colors = add_texture(lvl->data.colors, tmp);
 			else if (state == MAP)
 				lvl->map = add_tab(lvl->map, tmp);
 			else
@@ -110,7 +116,8 @@ int	parse_file(int file, t_level *lvl)
 		free(tmp);
 		tmp = get_next_line(file);
 	}
-	info("Raw parsed");
+	return (info("Raw parsed"));
+	
 }
 
 void	parse(char *file_path, t_level *lvl)

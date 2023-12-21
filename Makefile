@@ -17,7 +17,7 @@ BUILD_D		:=	.build/
 LIB_D		:=	libft/ mlx-opengl/
 INC			:=	inc/ libft/inc mlx-opengl/
 #---------------Add .c / .h here \/--------------
-SRC			:=	main.c console.c init.c vector.c\
+SRC			:=	main.c console.c init.c vector.c free.c \
 				parse/parse.c parse/parse_validity.c parse/parse_utils.c
 LIB			:=	ft	mlx
 FRAMEWORK	:=	OpenGL	AppKit
