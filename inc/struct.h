@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/21 17:28:31 by jordan           ###   ########.fr       */
+/*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
+/*   Updated: 2023/12/21 17:27:28 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#ifndef STRUCT_H
+# define STRUCT_H
 
-int	main(int ac, char **av)
+typedef struct s_vector
 {
-	t_level	level;
+	int	x;
+	int	y;
+}	t_vector;
 
-	if (ac != 2)
-		return (error("Wrong number of arguments"));
-	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4) != 0)
-		return (error("Wrong file extension"));
-	parse(av[1], &level);
-	printf("size.x: %d\n", level.data.size.x);
-	return (0);
-}
+typedef struct s_data
+{
+	t_vector	size;
+}	t_data;
+
+typedef struct s_level
+{
+	char		*map_raw;
+	char		**map;
+	t_data		data;
+	t_vector	size;
+}	t_level;
+
+#endif
