@@ -31,7 +31,7 @@ DEPS        :=	$(OBJ:.o=.d)
 ifeq ($(UNAME_S),Linux)
 LIB_D		:=	libft/ mlx-linux/
 INC			:=	inc/ libft/inc /usr/include mlx-linux/
-LIB			:=	mlx-linux Xext X11 m z
+LIB			:=	ft mlx_Linux Xext X11 m z
 FRAMEWORK	:=	
 endif
 #-------------------------------------------------
