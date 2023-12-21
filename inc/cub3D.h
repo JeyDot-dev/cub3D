@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/21 17:31:40 by jordan           ###   ########.fr       */
+/*   Updated: 2023/12/21 18:01:29 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@
 /* CONSOLE					*/
 int		error(char *str);
 int		info(char *str);
+
+/* INIT						*/
+void	init(t_level *level);
+
+/* VECTOR					*/
+t_vector	vector2D(int x, int y);
+void		set_vector2D(t_vector *vector, int x, int y);
 
 /* PARSE/PARSE_UTILS		*/
 char	*add_str(char *s1, char *s2, int f);
