@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/21 23:29:36 by jordan           ###   ########.fr       */
+/*   Created: 2023/12/21 23:40:02 by jordan            #+#    #+#             */
+/*   Updated: 2023/12/21 23:40:40 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	init(t_level *level)
+void free_tab(char **tab)
 {
-	level->data.file_size = vector2D(-1, 0);
-	level->player.pos = vector2D(0, 0);
-	level->map = NULL;
-	level->name = NULL;
+	int i;
+
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
 }
