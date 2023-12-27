@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/21 22:25:26 by jordan           ###   ########.fr       */
+/*   Updated: 2023/12/27 14:13:14 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@ typedef struct s_vector
 	int	y;
 }	t_vector;
 
+typedef struct s_vector_line
+{
+	t_vector	start;
+	t_vector	end;
+	int			dy;
+	int			dx;
+	int			e;
+	int			inc[2];
+	int			color;
+	int			color2;
+}	t_vector_line;
+
 typedef struct s_texture
 {
 	char	*NO;
@@ -28,6 +40,15 @@ typedef struct s_texture
 	char	*Floor;
 	char	*Ceiling;
 }	t_texture;
+typedef struct	s_imgdata{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		len;
+	int		endian;
+}				t_imgdata;
 
 typedef struct s_data
 {

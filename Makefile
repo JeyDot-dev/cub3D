@@ -17,13 +17,15 @@ BUILD_D		:=	.build/
 LIB_D		:=	libft/ mlx-opengl/
 INC			:=	inc/ libft/inc mlx-opengl/
 #---------------Add .c / .h here \/--------------
-PARSE		:=	parse.c parse_validity.c parse_utils.c
-SRC			:=	main.c console.c init.c vector.c
+SRC			:=	main.c			console.c		init.c		vector.c
+DRAW		:=	draw_line.c		draw_pixel.c
+COLOR		:=	rgbo_color.c	color_utils.c	extract_single_color.c	line_gradient.c
+PARSE		:=	parse.c 		parse_validity.c 			parse_utils.c
 LIB			:=	ft	mlx
 FRAMEWORK	:=	OpenGL	AppKit
 #----------------------IGNORE--------------------
 #------------------------------------------------
-SRC			+=	$(PARSE:%=parse/%)
+SRC			+=	$(PARSE:%=parse/%) $(COLOR:%=color/%) $(DRAW:%=draw/%)
 SRC			:=	$(SRC:%=$(SRC_D)%)
 OBJ 		:=	$(SRC:$(SRC_D)%.c=$(BUILD_D)%.o)
 DEPS        :=	$(OBJ:.o=.d)
