@@ -6,11 +6,19 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/27 16:08:18 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:04:01 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "cub3D.h"
+
+void	init_mlx(t_imgdata *img)
+{
+	info("Initializing mlx");
+	img->mlx = mlx_init();
+	img->win = mlx_new_window(img->mlx, 1240, 720, "test");
+	img->img = mlx_new_image(img->mlx, 1240, 720);
+	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->len, &img->endian);
+}
 
 void	init(t_level *level)
 {

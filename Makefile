@@ -18,7 +18,7 @@ LIB_D		:=	libft/ mlx-opengl/
 INC			:=	inc/ libft/inc mlx-opengl/
 #---------------Add .c / .h here \/--------------
 SRC			:=	main.c			console.c		init.c		vector.c 	free.c
-DRAW		:=	draw_line.c		draw_pixel.c
+DRAW		:=	draw_line.c		draw_pixel.c	draw_square.c	draw_map.c
 COLOR		:=	rgbo_color.c	color_utils.c	extract_single_color.c	line_gradient.c
 PARSE		:=	parse.c 		parse_validity.c 			parse_utils.c
 LIB			:=	ft	mlx
