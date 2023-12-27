@@ -33,6 +33,12 @@ void	init(t_level *level);
 t_vector	vector2D(int x, int y);
 void		set_vector2D(t_vector *vector, int x, int y);
 
+/* FREE						*/
+void		free_tab(char **tab);
+
+/* FREE						*/
+void		free_tab(char **tab);
+
 /*	PARSE/PARSE_UTILS		*/
 char	*add_str(char *s1, char *s2, int f);
 char	*lvl_name_extractor(char *s);

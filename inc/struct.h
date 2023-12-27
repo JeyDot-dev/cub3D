@@ -6,12 +6,20 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/27 14:13:14 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/21 22:25:26 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+enum e_state
+{
+	TEXTURE,
+	COLORS,
+	MAP,
+	ERROR
+};
 
 typedef struct s_vector
 {
@@ -33,12 +41,8 @@ typedef struct s_vector_line
 
 typedef struct s_texture
 {
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	char	*Floor;
-	char	*Ceiling;
+	char	*name;
+	char	*path;
 }	t_texture;
 typedef struct	s_imgdata{
 	void	*mlx;
@@ -52,8 +56,10 @@ typedef struct	s_imgdata{
 
 typedef struct s_data
 {
-	t_vector	size;
-	t_texture	texture;
+	t_vector	file_size;
+	t_vector	map_size;
+	t_texture	*texture;
+	t_texture	*colors;
 }	t_data;
 
 typedef struct s_player
@@ -64,7 +70,6 @@ typedef struct s_player
 
 typedef struct s_level
 {
-	char		*map_raw;
 	char		**map;
 	char		*name;
 	t_data		data;
