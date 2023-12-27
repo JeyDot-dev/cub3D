@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/21 18:42:56 by jordan           ###   ########.fr       */
+/*   Updated: 2023/12/27 16:12:13 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "cub3D.h"
@@ -42,9 +42,9 @@ void	draw_map(t_level level, t_imgdata img)
 
 	origin.x = 0;
 	origin.y = 0;
-	while (origin.y < level.data.size.y)
+	while (origin.y < level.data.map_size.y)
 	{
-		while (origin.x < level.data.size.x)
+		while (origin.x < level.data.map_size.x)
 		{
 			if (level.map[origin.y][origin.x] == '1')
 				draw_square(origin, img.img, '1');
@@ -93,8 +93,8 @@ int	main(int ac, char **av)
 	parse(av[1], &level);
 //	init_mlx(&img);
 //	draw_map(level, img);
-	printf("size.x: %d\n", level.data.file_size.x);
-	printf("size.y: %d\n", level.data.file_size.y);
+	printf("size.x: %d\n", level.data.map_size.x);
+	printf("size.y: %d\n", level.data.map_size.y);
 	printf("name: %s\n", level.name);
 
 	printf("texture[0].name: %s\n", level.data.texture[0].name);
