@@ -44,6 +44,7 @@ DEPS	libft/Makefile	/^DEPS		:=	$(OBJ:.o=.d)$/;"	m
 DIR_DUP	Makefile	/^DIR_DUP     =	mkdir -p "$(@D)"$/;"	m
 DIR_DUP	libft/Makefile	/^DIR_DUP		=	mkdir -p "$(@D)"$/;"	m
 DRAW	Makefile	/^DRAW		:=	draw_line.c		draw_pixel.c	draw_square.c	draw_map.c$/;"	m
+EAST	inc/struct.h	/^	EAST,$/;"	e	enum:e_side
 ENV_DISPLAY	mlx-linux/mlx_int.h	43;"	d
 ERROR	inc/struct.h	/^	ERROR$/;"	e	enum:e_state
 ERR_DATA_FILTER	mlx-opengl/mlx_png.c	35;"	d	file:
@@ -119,6 +120,7 @@ NAME_SHORT	inc/cub3D.h	23;"	d
 NAME_UNAME	mlx-linux/Makefile.mk	/^NAME_UNAME	= libmlx_$(UNAME).a$/;"	m
 NB_OBJ	Makefile	/^NB_OBJ			:=	0$/;"	m
 NOM	mlx-opengl/Makefile	/^NOM=libmlx.a$/;"	m
+NORTH	inc/struct.h	/^	NORTH,$/;"	e	enum:e_side
 OBJ	Makefile	/^OBJ 		:=	$(SRC:$(SRC_D)%.c=$(BUILD_D)%.o)$/;"	m
 OBJ	libft/Makefile	/^OBJ			:=	$(SRC:$(SRC_D)%.c=$(BUILD_D)%.o)$/;"	m
 OBJ	mlx-linux/Makefile.mk	/^OBJ	= $(addprefix $(OBJ_DIR)\/,$(SRC:%.c=%.o))$/;"	m
@@ -140,6 +142,7 @@ RM	Makefile	/^RM			:=	rm -rf$/;"	m
 RM	libft/Makefile	/^RM			:=	rm -rf$/;"	m
 RST	Makefile	/^RST	= \\033[0m$/;"	m
 RST	libft/Makefile	/^RST	= \\033[0m$/;"	m
+SOUTH	inc/struct.h	/^	SOUTH,$/;"	e	enum:e_side
 SRC	Makefile	/^SRC			:=	$(SRC:%=$(SRC_D)%)$/;"	m
 SRC	Makefile	/^SRC			:=	main.c			console.c		init.c		vector.c 	free.c$/;"	m
 SRC	libft/Makefile	/^SRC			:=	$(SRC:%=$(SRC_D)%)$/;"	m
@@ -158,9 +161,12 @@ UNAME_S	Makefile	/^UNAME_S 	:= $(shell uname -s)$/;"	m
 UNAME_S	libft/Makefile	/^UNAME_S		:= $(shell uname -s)$/;"	m
 UNIQ_BPP	mlx-opengl/mlx_int.h	12;"	d
 WARN_SHM_ATTACH	mlx-linux/mlx_int.h	46;"	d
+WEST	inc/struct.h	/^	WEST$/;"	e	enum:e_side
 WHITE	libft/inc/libft.h	33;"	d
 WIN1_SX	mlx-linux/test/main.c	5;"	d	file:
 WIN1_SY	mlx-linux/test/main.c	6;"	d	file:
+WIN_HEIGHT	inc/cub3D.h	25;"	d
+WIN_WIDTH	inc/cub3D.h	24;"	d
 X_ShmAttach	mlx-linux/mlx_new_image.c	20;"	d	file:
 YELLOW	libft/inc/libft.h	29;"	d
 Z_CHUNK	mlx-opengl/mlx_png.c	22;"	d	file:
@@ -180,7 +186,10 @@ bpp3	mlx-linux/test/main.c	/^int	bpp3;$/;"	v
 bpp4	mlx-linux/test/main.c	/^int	bpp4;$/;"	v
 buffer	mlx-opengl/mlx_int.h	/^  char			*buffer;$/;"	m	struct:mlx_img_list_s
 bytes_per_pixel	mlx-opengl/font.c	/^  unsigned int 	 bytes_per_pixel; \/* 2:RGB16, 3:RGB, 4:RGBA *\/ $/;"	m	struct:__anon1	file:
-cam	inc/struct.h	/^	t_vector	cam;$/;"	m	struct:s_player
+calculate_delta_dist	src/main.c	/^t_vector calculate_delta_dist(t_ray r)$/;"	f
+calculate_initial_dist	src/main.c	/^t_ray calculate_initial_dist(t_player p, t_ray r)$/;"	f
+calculate_perp_wall_distance	src/main.c	/^double calculate_perp_wall_distance(t_ray r)$/;"	f
+cam_plane	inc/struct.h	/^	t_vector	cam_plane;$/;"	m	struct:s_ray
 check_length	libft/src/ft_atoi.c	/^int	check_length(const char *str)$/;"	f
 clean	mlx-linux/configure	/^clean(){$/;"	f
 close_cub3d	src/hooks/key_hooks.c	/^int	close_cub3d(void)$/;"	f
@@ -206,9 +215,12 @@ data2	mlx-linux/test/main.c	/^char	*data2;$/;"	v
 data3	mlx-linux/test/main.c	/^char	*data3;$/;"	v
 data4	mlx-linux/test/main.c	/^char	*data4;$/;"	v
 decrgb	mlx-linux/mlx_int.h	/^	int			decrgb[6];$/;"	m	struct:s_xvar
+default_position	src/main.c	/^t_level default_position(t_level level, double fov)$/;"	f
 delta_and_inc_setup	src/draw/draw_line.c	/^t_vector_line	delta_and_inc_setup(t_vector_line line)$/;"	f
+delta_dist	inc/struct.h	/^	t_vector	delta_dist;$/;"	m	struct:s_ray
 depth	mlx-linux/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar
 depth	mlx-opengl/mlx_png.c	/^  int		depth;$/;"	m	struct:png_info_s	file:
+digital_differential_analysis	src/main.c	/^t_ray digital_differential_analysis(t_ray r, char **map)$/;"	f
 dir	inc/struct.h	/^	t_vector	dir;$/;"	m	struct:s_player
 display	mlx-linux/mlx_int.h	/^	Display		*display;$/;"	m	struct:s_xvar
 display_log	mlx-opengl/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)(), void (*getlog_func)())$/;"	f
@@ -216,10 +228,13 @@ do_flush	mlx-linux/mlx_int.h	/^	int			do_flush;$/;"	m	struct:s_xvar
 draw_line	src/draw/draw_line.c	/^void	draw_line(t_imgdata *img, t_vector_line line)$/;"	f
 draw_map	src/draw/draw_map.c	/^void	draw_map(t_level level, t_imgdata img)$/;"	f
 draw_pixel	src/draw/draw_pixel.c	/^void	draw_pixel(t_imgdata *img, int x, int y, int color)$/;"	f
+draw_ray	src/main.c	/^void	draw_ray(t_imgdata *img, t_ray r, char **map)$/;"	f
 draw_square	src/draw/draw_square.c	/^void	draw_square(t_vector origin, t_imgdata img, char c)$/;"	f
+draw_vertical_line	src/main.c	/^void	draw_vertical_line(t_imgdata *img, int x, int y[2], int color)$/;"	f
 dx	inc/struct.h	/^	int			dx;$/;"	m	struct:s_vector_line
 dy	inc/struct.h	/^	int			dy;$/;"	m	struct:s_vector_line
 e	inc/struct.h	/^	int			e;$/;"	m	struct:s_vector_line
+e_side	inc/struct.h	/^enum e_side$/;"	g
 e_state	inc/struct.h	/^enum e_state$/;"	g
 end	inc/struct.h	/^	t_vector	end;$/;"	m	struct:s_vector_line
 end_loop	mlx-linux/mlx_int.h	/^	int 		end_loop;$/;"	m	struct:s_xvar
@@ -242,6 +257,7 @@ font_fshader	mlx-opengl/mlx_int.h	/^  GLuint	font_fshader;$/;"	m	struct:glsl_inf
 font_program	mlx-opengl/mlx_int.h	/^  GLuint	font_program;$/;"	m	struct:glsl_info_s
 font_vshader	mlx-opengl/mlx_int.h	/^  GLuint	font_vshader;$/;"	m	struct:glsl_info_s
 format	mlx-linux/mlx_int.h	/^	int				format;$/;"	m	struct:s_img
+fov	inc/struct.h	/^	int			fov;$/;"	m	struct:s_player
 free_tab	src/free.c	/^void free_tab(char **tab)$/;"	f
 ft_abs	libft/src/ft_abs.c	/^int	ft_abs(int n)$/;"	f
 ft_atoi	libft/src/ft_atoi.c	/^long long int	ft_atoi(const char *str)$/;"	f
@@ -325,6 +341,7 @@ height	mlx-linux/mlx_int.h	/^	int				height;$/;"	m	struct:s_img
 height	mlx-opengl/font.c	/^  unsigned int 	 height;$/;"	m	struct:__anon1	file:
 height	mlx-opengl/mlx_int.h	/^  int			height;$/;"	m	struct:mlx_img_list_s
 height	mlx-opengl/mlx_png.c	/^  unsigned int	height;$/;"	m	struct:png_info_s	file:
+hit	inc/struct.h	/^	int			hit;$/;"	m	struct:s_ray
 hook	mlx-linux/mlx_int.h	/^	int		(*hook)();$/;"	m	struct:s_event_list
 hook_resize	src/main.c	/^int hook_resize(void)$/;"	f
 hooks	mlx-linux/mlx_int.h	/^	t_event_list		hooks[MLX_MAX_EVENT];$/;"	m	struct:s_win_list
@@ -389,6 +406,8 @@ main	mlx-linux/test/run_tests.sh	/^main(){$/;"	f
 main	src/main.c	/^int	main(int ac, char **av)$/;"	f
 main_loop_active	mlx-opengl/mlx_int.h	/^  int			main_loop_active;$/;"	m	struct:mlx_ptr_s
 map	inc/struct.h	/^	char		**map;$/;"	m	struct:s_level
+map	inc/struct.h	/^	int			map[2];$/;"	m	struct:s_ray
+map_ray_and_dir	src/main.c	/^t_ray map_ray_and_dir(t_player p, t_ray r)$/;"	f
 map_size	inc/struct.h	/^	t_vector	map_size;$/;"	m	struct:s_data
 mask	mlx-linux/mlx_int.h	/^	int		mask;$/;"	m	struct:s_event_list
 min_max_value	src/color/color_utils.c	/^int	min_max_value(int color)$/;"	f
@@ -529,6 +548,7 @@ parse_args	mlx-linux/configure	/^parse_args(){$/;"	f
 parse_file	src/parse/parse.c	/^int	parse_file(int file, t_level *lvl)$/;"	f
 parse_validity	src/parse/parse_validity.c	/^int	parse_validity(void)$/;"	f
 path	inc/struct.h	/^	char	*path;$/;"	m	struct:s_texture
+perp_wall_dist	inc/struct.h	/^	double		perp_wall_dist;$/;"	m	struct:s_ray
 pix	mlx-linux/mlx_int.h	/^	Pixmap			pix;$/;"	m	struct:s_img
 pixel_data	mlx-opengl/font.c	/^  unsigned char	 pixel_data[1140 * 20 * 4 + 1];$/;"	m	struct:__anon1	file:
 pixel_fshader	mlx-opengl/mlx_int.h	/^  GLuint	pixel_fshader;$/;"	m	struct:glsl_info_s
@@ -545,8 +565,14 @@ print_score	src/console.c	/^void	print_score(int min, int max)$/;"	f
 private_cmap	mlx-linux/mlx_int.h	/^	int			private_cmap;$/;"	m	struct:s_xvar
 pshm_format	mlx-linux/mlx_int.h	/^	int			pshm_format;$/;"	m	struct:s_xvar
 r_value	src/color/extract_single_color.c	/^int	r_value(int color)$/;"	f
+ray	inc/struct.h	/^	t_ray		ray;$/;"	m	struct:s_level
+ray_caster	src/main.c	/^int	ray_caster(t_level level, t_imgdata *img)$/;"	f
+ray_count	inc/struct.h	/^	int			ray_count;$/;"	m	struct:s_ray
+ray_dir	inc/struct.h	/^	t_vector	ray_dir;$/;"	m	struct:s_ray
+ray_dist	inc/struct.h	/^	t_vector	ray_dist;$/;"	m	struct:s_ray
 rgbo_color	src/color/rgbo_color.c	/^int	rgbo_color(int r, int g, int b, int o)$/;"	f
 root	mlx-linux/mlx_int.h	/^	Window		root;$/;"	m	struct:s_xvar
+rotate_vector	src/main.c	/^t_vector rotate_vector(t_vector v, double angle)$/;"	f
 s_col_name	mlx-linux/mlx_int.h	/^struct	s_col_name$/;"	s
 s_col_name	mlx-opengl/mlx_xpm.c	/^struct  s_col_name$/;"	s	file:
 s_data	inc/struct.h	/^typedef struct s_data$/;"	s
@@ -556,6 +582,7 @@ s_imgdata	inc/struct.h	/^typedef struct	s_imgdata{$/;"	s
 s_level	inc/struct.h	/^typedef struct s_level$/;"	s
 s_list	libft/inc/libft.h	/^typedef struct s_list$/;"	s
 s_player	inc/struct.h	/^typedef struct s_player$/;"	s
+s_ray	inc/struct.h	/^typedef struct s_ray$/;"	s
 s_texture	inc/struct.h	/^typedef struct s_texture$/;"	s
 s_vector	inc/struct.h	/^typedef struct s_vector$/;"	s
 s_vector_line	inc/struct.h	/^typedef struct s_vector_line$/;"	s
@@ -569,6 +596,7 @@ set_vector2D	src/vector.c	/^void set_vector2D(t_vector *vector, int x, int y)$/;
 shm	mlx-linux/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img
 shm_att_pb	mlx-linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/;"	f
 show_help	mlx-linux/configure	/^show_help(){$/;"	f
+side	inc/struct.h	/^	int			side;$/;"	m	struct:s_ray
 sigint_handler	mlx-linux/test/run_tests.sh	/^sigint_handler(){$/;"	f
 size_line	mlx-linux/mlx_int.h	/^	int				size_line;$/;"	m	struct:s_img
 sl1	mlx-linux/test/main.c	/^int	sl1;$/;"	v
@@ -578,6 +606,7 @@ sl4	mlx-linux/test/main.c	/^int	sl4;$/;"	v
 smooth_colors	src/color/line_gradient.c	/^int	smooth_colors(int color, int target_color, int pixels)$/;"	f
 start	inc/struct.h	/^	t_vector	start;$/;"	m	struct:s_vector_line
 state_incrementer	src/parse/parse.c	/^enum e_state state_incrementer(enum e_state s, int sz)$/;"	f
+step	inc/struct.h	/^	t_vector	step;$/;"	m	struct:s_ray
 strdup_exclude_endl	src/parse/parse.c	/^char	*strdup_exclude_endl(char *src)$/;"	f
 strlcpy_is_not_posix	mlx-linux/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char *src, unsigned int size)$/;"	f
 switch_line	src/draw/draw_line.c	/^t_vector_line	switch_line(t_vector_line line)$/;"	f
@@ -588,6 +617,7 @@ t_imgdata	inc/struct.h	/^}				t_imgdata;$/;"	t	typeref:struct:s_imgdata
 t_level	inc/struct.h	/^}	t_level;$/;"	t	typeref:struct:s_level
 t_list	libft/inc/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
 t_player	inc/struct.h	/^}	t_player;$/;"	t	typeref:struct:s_player
+t_ray	inc/struct.h	/^}				t_ray;$/;"	t	typeref:struct:s_ray
 t_texture	inc/struct.h	/^}	t_texture;$/;"	t	typeref:struct:s_texture
 t_vector	inc/struct.h	/^}	t_vector;$/;"	t	typeref:struct:s_vector
 t_vector_line	inc/struct.h	/^}	t_vector_line;$/;"	t	typeref:struct:s_vector_line

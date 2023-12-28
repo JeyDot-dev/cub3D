@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/28 09:55:49 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/28 13:42:30 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 # define NAME "Apex: double legends 2 - live edition"
 # define NAME_SHORT "ADL2LE"
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 
 /*	CONSOLE					*/
 int		error(char *str);
