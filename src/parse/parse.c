@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2023/12/27 17:45:09 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/28 02:27:23 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,29 +74,7 @@ char	**add_tab(char **src, char *str)
 		free_tab(src);
 	return (new_tab);
 }
-/* J'ai juste ajoute la fonction strdup_exclude_endl du dessus pour enlever les \n
-char	**add_tab(char **src, char *str)
-{
-	int		i;
-	char	**new_tab;
 
-	i = 0;
-	while (src && src[i])
-		i++;
-	new_tab = malloc(sizeof(char *) * (i + 2));
-	i = 0;
-	while (src && src[i])
-	{
-		new_tab[i] = ft_strdup(src[i]);
-		i++;
-	}
-	new_tab[i++] = ft_strdup(str);
-	new_tab[i] = NULL;
-	if (src)
-		free_tab(src);
-	return (new_tab);
-}
-*/
 t_texture *add_texture(t_texture *src, char *new_texture)
 {
 	t_texture	new;
@@ -128,24 +106,30 @@ int	parse_file(int file, t_level *lvl)
 {
 	char			*tmp;
 	int				sz;
+	int				fat_one;
 	enum e_state	state;
 
 	info("Parsing map");
 	state = TEXTURE;
 	tmp = get_next_line(file);
-	(void)lvl;
+	fat_one = 0;
 	while (tmp)
 	{
 		sz = ft_strlen(tmp);
 		state = state_incrementer(state, sz);
-		if (sz > 1)
+		if (tmp[0] != '\n')
 		{
 			if (state == TEXTURE)
 				lvl->data.texture = add_texture(lvl->data.texture, tmp);
 			else if (state == COLORS)
 				lvl->data.colors = add_texture(lvl->data.colors, tmp);
 			else if (state == MAP)
+			{
 				lvl->map = add_tab(lvl->map, tmp);
+				if (sz > fat_one)
+					fat_one = sz;
+				lvl->data.map_size = vector2D(fat_one, ++lvl->data.map_size.y);
+			}
 			else
 				return (error("Invalid map"));
 		}
@@ -160,8 +144,6 @@ void	parse(char *file_path, t_level *lvl)
 {
 	int		file;
 
-	if (check_ext(file_path, ".cub") == 0)
-		exit(error("A map <.cub> expected"));
 	lvl->name = lvl_name_extractor(file_path);
 	file = open(file_path, O_RDONLY);
 	if (file == -1)

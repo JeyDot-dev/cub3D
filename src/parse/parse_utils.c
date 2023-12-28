@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:26:04 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/21 17:25:52 by jordan           ###   ########.fr       */
+/*   Updated: 2023/12/28 02:19:52 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,4 @@ char	*lvl_name_extractor(char *s)
 	while (s[++i] != '.' && s[i])
 		res[i] = s[i];
 	return (res);
-}
-
-int	check_ext(char *s, char *ext)
-{
-	int	end_s;
-	int	end_ext;
-
-	end_s = ft_strlen(s) + 1;
-	end_ext = ft_strlen(ext) + 1;
-	while (s[--end_s] == ext[--end_ext])
-		if (end_ext == 0)
-			return (1);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/27 18:07:40 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/28 02:19:30 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void		free_tab(char **tab);
 /*	PARSE/PARSE_UTILS		*/
 char	*add_str(char *s1, char *s2, int f);
 char	*lvl_name_extractor(char *s);
-int		check_ext(char *s, char *ext);
 
 /*	PARSE/PARSE_VALIDITY		*/
 // int		check_req(t_requierements r);

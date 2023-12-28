@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/21 22:25:26 by jordan           ###   ########.fr       */
+/*   Updated: 2023/12/28 02:17:17 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_texture
 	char	*name;
 	char	*path;
 }	t_texture;
+
 typedef struct	s_imgdata{
 	void	*mlx;
 	void	*win;
