@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/28 09:55:25 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/28 11:39:11 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	main(int ac, char **av)
 	parse(av[1], &level);
 	init_mlx(&img);
 	draw_map(level, img);
-	printf("size.x: %d\n", level.data.map_size.x);
-	printf("size.y: %d\n", level.data.map_size.y);
+	printf("size.x: %f\n", level.data.map_size.x);
+	printf("size.y: %f\n", level.data.map_size.y);
 	mlx_put_image_to_window(img.mlx, img.win, img.img, 0, 0);
 	mlx_hook(img.win, 2, 1L << 0, key_hooks, &img.mlx);
 	mlx_hook(img.win, 17, 1L << 3, close_cub3d, &img.mlx);

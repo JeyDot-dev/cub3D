@@ -180,6 +180,7 @@ bpp3	mlx-linux/test/main.c	/^int	bpp3;$/;"	v
 bpp4	mlx-linux/test/main.c	/^int	bpp4;$/;"	v
 buffer	mlx-opengl/mlx_int.h	/^  char			*buffer;$/;"	m	struct:mlx_img_list_s
 bytes_per_pixel	mlx-opengl/font.c	/^  unsigned int 	 bytes_per_pixel; \/* 2:RGB16, 3:RGB, 4:RGBA *\/ $/;"	m	struct:__anon1	file:
+cam	inc/struct.h	/^	t_vector	cam;$/;"	m	struct:s_player
 check_length	libft/src/ft_atoi.c	/^int	check_length(const char *str)$/;"	f
 clean	mlx-linux/configure	/^clean(){$/;"	f
 close_cub3d	src/hooks/key_hooks.c	/^int	close_cub3d(void)$/;"	f
@@ -621,7 +622,7 @@ window	mlx-linux/mlx_int.h	/^	Window				window;$/;"	m	struct:s_win_list
 winid	mlx-opengl/mlx_int.h	/^  void			*winid;$/;"	m	struct:mlx_win_list_s
 wm_delete_window	mlx-linux/mlx_int.h	/^	Atom		wm_delete_window;$/;"	m	struct:s_xvar
 wm_protocols	mlx-linux/mlx_int.h	/^	Atom		wm_protocols;$/;"	m	struct:s_xvar
-x	inc/struct.h	/^	int	x;$/;"	m	struct:s_vector
+x	inc/struct.h	/^	double	x;$/;"	m	struct:s_vector
 xpm1_x	mlx-linux/test/main.c	/^int	xpm1_x;$/;"	v
 xpm1_y	mlx-linux/test/main.c	/^int	xpm1_y;$/;"	v
-y	inc/struct.h	/^	int	y;$/;"	m	struct:s_vector
+y	inc/struct.h	/^	double	y;$/;"	m	struct:s_vector

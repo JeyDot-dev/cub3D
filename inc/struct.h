@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/28 02:17:17 by jordan           ###   ########.fr       */
+/*   Updated: 2023/12/28 11:45:44 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ enum e_state
 
 typedef struct s_vector
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_vector;
 
 typedef struct s_vector_line
@@ -67,6 +67,7 @@ typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
+	t_vector	cam;
 }	t_player;
 
 typedef struct s_level
