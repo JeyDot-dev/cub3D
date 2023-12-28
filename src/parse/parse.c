@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2023/12/22 00:42:12 by jordan           ###   ########.fr       */
+/*   Updated: 2023/12/27 17:45:09 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,42 @@ enum e_state state_incrementer(enum e_state s, int sz)
 	return (ERROR);
 }
 
+char	*strdup_exclude_endl(char *src)
+{
+	int		i;
+	int		j;
+	char	*dest;
+
+	i = 0;
+	j = 0;
+	dest = ft_calloc(sizeof(char), ft_strlen(src) + 1);
+	while (src[i] != '\0' && src[i] != '\n')
+		dest[j++] = src[i++];
+	return (dest);
+}
+
+char	**add_tab(char **src, char *str)
+{
+	int		i;
+	char	**new_tab;
+
+	i = 0;
+	while (src && src[i])
+		i++;
+	new_tab = malloc(sizeof(char *) * (i + 2));
+	i = 0;
+	while (src && src[i])
+	{
+		new_tab[i] = strdup_exclude_endl(src[i]);
+		i++;
+	}
+	new_tab[i++] = strdup_exclude_endl(str);
+	new_tab[i] = NULL;
+	if (src)
+		free_tab(src);
+	return (new_tab);
+}
+/* J'ai juste ajoute la fonction strdup_exclude_endl du dessus pour enlever les \n
 char	**add_tab(char **src, char *str)
 {
 	int		i;
@@ -60,7 +96,7 @@ char	**add_tab(char **src, char *str)
 		free_tab(src);
 	return (new_tab);
 }
-
+*/
 t_texture *add_texture(t_texture *src, char *new_texture)
 {
 	t_texture	new;

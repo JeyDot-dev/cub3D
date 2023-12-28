@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/27 14:23:28 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:07:40 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@ int		info(char *str);
 
 /*	INIT						*/
 void	init(t_level *level);
+void	init_mlx(t_imgdata *img);
 
 /*	VECTOR					*/
 t_vector	vector2D(int x, int y);
 void		set_vector2D(t_vector *vector, int x, int y);
 
-/* FREE						*/
-void		free_tab(char **tab);
 
 /* FREE						*/
 void		free_tab(char **tab);
@@ -54,10 +53,12 @@ int		check_ext(char *s, char *ext);
 /*	PARSE					*/
 void	parse(char *file_path, t_level *lvl);
 
-/*	DRAW			*/
+/*	DRAW/			*/
 void	draw_line(t_imgdata *img, t_vector_line line);
 void	draw_pixel(t_imgdata *img, int x, int y, int color);
-/*	COLOR			*/
+void	draw_map(t_level level, t_imgdata img);
+void	draw_square(t_vector origin, t_imgdata img, char c);
+/*	COLOR/			*/
 int		rgbo_color(int r, int g, int b, int o);
 int		min_max_value(int color);
 int		smooth_colors(int color, int target_color, int pixels);
