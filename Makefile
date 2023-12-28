@@ -21,11 +21,12 @@ SRC			:=	main.c			console.c		init.c		vector.c 	free.c
 DRAW		:=	draw_line.c		draw_pixel.c	draw_square.c	draw_map.c
 COLOR		:=	rgbo_color.c	color_utils.c	extract_single_color.c	line_gradient.c
 PARSE		:=	parse.c 		parse_validity.c 			parse_utils.c
+HOOKS		:=	key_hooks.c
 LIB			:=	ft	mlx
 FRAMEWORK	:=	OpenGL	AppKit
 #----------------------IGNORE--------------------
 #------------------------------------------------
-SRC			+=	$(PARSE:%=parse/%) $(COLOR:%=color/%) $(DRAW:%=draw/%)
+SRC			+=	$(PARSE:%=parse/%) $(COLOR:%=color/%) $(DRAW:%=draw/%) $(HOOKS:%=hooks/%)
 SRC			:=	$(SRC:%=$(SRC_D)%)
 OBJ 		:=	$(SRC:$(SRC_D)%.c=$(BUILD_D)%.o)
 DEPS        :=	$(OBJ:.o=.d)
