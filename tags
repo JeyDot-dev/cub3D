@@ -560,6 +560,7 @@ png_info_s	mlx-opengl/mlx_png.c	/^typedef struct png_info_s$/;"	s	file:
 png_info_t	mlx-opengl/mlx_png.c	/^} png_info_t;$/;"	t	typeref:struct:png_info_s	file:
 populate	libft/src/ft_itoa.c	/^void	populate(char *s, int neg, long int nb, int toalloc)$/;"	f
 pos	inc/struct.h	/^	t_vector	pos;$/;"	m	struct:s_player
+print_map	src/main.c	/^void	print_map(char **map, t_player player)$/;"	f
 print_move	src/console.c	/^void	print_move(int m)$/;"	f
 print_score	src/console.c	/^void	print_score(int min, int max)$/;"	f
 private_cmap	mlx-linux/mlx_int.h	/^	int			private_cmap;$/;"	m	struct:s_xvar

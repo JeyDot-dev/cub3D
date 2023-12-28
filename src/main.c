@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/28 18:14:07 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/28 20:00:42 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,14 @@ t_vector calculate_delta_dist(t_ray r)
 {
 	t_vector	delta_dist;
 
-	delta_dist.x = fabs(1 / r.ray_dir.x);
-	delta_dist.y = fabs(1 / r.ray_dir.y);
+	if (r.ray_dir.y == 0)
+		r.ray_dir.y = 1e30;
+	else
+		delta_dist.y = fabs(1 / r.ray_dir.y);
+	if (r.ray_dir.x == 0)
+		r.ray_dir.x = 1e30;
+	else
+		delta_dist.x = fabs(1 / r.ray_dir.x);
 	return (delta_dist);
 }
 
@@ -55,22 +61,22 @@ t_ray calculate_initial_dist(t_player p, t_ray r)
 	if (r.ray_dir.x < 0)
 	{
 		r.step.x = -1;
-		r.ray_dist.x = (p.pos.x - (int) r.map[0]) * r.delta_dist.x;
+		r.ray_dist.x = (p.pos.x - r.map[0]) * r.delta_dist.x;
 	}
 	else
 	{
 		r.step.x = 1;
-		r.ray_dist.x = ((int) r.map[0] + 1.0 - p.pos.x) * r.delta_dist.x;
+		r.ray_dist.x = (r.map[0] + 1.0 - p.pos.x) * r.delta_dist.x;
 	}
 	if (r.ray_dir.y < 0)
 	{
 		r.step.y = -1;
-		r.ray_dist.y = (p.pos.y - (int) r.map[1]) * r.delta_dist.y;
+		r.ray_dist.y = (p.pos.y - r.map[1]) * r.delta_dist.y;
 	}
 	else
 	{
 		r.step.y = 1;
-		r.ray_dist.y = ((int) r.map[1] + 1.0 - p.pos.y) * r.delta_dist.y;
+		r.ray_dist.y = (r.map[1] + 1.0 - p.pos.y) * r.delta_dist.y;
 	}
 	return (r);
 }
@@ -91,7 +97,7 @@ t_ray digital_differential_analysis(t_ray r, char **map)
 			r.map[1] += (int) r.step.y;
 			r.side = 1;
 		}
-		if (map[r.map[1]][r.map[1]] == '1')
+		if (map[r.map[1]][r.map[0]] == '1')
 			r.hit = 1;
 	}
 	return (r);
@@ -101,8 +107,6 @@ void	draw_vertical_line(t_imgdata *img, int x, int y[2], int color)
 	int	i;
 
 	i = y[0];
-	printf("---DRAW LINE\n");
-	printf("y[0]: %d, y[1]: %d\n", y[0], y[1]);
 	while (i < y[1])
 	{
 		draw_pixel(img, x, i, color);
@@ -114,23 +118,20 @@ void	draw_ray(t_imgdata *img, t_ray r, char **map)
 	int	y[2];
 	int	color;
 
-	printf("ray_count: %d\n, r.perp_wall_dist: %f\n", r.ray_count, r.perp_wall_dist);
-	y[0] = -((int)(WIN_HEIGHT / r.perp_wall_dist)) / 2 + WIN_HEIGHT / 2;
+	y[0] = (int) -(WIN_HEIGHT / r.perp_wall_dist) / 2 + WIN_HEIGHT / 2;
 	if (y[0] < 0)
 		y[0] = 0;
-	y[1] = ((int) (WIN_HEIGHT / r.perp_wall_dist)) / 2 + WIN_HEIGHT / 2;
+	y[1] = (int) (WIN_HEIGHT / r.perp_wall_dist) / 2 + WIN_HEIGHT / 2;
 	if (y[1] >= WIN_HEIGHT)
 		y[1] = WIN_HEIGHT - 1;
 	if (map[r.map[1]][r.map[0]] == '1')
 	{
-		printf("COLOR\n");
 		color = rgbo_color(120, 160, 70, 0);
 	}
 	else
 		color = 0x0000FF;
 	if (r.side == 1)
 		color = color / 2;
-	printf("color: %x\n", color);
 	draw_vertical_line(img, r.ray_count, y, color);
 
 }
@@ -138,10 +139,6 @@ double calculate_perp_wall_distance(t_ray r)
 {
 	double	perp_wall_dist;
 
-	printf("r.ray_dist.x: %f\n", r.ray_dist.x);
-	printf("r.ray_dist.y: %f\n", r.ray_dist.y);
-	printf("r.delta_dist.x: %f\n", r.delta_dist.x);
-	printf("r.delta_dist.y: %f\n", r.delta_dist.y);
 	if (r.side == 0)
 		perp_wall_dist = r.ray_dist.x - r.delta_dist.x;
 	else
@@ -165,8 +162,15 @@ int	ray_caster(t_level level, t_imgdata *img)
 		printf("ray_dir.x: %f\n", ray.ray_dir.x);
 		printf("ray_dir.y: %f\n", ray.ray_dir.y);
 		ray.delta_dist = calculate_delta_dist(ray);
+		printf("delta_dist.x: %f\n", ray.delta_dist.x);
+		printf("delta_dist.y: %f\n", ray.delta_dist.y);
 		ray = calculate_initial_dist(level.player, ray);
+		printf("INITIAL\n");
+		printf("ray_dist.x: %f\n", ray.ray_dist.x);
+		printf("ray_dist.y: %f\n", ray.ray_dist.y);
 		ray = digital_differential_analysis(ray, level.map);
+		printf("ray_dist.x: %f\n", ray.ray_dist.x);
+		printf("ray_dist.y: %f\n", ray.ray_dist.y);
 		ray.perp_wall_dist = calculate_perp_wall_distance(ray);
 		draw_ray(img, ray, level.map);
 		ray.ray_count++;
@@ -176,10 +180,10 @@ int	ray_caster(t_level level, t_imgdata *img)
 
 t_level default_position(t_level level, double fov)
 {
-	level.player.pos.x = 11;
-	level.player.pos.y = 6;
-	level.player.dir.x = 1;
-	level.player.dir.y = 0;
+	level.player.pos.x = 9;
+	level.player.pos.y = 4;
+	level.player.dir.x = 0.8;
+	level.player.dir.y = 0.2;
 	level.player.fov = fov;
 	level.ray.cam_plane.x = level.player.dir.y * tan(fov / 2 * M_PI / 180);
 	level.ray.cam_plane.y = level.player.dir.x * tan(fov / 2 * M_PI / 180);
@@ -190,6 +194,28 @@ t_level default_position(t_level level, double fov)
 int hook_resize(void)
 {
 	return (0);
+}
+void	print_map(char **map, t_player player)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (i == (int)player.pos.y && j == (int)player.pos.x)
+				printf("P");
+			else
+				printf("%c", map[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 }
 int	main(int ac, char **av)
 {
@@ -204,9 +230,8 @@ int	main(int ac, char **av)
 	parse(av[1], &level);
 	init_mlx(&img);
 	level = default_position(level, 90);
+	print_map(level.map, level.player);
 	ray_caster(level, &img);
-	printf("size.x: %f\n", level.data.map_size.x);
-	printf("size.y: %f\n", level.data.map_size.y);
 	mlx_put_image_to_window(img.mlx, img.win, img.img, 0, 0);
 	mlx_hook(img.win, 2, 1L << 0, key_hooks, &img.mlx);
 	mlx_hook(img.win, 17, 1L << 3, close_cub3d, &img.mlx);
