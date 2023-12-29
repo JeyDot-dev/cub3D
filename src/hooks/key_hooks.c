@@ -6,18 +6,18 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:37:30 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 09:32:12 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/29 16:35:30 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "cub3D.h"
 
-/*int	key_hooks(int keycode)
+int	key_hooks(int keycode, t_level *lvl)
 {
 	if (keycode == 65307 || keycode == 53)
 		close_cub3d();
 	else if ((keycode > 65360 && keycode < 65365) ||
 			(keycode > 122 && keycode < 127))
-		ft_fprintf(2, "left, right, up, down\n");
+		player_move_and_rotate(lvl, keycode % 65360);
 	else if (keycode == 65453 || keycode == 65451 ||
 			keycode == 69 || keycode == 78)
 		ft_fprintf(2, "+-\n");
@@ -25,7 +25,7 @@
 			(keycode > 17 && keycode < 30))
 		ft_fprintf(2, "1, 2, 3, 4, 5, 6, 7, 8, 9, 0\n");
 	return (0);
-}*/
+}
 
 int	close_cub3d(void)
 {

@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 10:17:15 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/29 17:02:41 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@
 /*	CONSOLE					*/
 int		error(char *str);
 int		info(char *str);
+
+/*	RAY_CASTER				*/
+void	ray_caster(t_level lvl, t_imgdata *img);
+
+/*	DIGITAL_DIFFERENTIAL_ANALYZER	*/
+t_ray	dda(t_ray r, char **map);
 
 /*	INIT						*/
 void	init(t_level *level);
@@ -54,15 +60,21 @@ char	*lvl_name_extractor(char *s);
 
 /*	PARSE					*/
 void	parse(char *file_path, t_level *lvl);
-
+/*	MOVEMENT	*/
+void	move_forward_backward(t_level *lvl, double move_speed);
+void	move_backward(t_level *lvl, double move_speed);
+void	rotate_player(t_level *lvl, int rot_speed);
+//		 v cette fonction est temporaire v
+void	player_move_and_rotate(t_level *lvl, int key);
 /*	HOOKS					*/
-//int		key_hooks(int keycode);
+int		key_hooks(int keycode, t_level *lvl);
 int		close_cub3d(void);
 /*	DRAW/			*/
 void	draw_line(t_imgdata *img, t_vector_line line);
 void	draw_pixel(t_imgdata *img, int x, int y, int color);
 void	draw_map(t_level level, t_imgdata img);
 void	draw_square(t_vector origin, t_imgdata img, char c);
+void	draw_ray(t_imgdata *img, t_ray r, char **map);
 /*	COLOR/			*/
 int		rgbo_color(int r, int g, int b, int o);
 int		min_max_value(int color);
@@ -71,4 +83,8 @@ int		r_value(int color);
 int		g_value(int color);
 int		b_value(int color);
 int		o_value(int color);
+/*	UTILS/	*/
+void	terminal_mini_map(char **map, t_level lvl);
+t_vector	rotate_vector(t_vector vector, double angle);
+void	erase_img(t_imgdata *img);
 #endif
