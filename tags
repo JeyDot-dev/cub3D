@@ -70,6 +70,7 @@ GRN	Makefile	/^GRN	= \\033[32m$/;"	m
 GRN	libft/Makefile	/^GRN	= \\033[32m$/;"	m
 HEX	libft/inc/libft.h	35;"	d
 HEX_C	libft/inc/libft.h	36;"	d
+HOOKS	Makefile	/^HOOKS		:=	key_hooks.c$/;"	m
 IM1_SX	mlx-linux/test/main.c	7;"	d	file:
 IM1_SY	mlx-linux/test/main.c	8;"	d	file:
 IM3_SX	mlx-linux/test/main.c	9;"	d	file:
@@ -179,9 +180,9 @@ bpp3	mlx-linux/test/main.c	/^int	bpp3;$/;"	v
 bpp4	mlx-linux/test/main.c	/^int	bpp4;$/;"	v
 buffer	mlx-opengl/mlx_int.h	/^  char			*buffer;$/;"	m	struct:mlx_img_list_s
 bytes_per_pixel	mlx-opengl/font.c	/^  unsigned int 	 bytes_per_pixel; \/* 2:RGB16, 3:RGB, 4:RGBA *\/ $/;"	m	struct:__anon1	file:
-check_ext	src/parse/parse_utils.c	/^int	check_ext(char *s, char *ext)$/;"	f
 check_length	libft/src/ft_atoi.c	/^int	check_length(const char *str)$/;"	f
 clean	mlx-linux/configure	/^clean(){$/;"	f
+close_cub3d	src/hooks/key_hooks.c	/^int	close_cub3d(void)$/;"	f
 cmap	mlx-linux/mlx_int.h	/^	Colormap	cmap;$/;"	m	struct:s_xvar
 col	mlx-linux/mlx_int.h	/^	int		col;$/;"	m	struct:s_xpm_col
 col	mlx-opengl/mlx_xpm.c	/^  int           col;$/;"	m	struct:s_xpm_col	file:
@@ -324,6 +325,7 @@ height	mlx-opengl/font.c	/^  unsigned int 	 height;$/;"	m	struct:__anon1	file:
 height	mlx-opengl/mlx_int.h	/^  int			height;$/;"	m	struct:mlx_img_list_s
 height	mlx-opengl/mlx_png.c	/^  unsigned int	height;$/;"	m	struct:png_info_s	file:
 hook	mlx-linux/mlx_int.h	/^	int		(*hook)();$/;"	m	struct:s_event_list
+hook_resize	src/main.c	/^int hook_resize(void)$/;"	f
 hooks	mlx-linux/mlx_int.h	/^	t_event_list		hooks[MLX_MAX_EVENT];$/;"	m	struct:s_win_list
 horizontal_line	src/draw/draw_line.c	/^void	horizontal_line(t_imgdata *img, t_vector_line line)$/;"	f
 im1	mlx-linux/test/main.c	/^void    *im1;$/;"	v
@@ -345,6 +347,7 @@ init	src/init.c	/^void	init(t_level *level)$/;"	f
 init_mlx	src/init.c	/^void	init_mlx(t_imgdata *img)$/;"	f
 interlace	mlx-opengl/mlx_png.c	/^  int		interlace;$/;"	m	struct:png_info_s	file:
 key_hook	mlx-linux/mlx_int.h	/^	int					(*key_hook)();$/;"	m	struct:s_win_list
+key_hooks	src/hooks/key_hooks.c	/^int	key_hooks(int keycode)$/;"	f
 key_param	mlx-linux/mlx_int.h	/^	void				*key_param;$/;"	m	struct:s_win_list
 key_win1	mlx-linux/test/main.c	/^int	key_win1(int key,void *p)$/;"	f
 key_win2	mlx-linux/test/main.c	/^int	key_win2(int key,void *p)$/;"	f
