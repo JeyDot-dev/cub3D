@@ -44,7 +44,7 @@ DEPS	Makefile	/^DEPS        :=	$(OBJ:.o=.d)$/;"	m
 DEPS	libft/Makefile	/^DEPS		:=	$(OBJ:.o=.d)$/;"	m
 DIR_DUP	Makefile	/^DIR_DUP     =	mkdir -p "$(@D)"$/;"	m
 DIR_DUP	libft/Makefile	/^DIR_DUP		=	mkdir -p "$(@D)"$/;"	m
-DRAW	Makefile	/^DRAW		:=	draw_line.c		draw_pixel.c	draw_square.c	draw_map.c	draw_ray.c$/;"	m
+DRAW	Makefile	/^DRAW		:=	draw_line.c		draw_pixel.c	draw_square.c	draw_map.c	draw_ray.c\\$/;"	m
 EAST	inc/struct.h	/^	EAST,$/;"	e	enum:e_side
 ENV_DISPLAY	mlx-linux/mlx_int.h	43;"	d
 ERROR	inc/struct.h	/^	ERROR$/;"	e	enum:e_state
@@ -182,6 +182,7 @@ addr	inc/struct.h	/^	char	*addr;$/;"	m	struct:s_imgdata
 appid	mlx-opengl/mlx_int.h	/^  void			*appid;$/;"	m	struct:mlx_ptr_s
 at_exit	mlx-linux/test/run_tests.sh	/^at_exit() {$/;"	f
 b_value	src/color/extract_single_color.c	/^int	b_value(int color)$/;"	f
+background	src/draw/background.c	/^void background(t_imgdata *img, int col)$/;"	f
 bpp	inc/struct.h	/^	int		bpp;$/;"	m	struct:s_imgdata
 bpp	mlx-linux/mlx_int.h	/^	int				bpp;$/;"	m	struct:s_img
 bpp	mlx-opengl/mlx_png.c	/^  int		bpp;$/;"	m	struct:png_info_s	file:
@@ -342,6 +343,7 @@ get_next_line	libft/src/get_next_line/get_next_line.c	/^char	*get_next_line(int 
 get_xlib_include_path	mlx-linux/configure	/^get_xlib_include_path(){$/;"	f
 glsl_info_s	mlx-opengl/mlx_int.h	/^typedef struct	glsl_info_s$/;"	s
 glsl_info_t	mlx-opengl/mlx_int.h	/^} glsl_info_t;$/;"	t	typeref:struct:glsl_info_s
+ground	src/draw/background.c	/^void ground(t_imgdata *img, int col)$/;"	f
 height	mlx-linux/mlx_int.h	/^	int				height;$/;"	m	struct:s_img
 height	mlx-opengl/font.c	/^  unsigned int 	 height;$/;"	m	struct:__anon1	file:
 height	mlx-opengl/mlx_int.h	/^  int			height;$/;"	m	struct:mlx_img_list_s

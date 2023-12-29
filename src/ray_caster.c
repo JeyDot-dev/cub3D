@@ -6,7 +6,7 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:53:43 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 17:01:56 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/29 19:21:20 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void ray_caster(t_level level, t_imgdata *img)
 	
 	ray = level.ray;
 	level.ray.ray_count = 0;
-	erase_img(img);
+	background(img, 3);
 	while (ray.ray_count < WIN_WIDTH)
 	{
 		ray.hit = 0;
