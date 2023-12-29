@@ -243,6 +243,7 @@ endian1	mlx-linux/test/main.c	/^int	endian1;$/;"	v
 endian2	mlx-linux/test/main.c	/^int	endian2;$/;"	v
 endian3	mlx-linux/test/main.c	/^int	endian3;$/;"	v
 endian4	mlx-linux/test/main.c	/^int	endian4;$/;"	v
+erase_img	src/main.c	/^void erase_img(t_imgdata *img)$/;"	f
 error	src/console.c	/^int	error(char *str)$/;"	f
 expose_hook	mlx-linux/mlx_int.h	/^	int					(*expose_hook)();$/;"	m	struct:s_win_list
 expose_param	mlx-linux/mlx_int.h	/^	void				*expose_param;$/;"	m	struct:s_win_list
@@ -365,7 +366,7 @@ init	src/init.c	/^void	init(t_level *level)$/;"	f
 init_mlx	src/init.c	/^void	init_mlx(t_imgdata *img)$/;"	f
 interlace	mlx-opengl/mlx_png.c	/^  int		interlace;$/;"	m	struct:png_info_s	file:
 key_hook	mlx-linux/mlx_int.h	/^	int					(*key_hook)();$/;"	m	struct:s_win_list
-key_hooks	src/hooks/key_hooks.c	/^int	key_hooks(int keycode)$/;"	f
+key_hooks	src/main.c	/^int	key_hooks(int keycode, t_level *level)$/;"	f
 key_param	mlx-linux/mlx_int.h	/^	void				*key_param;$/;"	m	struct:s_win_list
 key_win1	mlx-linux/test/main.c	/^int	key_win1(int key,void *p)$/;"	f
 key_win2	mlx-linux/test/main.c	/^int	key_win2(int key,void *p)$/;"	f
@@ -425,6 +426,7 @@ mipng_is_type	mlx-opengl/mlx_png.c	/^int	mipng_is_type(unsigned char *ptr, char 
 mipng_magic	mlx-opengl/mlx_png.c	/^int	mipng_magic(unsigned char *ptr, int size)$/;"	f
 mipng_structure	mlx-opengl/mlx_png.c	/^int	mipng_structure(unsigned char *ptr, int size, unsigned char **hdr, unsigned char **dat)$/;"	f
 mipng_verif_hdr	mlx-opengl/mlx_png.c	/^int	mipng_verif_hdr(unsigned char *hdr, png_info_t *pi)$/;"	f
+mlx	inc/struct.h	/^	t_imgdata	mlx;$/;"	m	struct:s_level
 mlx	inc/struct.h	/^	void	*mlx;$/;"	m	struct:s_imgdata
 mlx	mlx-linux/test/main.c	/^void	*mlx;$/;"	v
 mlx	mlx-linux/test/new_win.c	/^void *mlx;$/;"	v
@@ -528,6 +530,7 @@ mouse_param	mlx-linux/mlx_int.h	/^	void				*mouse_param;$/;"	m	struct:s_win_list
 mouse_win1	mlx-linux/test/main.c	/^int	mouse_win1(int button,int x,int y, void *p)$/;"	f
 mouse_win2	mlx-linux/test/main.c	/^int	mouse_win2(int button,int x,int y, void *p)$/;"	f
 mouse_win3	mlx-linux/test/main.c	/^int	mouse_win3(int x,int y, void *p)$/;"	f
+move_test	src/main.c	/^void move_test(t_level *level, int key)$/;"	f
 name	inc/struct.h	/^	char		*name;$/;"	m	struct:s_level
 name	inc/struct.h	/^	char	*name;$/;"	m	struct:s_texture
 name	mlx-linux/mlx_int.h	/^	char	*name;$/;"	m	struct:s_col_name

@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/28 13:42:30 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/29 09:29:33 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*lvl_name_extractor(char *s);
 void	parse(char *file_path, t_level *lvl);
 
 /*	HOOKS					*/
-int		key_hooks(int keycode);
+//int		key_hooks(int keycode);
 int		close_cub3d(void);
 /*	DRAW/			*/
 void	draw_line(t_imgdata *img, t_vector_line line);

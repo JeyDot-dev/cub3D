@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/28 20:00:42 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/29 10:04:09 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,23 @@ t_vector rotate_vector(t_vector v, double angle)
 
     return result;
 }
+void erase_img(t_imgdata *img)
+{
+	int	i;
+	int	j;
 
+	i = 0;
+	while (i < WIN_HEIGHT)
+	{
+		j = 0;
+		while (j < WIN_WIDTH)
+		{
+			draw_pixel(img, j, i, 0x000000);
+			j++;
+		}
+		i++;
+	}
+}
 t_ray map_ray_and_dir(t_player p, t_ray r)
 {
 	double	camera_x;
@@ -148,10 +164,12 @@ double calculate_perp_wall_distance(t_ray r)
 
 int	ray_caster(t_level level, t_imgdata *img)
 {
+	printf("RAY CASTER pos: %f, %f\n", level.player.pos.x, level.player.pos.y);
 	t_ray		ray;
 	
 	ray = level.ray;
 	level.ray.ray_count = 0;
+	erase_img(img);
 	while (ray.ray_count < WIN_WIDTH)
 	{
 		ray.hit = 0;
@@ -159,22 +177,14 @@ int	ray_caster(t_level level, t_imgdata *img)
 		ray.map[0] = (int) level.player.pos.x;
 		ray.map[1] = (int) level.player.pos.y;
 		ray = map_ray_and_dir(level.player, ray);
-		printf("ray_dir.x: %f\n", ray.ray_dir.x);
-		printf("ray_dir.y: %f\n", ray.ray_dir.y);
 		ray.delta_dist = calculate_delta_dist(ray);
-		printf("delta_dist.x: %f\n", ray.delta_dist.x);
-		printf("delta_dist.y: %f\n", ray.delta_dist.y);
 		ray = calculate_initial_dist(level.player, ray);
-		printf("INITIAL\n");
-		printf("ray_dist.x: %f\n", ray.ray_dist.x);
-		printf("ray_dist.y: %f\n", ray.ray_dist.y);
 		ray = digital_differential_analysis(ray, level.map);
-		printf("ray_dist.x: %f\n", ray.ray_dist.x);
-		printf("ray_dist.y: %f\n", ray.ray_dist.y);
 		ray.perp_wall_dist = calculate_perp_wall_distance(ray);
 		draw_ray(img, ray, level.map);
 		ray.ray_count++;
 	}
+	printf("RAY CASTER END pos: %f, %f\n", level.player.pos.x, level.player.pos.y);
 	return (0);
 }
 
@@ -182,8 +192,8 @@ t_level default_position(t_level level, double fov)
 {
 	level.player.pos.x = 9;
 	level.player.pos.y = 4;
-	level.player.dir.x = 0.8;
-	level.player.dir.y = 0.2;
+	level.player.dir.x = 0.6;
+	level.player.dir.y = 0.4;
 	level.player.fov = fov;
 	level.ray.cam_plane.x = level.player.dir.y * tan(fov / 2 * M_PI / 180);
 	level.ray.cam_plane.y = level.player.dir.x * tan(fov / 2 * M_PI / 180);
@@ -217,10 +227,64 @@ void	print_map(char **map, t_player player)
 		i++;
 	}
 }
+
+void move_test(t_level *level, int key)
+{
+	double	move_speed;
+	int		rot_speed;
+
+	move_speed = 0.1;
+	rot_speed = 10;
+	printf("player dir: %f, %f\n", level->player.dir.x, level->player.dir.y);
+	if (key == 2)
+	{
+		if (level->map[(int)(level->player.pos.x + level->player.dir.x * move_speed)][(int)level->player.pos.y] == '0')
+			level->player.pos.x += level->player.dir.x * move_speed;
+		if (level->map[(int)level->player.pos.x][(int)(level->player.pos.y + level->player.dir.y * move_speed)] == '0')
+			level->player.pos.y += level->player.dir.y * move_speed;
+	}
+	else if (key == 4)
+	{
+		if (level->map[(int)(level->player.pos.x - level->player.dir.x * move_speed)][(int)level->player.pos.y] == '0')
+			level->player.pos.x -= level->player.dir.x * move_speed;
+		if (level->map[(int)level->player.pos.x][(int)(level->player.pos.y - level->player.dir.y * move_speed)] == '0')
+			level->player.pos.y -= level->player.dir.y * move_speed;
+	}
+	else if (key == 1)
+	{
+		level->player.dir = rotate_vector(level->player.dir, -rot_speed);
+		level->ray.cam_plane = rotate_vector(level->ray.cam_plane, -rot_speed);
+	}
+	else if (key == 3)
+	{
+		level->player.dir = rotate_vector(level->player.dir, rot_speed);
+		level->ray.cam_plane = rotate_vector(level->ray.cam_plane, rot_speed);
+	}
+	printf("player dir post rot: %f, %f\n", level->player.dir.x, level->player.dir.y);
+	printf("MOVE pos: %f, %f\n", level->player.pos.x, level->player.pos.y);
+	ray_caster(*level, &level->mlx);
+	mlx_put_image_to_window(level->mlx.mlx, level->mlx.win, level->mlx.img, 0, 0);
+}
+
+int	key_hooks(int keycode, t_level *level)
+{
+	if (keycode == 65307 || keycode == 53)
+		close_cub3d();
+	else if ((keycode > 65360 && keycode < 65365) ||
+			(keycode > 122 && keycode < 127))
+		move_test(level, keycode % 65360);
+	else if (keycode == 65453 || keycode == 65451 ||
+			keycode == 69 || keycode == 78)
+		ft_fprintf(2, "+-\n");
+	else if ((keycode > 47 && keycode < 52) || 
+			(keycode > 17 && keycode < 30))
+		ft_fprintf(2, "1, 2, 3, 4, 5, 6, 7, 8, 9, 0\n");
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_level		level;
-	t_imgdata	img;
 
 	if (ac != 2)
 		return (error("Wrong number of arguments"));
@@ -228,14 +292,14 @@ int	main(int ac, char **av)
 		exit(error("A map <.cub> expected"));
 	init(&level);
 	parse(av[1], &level);
-	init_mlx(&img);
-	level = default_position(level, 90);
+	init_mlx(&level.mlx);
+	level = default_position(level, 66);
 	print_map(level.map, level.player);
-	ray_caster(level, &img);
-	mlx_put_image_to_window(img.mlx, img.win, img.img, 0, 0);
-	mlx_hook(img.win, 2, 1L << 0, key_hooks, &img.mlx);
-	mlx_hook(img.win, 17, 1L << 3, close_cub3d, &img.mlx);
-	mlx_hook(img.win, 25, 1L << 18, hook_resize, &img.mlx);
-	mlx_loop(img.mlx);
+	ray_caster(level, &level.mlx);
+	mlx_put_image_to_window(level.mlx.mlx, level.mlx.win, level.mlx.img, 0, 0);
+	mlx_hook(level.mlx.win, 2, 1L << 0, key_hooks, &level);
+	mlx_hook(level.mlx.win, 17, 1L << 3, close_cub3d, &level.mlx.mlx);
+	mlx_hook(level.mlx.win, 25, 1L << 18, hook_resize, &level);
+	mlx_loop(level.mlx.mlx);
 	return (0);
 }

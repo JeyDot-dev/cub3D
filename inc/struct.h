@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/28 16:43:46 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/29 09:30:23 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_level
 	t_data		data;
 	t_player	player;
 	t_ray		ray;
+	t_imgdata	mlx;
 }	t_level;
 
 #endif
