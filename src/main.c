@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 10:04:09 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/29 10:31:54 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,6 @@ double calculate_perp_wall_distance(t_ray r)
 
 int	ray_caster(t_level level, t_imgdata *img)
 {
-	printf("RAY CASTER pos: %f, %f\n", level.player.pos.x, level.player.pos.y);
 	t_ray		ray;
 	
 	ray = level.ray;
@@ -173,7 +172,6 @@ int	ray_caster(t_level level, t_imgdata *img)
 	while (ray.ray_count < WIN_WIDTH)
 	{
 		ray.hit = 0;
-		printf("ray_count: %d\n", ray.ray_count);
 		ray.map[0] = (int) level.player.pos.x;
 		ray.map[1] = (int) level.player.pos.y;
 		ray = map_ray_and_dir(level.player, ray);
@@ -184,7 +182,6 @@ int	ray_caster(t_level level, t_imgdata *img)
 		draw_ray(img, ray, level.map);
 		ray.ray_count++;
 	}
-	printf("RAY CASTER END pos: %f, %f\n", level.player.pos.x, level.player.pos.y);
 	return (0);
 }
 
@@ -192,8 +189,8 @@ t_level default_position(t_level level, double fov)
 {
 	level.player.pos.x = 9;
 	level.player.pos.y = 4;
-	level.player.dir.x = 0.6;
-	level.player.dir.y = 0.4;
+	level.player.dir.x = -1;
+	level.player.dir.y = 0;
 	level.player.fov = fov;
 	level.ray.cam_plane.x = level.player.dir.y * tan(fov / 2 * M_PI / 180);
 	level.ray.cam_plane.y = level.player.dir.x * tan(fov / 2 * M_PI / 180);
@@ -218,7 +215,11 @@ void	print_map(char **map, t_player player)
 		while (map[i][j])
 		{
 			if (i == (int)player.pos.y && j == (int)player.pos.x)
-				printf("P");
+				printf(GRN"P"RESET);
+			if (map[i][j] == '1')
+				printf(RED"%c"RESET, map[i][j]);
+			else if (map[i][j] == '0')
+				printf(WHT"%c"RESET, map[i][j]);
 			else
 				printf("%c", map[i][j]);
 			j++;
@@ -260,6 +261,7 @@ void move_test(t_level *level, int key)
 		level->player.dir = rotate_vector(level->player.dir, rot_speed);
 		level->ray.cam_plane = rotate_vector(level->ray.cam_plane, rot_speed);
 	}
+	print_map(level->map, level->player);
 	printf("player dir post rot: %f, %f\n", level->player.dir.x, level->player.dir.y);
 	printf("MOVE pos: %f, %f\n", level->player.pos.x, level->player.pos.y);
 	ray_caster(*level, &level->mlx);

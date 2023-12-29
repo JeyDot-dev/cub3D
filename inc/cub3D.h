@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 09:29:33 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/29 10:17:15 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <mlx.h>
 # include <math.h>
 # include <struct.h>
+# include <color.h>
 
 # define NAME "Apex: double legends 2 - live edition"
 # define NAME_SHORT "ADL2LE"

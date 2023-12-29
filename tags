@@ -8,12 +8,12 @@ AR	Makefile	/^AR          :=	ar$/;"	m
 AR	libft/Makefile	/^AR			:=	ar$/;"	m
 ARFLAGS	Makefile	/^ARFLAGS     :=	-r -c -s$/;"	m
 ARFLAGS	libft/Makefile	/^ARFLAGS		:=	-r -c -s$/;"	m
-BLACK	libft/inc/libft.h	26;"	d
 BLK	Makefile	/^BLK	= \\033[30m$/;"	m
+BLK	inc/color.h	15;"	d
 BLK	libft/Makefile	/^BLK	= \\033[30m$/;"	m
 BLU	Makefile	/^BLU	= \\033[34m$/;"	m
+BLU	inc/color.h	19;"	d
 BLU	libft/Makefile	/^BLU	= \\033[34m$/;"	m
-BLUE	libft/inc/libft.h	30;"	d
 BRN	Makefile	/^BRN	= \\033[33m$/;"	m
 BRN	libft/Makefile	/^BRN	= \\033[33m$/;"	m
 BUFFER_SIZE	libft/inc/libft.h	15;"	d
@@ -31,14 +31,15 @@ CFLAGS	mlx-linux/Makefile.mk	/^CFLAGS	= -O3 -I$(INC)$/;"	m
 CFLAGS	mlx-linux/test/Makefile.mk	/^CFLAGS= -I$(INC) -O3 -I.. -g$/;"	m
 COLOR	Makefile	/^COLOR		:=	rgbo_color.c	color_utils.c	extract_single_color.c	line_gradient.c$/;"	m
 COLORS	inc/struct.h	/^	COLORS,$/;"	e	enum:e_state
-COLOR_RESET	libft/inc/libft.h	34;"	d
+COLOR_H	inc/color.h	14;"	d
+COLOR_RESET	libft/inc/libft.h	27;"	d
 CPPFLAGS	Makefile	/^CPPFLAGS    :=	-MMD -MP $(addprefix -I,$(INC))$/;"	m
 CPPFLAGS	libft/Makefile	/^CPPFLAGS	:=	-MMD -MP $(addprefix -I,$(INC))$/;"	m
 CUB3D_H	inc/cub3D.h	14;"	d
-CYAN	libft/inc/libft.h	32;"	d
 CYN	Makefile	/^CYN	= \\033[36m$/;"	m
+CYN	inc/color.h	21;"	d
 CYN	libft/Makefile	/^CYN	= \\033[36m$/;"	m
-DEC	libft/inc/libft.h	37;"	d
+DEC	libft/inc/libft.h	30;"	d
 DEPS	Makefile	/^DEPS        :=	$(OBJ:.o=.d)$/;"	m
 DEPS	libft/Makefile	/^DEPS		:=	$(OBJ:.o=.d)$/;"	m
 DIR_DUP	Makefile	/^DIR_DUP     =	mkdir -p "$(@D)"$/;"	m
@@ -66,11 +67,11 @@ FRAMEWORK	Makefile	/^FRAMEWORK	:=	$/;"	m
 FRAMEWORK	Makefile	/^FRAMEWORK	:=	OpenGL	AppKit$/;"	m
 FRAMEWORK	libft/Makefile	/^FRAMEWORK	:=$/;"	m
 GET_NEXT_LINE_H	libft/inc/get_next_line.h	14;"	d
-GREEN	libft/inc/libft.h	28;"	d
 GRN	Makefile	/^GRN	= \\033[32m$/;"	m
+GRN	inc/color.h	17;"	d
 GRN	libft/Makefile	/^GRN	= \\033[32m$/;"	m
-HEX	libft/inc/libft.h	35;"	d
-HEX_C	libft/inc/libft.h	36;"	d
+HEX	libft/inc/libft.h	28;"	d
+HEX_C	libft/inc/libft.h	29;"	d
 HOOKS	Makefile	/^HOOKS		:=	key_hooks.c$/;"	m
 IM1_SX	mlx-linux/test/main.c	7;"	d	file:
 IM1_SY	mlx-linux/test/main.c	8;"	d	file:
@@ -100,7 +101,7 @@ LIB_D	Makefile	/^LIB_D		:=	libft\/ mlx-linux\/$/;"	m
 LIB_D	Makefile	/^LIB_D		:=	libft\/ mlx-opengl\/$/;"	m
 LIB_D	libft/Makefile	/^LIB_D		:=$/;"	m
 LOCALHOST	mlx-linux/mlx_int.h	44;"	d
-MAGENTA	libft/inc/libft.h	31;"	d
+MAG	inc/color.h	20;"	d
 MAP	inc/struct.h	/^	MAP,$/;"	e	enum:e_state
 MAX_EVENT	mlx-opengl/mlx_int.h	10;"	d
 MAX_PIXEL_NB	mlx-opengl/mlx_int.h	11;"	d
@@ -112,11 +113,11 @@ MLX_TYPE_SHM	mlx-linux/mlx_int.h	37;"	d
 MLX_TYPE_SHM_PIXMAP	mlx-linux/mlx_int.h	36;"	d
 MLX_TYPE_XIMAGE	mlx-linux/mlx_int.h	38;"	d
 NAME	Makefile	/^NAME		:=	cub3D$/;"	m
-NAME	inc/cub3D.h	22;"	d
+NAME	inc/cub3D.h	23;"	d
 NAME	libft/Makefile	/^NAME		:=	libft.a$/;"	m
 NAME	mlx-linux/Makefile.mk	/^NAME		= libmlx.a$/;"	m
 NAME	mlx-linux/test/Makefile.mk	/^NAME= mlx-test$/;"	m
-NAME_SHORT	inc/cub3D.h	23;"	d
+NAME_SHORT	inc/cub3D.h	24;"	d
 NAME_UNAME	mlx-linux/Makefile.mk	/^NAME_UNAME	= libmlx_$(UNAME).a$/;"	m
 NB_OBJ	Makefile	/^NB_OBJ			:=	0$/;"	m
 NOM	mlx-opengl/Makefile	/^NOM=libmlx.a$/;"	m
@@ -134,8 +135,9 @@ PNG_MAGIC_SIZE	mlx-opengl/mlx_png.c	18;"	d	file:
 PUR	Makefile	/^PUR	= \\033[35m$/;"	m
 PUR	libft/Makefile	/^PUR	= \\033[35m$/;"	m
 RED	Makefile	/^RED	= \\033[31m$/;"	m
+RED	inc/color.h	16;"	d
 RED	libft/Makefile	/^RED	= \\033[31m$/;"	m
-RED	libft/inc/libft.h	27;"	d
+RESET	inc/color.h	23;"	d
 RETURN	mlx-linux/mlx_xpm.c	17;"	d	file:
 RETURN	mlx-opengl/mlx_xpm.c	30;"	d	file:
 RM	Makefile	/^RM			:=	rm -rf$/;"	m
@@ -162,13 +164,14 @@ UNAME_S	libft/Makefile	/^UNAME_S		:= $(shell uname -s)$/;"	m
 UNIQ_BPP	mlx-opengl/mlx_int.h	12;"	d
 WARN_SHM_ATTACH	mlx-linux/mlx_int.h	46;"	d
 WEST	inc/struct.h	/^	WEST$/;"	e	enum:e_side
-WHITE	libft/inc/libft.h	33;"	d
+WHITE	libft/inc/libft.h	26;"	d
+WHT	inc/color.h	22;"	d
 WIN1_SX	mlx-linux/test/main.c	5;"	d	file:
 WIN1_SY	mlx-linux/test/main.c	6;"	d	file:
-WIN_HEIGHT	inc/cub3D.h	25;"	d
-WIN_WIDTH	inc/cub3D.h	24;"	d
+WIN_HEIGHT	inc/cub3D.h	26;"	d
+WIN_WIDTH	inc/cub3D.h	25;"	d
 X_ShmAttach	mlx-linux/mlx_new_image.c	20;"	d	file:
-YELLOW	libft/inc/libft.h	29;"	d
+YEL	inc/color.h	18;"	d
 Z_CHUNK	mlx-opengl/mlx_png.c	22;"	d	file:
 add_str	src/parse/parse_utils.c	/^char	*add_str(char *s1, char *s2, int f)$/;"	f
 add_tab	src/parse/parse.c	/^char	**add_tab(char **src, char *str)$/;"	f
