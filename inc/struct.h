@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/29 09:30:23 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/02 16:59:13 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_data
 	t_texture	*texture;
 	t_texture	*colors;
 }	t_data;
+
 typedef struct s_ray
 {
 	t_vector	ray_dir;
@@ -83,11 +84,17 @@ typedef struct s_ray
 	int			hit;
 	int			ray_count;
 }				t_ray;
+
 typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
 	int			fov;
+	int			input[6];
+	float		rot_speed;
+	t_vector	vel;
+	float		speed;
+	int			max_speed;
 }	t_player;
 
 typedef struct s_level

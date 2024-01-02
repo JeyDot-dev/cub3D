@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 17:07:14 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/02 16:48:41 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ int	main(int ac, char **av)
 	parse(av[1], &level);
 	init_mlx(&level.mlx);
 	level = set_fov(level, 110);
-	terminal_mini_map(level.map, level);
+	//terminal_mini_map(level.map, level);
 	ray_caster(level, &level.mlx);
 	mlx_put_image_to_window(level.mlx.mlx, level.mlx.win, level.mlx.img, 0, 0);
-	mlx_hook(level.mlx.win, 2, 1L << 0, key_hooks, &level);
+	mlx_hook(level.mlx.win, 2, 1L << 0, key_press, &level);
+	mlx_hook(level.mlx.win, 3, 1L << 1, key_release, &level);
 	mlx_hook(level.mlx.win, 17, 1L << 3, close_cub3d, &level.mlx.mlx);
 	mlx_hook(level.mlx.win, 25, 1L << 18, hook_resize, &level);
+	mlx_loop_hook(level.mlx.mlx, minimap_process, &level);
 	mlx_loop(level.mlx.mlx);
 	return (0);
 }
