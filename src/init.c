@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/02 17:43:19 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/02 18:16:37 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	init(t_level *level)
 	level->data.file_size = vector2D(-1, 0);
 	level->data.map_size = vector2D(0, 0);
 	level->player.pos = vector2D(0, 0);
-	level->player.max_speed = 0.1;
-	level->player.speed = 0.01;
+	level->player.max_speed = 1;
+	level->player.speed = 0.1;
 	level->player.vel = vector2D(0, 0);
 	level->player.rot_speed = 5;
 	level->player.dir = vector2D(0, 0);

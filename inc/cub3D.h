@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/02 17:16:46 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/02 18:13:01 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ char	*lvl_name_extractor(char *s);
 void	parse(char *file_path, t_level *lvl);
 
 /*	MOVEMENT	*/
-void	move_forward_backward(t_level *lvl, double move_speed);
-void	move_backward(t_level *lvl, double move_speed);
 void	rotate_player(t_level *lvl, int rot_speed);
 //		 v cette fonction est temporaire v
 void	player_move_and_rotate(t_level *lvl, int key);
@@ -75,6 +73,8 @@ int		close_cub3d(void);
 /*	HOOKS/LOOP				*/
 int 	player_process(t_level *lvl);
 int		int_to_dir(int key);
+void	move_forward(t_level *lvl);
+void	move_backward(t_level *lvl);
 
 /*	DRAW/			*/
 void	draw_line(t_imgdata *img, t_vector_line line);
