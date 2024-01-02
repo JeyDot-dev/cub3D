@@ -6,7 +6,7 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:03:01 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/27 18:03:11 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2023/12/28 11:41:34 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "cub3D.h"
@@ -23,14 +23,14 @@ void	draw_map(t_level level, t_imgdata img)
 	tmp_fix.y = 0;
 	while (origin.y < level.data.map_size.y)
 	{
-		while (level.map[origin.y][origin.x] != '\0')
+		while (level.map[(int)origin.y][(int)origin.x] != '\0')
 		{
-			ft_fprintf(2, "%c", level.map[origin.y][origin.x]);
-			if (level.map[origin.y][origin.x] == '1')
+			ft_fprintf(2, "%c", level.map[(int)origin.y][(int)origin.x]);
+			if (level.map[(int)origin.y][(int)origin.x] == '1')
 				draw_square(tmp_fix, img, '1');
-			else if (level.map[origin.y][origin.x] == '0')
+			else if (level.map[(int)origin.y][(int)origin.x] == '0')
 				draw_square(tmp_fix, img, '0');
-			if (level.map[origin.y][origin.x] == '\t')
+			if (level.map[(int)origin.y][(int)origin.x] == '\t')
 				tmp_fix.x += 3;
 			origin.x++;
 			tmp_fix.x++;

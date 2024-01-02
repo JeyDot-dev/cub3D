@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/28 02:17:17 by jordan           ###   ########.fr       */
+/*   Updated: 2023/12/29 09:30:23 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,18 @@ enum e_state
 	ERROR
 };
 
+enum e_side
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+};
+
 typedef struct s_vector
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_vector;
 
 typedef struct s_vector_line
@@ -62,11 +70,24 @@ typedef struct s_data
 	t_texture	*texture;
 	t_texture	*colors;
 }	t_data;
-
+typedef struct s_ray
+{
+	t_vector	ray_dir;
+	t_vector	ray_dist;
+	t_vector	delta_dist;
+	t_vector	step;
+	t_vector	cam_plane;
+	double		perp_wall_dist;
+	int			map[2];
+	int			side;
+	int			hit;
+	int			ray_count;
+}				t_ray;
 typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
+	int			fov;
 }	t_player;
 
 typedef struct s_level
@@ -75,6 +96,8 @@ typedef struct s_level
 	char		*name;
 	t_data		data;
 	t_player	player;
+	t_ray		ray;
+	t_imgdata	mlx;
 }	t_level;
 
 #endif

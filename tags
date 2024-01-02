@@ -8,12 +8,12 @@ AR	Makefile	/^AR          :=	ar$/;"	m
 AR	libft/Makefile	/^AR			:=	ar$/;"	m
 ARFLAGS	Makefile	/^ARFLAGS     :=	-r -c -s$/;"	m
 ARFLAGS	libft/Makefile	/^ARFLAGS		:=	-r -c -s$/;"	m
-BLACK	libft/inc/libft.h	26;"	d
 BLK	Makefile	/^BLK	= \\033[30m$/;"	m
+BLK	inc/color.h	15;"	d
 BLK	libft/Makefile	/^BLK	= \\033[30m$/;"	m
 BLU	Makefile	/^BLU	= \\033[34m$/;"	m
+BLU	inc/color.h	19;"	d
 BLU	libft/Makefile	/^BLU	= \\033[34m$/;"	m
-BLUE	libft/inc/libft.h	30;"	d
 BRN	Makefile	/^BRN	= \\033[33m$/;"	m
 BRN	libft/Makefile	/^BRN	= \\033[33m$/;"	m
 BUFFER_SIZE	libft/inc/libft.h	15;"	d
@@ -31,19 +31,21 @@ CFLAGS	mlx-linux/Makefile.mk	/^CFLAGS	= -O3 -I$(INC)$/;"	m
 CFLAGS	mlx-linux/test/Makefile.mk	/^CFLAGS= -I$(INC) -O3 -I.. -g$/;"	m
 COLOR	Makefile	/^COLOR		:=	rgbo_color.c	color_utils.c	extract_single_color.c	line_gradient.c$/;"	m
 COLORS	inc/struct.h	/^	COLORS,$/;"	e	enum:e_state
-COLOR_RESET	libft/inc/libft.h	34;"	d
+COLOR_H	inc/color.h	14;"	d
+COLOR_RESET	libft/inc/libft.h	27;"	d
 CPPFLAGS	Makefile	/^CPPFLAGS    :=	-MMD -MP $(addprefix -I,$(INC))$/;"	m
 CPPFLAGS	libft/Makefile	/^CPPFLAGS	:=	-MMD -MP $(addprefix -I,$(INC))$/;"	m
 CUB3D_H	inc/cub3D.h	14;"	d
-CYAN	libft/inc/libft.h	32;"	d
 CYN	Makefile	/^CYN	= \\033[36m$/;"	m
+CYN	inc/color.h	21;"	d
 CYN	libft/Makefile	/^CYN	= \\033[36m$/;"	m
-DEC	libft/inc/libft.h	37;"	d
+DEC	libft/inc/libft.h	30;"	d
 DEPS	Makefile	/^DEPS        :=	$(OBJ:.o=.d)$/;"	m
 DEPS	libft/Makefile	/^DEPS		:=	$(OBJ:.o=.d)$/;"	m
 DIR_DUP	Makefile	/^DIR_DUP     =	mkdir -p "$(@D)"$/;"	m
 DIR_DUP	libft/Makefile	/^DIR_DUP		=	mkdir -p "$(@D)"$/;"	m
-DRAW	Makefile	/^DRAW		:=	draw_line.c		draw_pixel.c	draw_square.c	draw_map.c$/;"	m
+DRAW	Makefile	/^DRAW		:=	draw_line.c		draw_pixel.c	draw_square.c	draw_map.c	draw_ray.c\\$/;"	m
+EAST	inc/struct.h	/^	EAST,$/;"	e	enum:e_side
 ENV_DISPLAY	mlx-linux/mlx_int.h	43;"	d
 ERROR	inc/struct.h	/^	ERROR$/;"	e	enum:e_state
 ERR_DATA_FILTER	mlx-opengl/mlx_png.c	35;"	d	file:
@@ -65,11 +67,11 @@ FRAMEWORK	Makefile	/^FRAMEWORK	:=	$/;"	m
 FRAMEWORK	Makefile	/^FRAMEWORK	:=	OpenGL	AppKit$/;"	m
 FRAMEWORK	libft/Makefile	/^FRAMEWORK	:=$/;"	m
 GET_NEXT_LINE_H	libft/inc/get_next_line.h	14;"	d
-GREEN	libft/inc/libft.h	28;"	d
 GRN	Makefile	/^GRN	= \\033[32m$/;"	m
+GRN	inc/color.h	17;"	d
 GRN	libft/Makefile	/^GRN	= \\033[32m$/;"	m
-HEX	libft/inc/libft.h	35;"	d
-HEX_C	libft/inc/libft.h	36;"	d
+HEX	libft/inc/libft.h	28;"	d
+HEX_C	libft/inc/libft.h	29;"	d
 HOOKS	Makefile	/^HOOKS		:=	key_hooks.c$/;"	m
 IM1_SX	mlx-linux/test/main.c	7;"	d	file:
 IM1_SY	mlx-linux/test/main.c	8;"	d	file:
@@ -99,7 +101,7 @@ LIB_D	Makefile	/^LIB_D		:=	libft\/ mlx-linux\/$/;"	m
 LIB_D	Makefile	/^LIB_D		:=	libft\/ mlx-opengl\/$/;"	m
 LIB_D	libft/Makefile	/^LIB_D		:=$/;"	m
 LOCALHOST	mlx-linux/mlx_int.h	44;"	d
-MAGENTA	libft/inc/libft.h	31;"	d
+MAG	inc/color.h	20;"	d
 MAP	inc/struct.h	/^	MAP,$/;"	e	enum:e_state
 MAX_EVENT	mlx-opengl/mlx_int.h	10;"	d
 MAX_PIXEL_NB	mlx-opengl/mlx_int.h	11;"	d
@@ -110,15 +112,17 @@ MLX_MAX_EVENT	mlx-linux/mlx_int.h	40;"	d
 MLX_TYPE_SHM	mlx-linux/mlx_int.h	37;"	d
 MLX_TYPE_SHM_PIXMAP	mlx-linux/mlx_int.h	36;"	d
 MLX_TYPE_XIMAGE	mlx-linux/mlx_int.h	38;"	d
+MOVEMENT	Makefile	/^MOVEMENT	:=	player_move_and_rotate.c$/;"	m
 NAME	Makefile	/^NAME		:=	cub3D$/;"	m
-NAME	inc/cub3D.h	22;"	d
+NAME	inc/cub3D.h	23;"	d
 NAME	libft/Makefile	/^NAME		:=	libft.a$/;"	m
 NAME	mlx-linux/Makefile.mk	/^NAME		= libmlx.a$/;"	m
 NAME	mlx-linux/test/Makefile.mk	/^NAME= mlx-test$/;"	m
-NAME_SHORT	inc/cub3D.h	23;"	d
+NAME_SHORT	inc/cub3D.h	24;"	d
 NAME_UNAME	mlx-linux/Makefile.mk	/^NAME_UNAME	= libmlx_$(UNAME).a$/;"	m
 NB_OBJ	Makefile	/^NB_OBJ			:=	0$/;"	m
 NOM	mlx-opengl/Makefile	/^NOM=libmlx.a$/;"	m
+NORTH	inc/struct.h	/^	NORTH,$/;"	e	enum:e_side
 OBJ	Makefile	/^OBJ 		:=	$(SRC:$(SRC_D)%.c=$(BUILD_D)%.o)$/;"	m
 OBJ	libft/Makefile	/^OBJ			:=	$(SRC:$(SRC_D)%.c=$(BUILD_D)%.o)$/;"	m
 OBJ	mlx-linux/Makefile.mk	/^OBJ	= $(addprefix $(OBJ_DIR)\/,$(SRC:%.c=%.o))$/;"	m
@@ -132,16 +136,18 @@ PNG_MAGIC_SIZE	mlx-opengl/mlx_png.c	18;"	d	file:
 PUR	Makefile	/^PUR	= \\033[35m$/;"	m
 PUR	libft/Makefile	/^PUR	= \\033[35m$/;"	m
 RED	Makefile	/^RED	= \\033[31m$/;"	m
+RED	inc/color.h	16;"	d
 RED	libft/Makefile	/^RED	= \\033[31m$/;"	m
-RED	libft/inc/libft.h	27;"	d
+RESET	inc/color.h	23;"	d
 RETURN	mlx-linux/mlx_xpm.c	17;"	d	file:
 RETURN	mlx-opengl/mlx_xpm.c	30;"	d	file:
 RM	Makefile	/^RM			:=	rm -rf$/;"	m
 RM	libft/Makefile	/^RM			:=	rm -rf$/;"	m
 RST	Makefile	/^RST	= \\033[0m$/;"	m
 RST	libft/Makefile	/^RST	= \\033[0m$/;"	m
+SOUTH	inc/struct.h	/^	SOUTH,$/;"	e	enum:e_side
 SRC	Makefile	/^SRC			:=	$(SRC:%=$(SRC_D)%)$/;"	m
-SRC	Makefile	/^SRC			:=	main.c			console.c		init.c		vector.c 	free.c$/;"	m
+SRC	Makefile	/^SRC			:=	main.c			console.c		init.c		vector.c 	free.c\\$/;"	m
 SRC	libft/Makefile	/^SRC			:=	$(SRC:%=$(SRC_D)%)$/;"	m
 SRC	libft/Makefile	/^SRC			:=	ft_isalpha.c		ft_isdigit.c		ft_isalnum.c		ft_isascii.c	\\$/;"	m
 SRC	mlx-linux/Makefile.mk	/^SRC	= mlx_init.c mlx_new_window.c mlx_pixel_put.c mlx_loop.c \\$/;"	m
@@ -157,12 +163,17 @@ UNAME	mlx-linux/test/Makefile.mk	/^UNAME := $(shell uname)$/;"	m
 UNAME_S	Makefile	/^UNAME_S 	:= $(shell uname -s)$/;"	m
 UNAME_S	libft/Makefile	/^UNAME_S		:= $(shell uname -s)$/;"	m
 UNIQ_BPP	mlx-opengl/mlx_int.h	12;"	d
+UTILS	Makefile	/^UTILS		:=	rotate_vector.c	terminal_mini_map.c	erase_img.c$/;"	m
 WARN_SHM_ATTACH	mlx-linux/mlx_int.h	46;"	d
-WHITE	libft/inc/libft.h	33;"	d
+WEST	inc/struct.h	/^	WEST$/;"	e	enum:e_side
+WHITE	libft/inc/libft.h	26;"	d
+WHT	inc/color.h	22;"	d
 WIN1_SX	mlx-linux/test/main.c	5;"	d	file:
 WIN1_SY	mlx-linux/test/main.c	6;"	d	file:
+WIN_HEIGHT	inc/cub3D.h	26;"	d
+WIN_WIDTH	inc/cub3D.h	25;"	d
 X_ShmAttach	mlx-linux/mlx_new_image.c	20;"	d	file:
-YELLOW	libft/inc/libft.h	29;"	d
+YEL	inc/color.h	18;"	d
 Z_CHUNK	mlx-opengl/mlx_png.c	22;"	d	file:
 add_str	src/parse/parse_utils.c	/^char	*add_str(char *s1, char *s2, int f)$/;"	f
 add_tab	src/parse/parse.c	/^char	**add_tab(char **src, char *str)$/;"	f
@@ -171,6 +182,7 @@ addr	inc/struct.h	/^	char	*addr;$/;"	m	struct:s_imgdata
 appid	mlx-opengl/mlx_int.h	/^  void			*appid;$/;"	m	struct:mlx_ptr_s
 at_exit	mlx-linux/test/run_tests.sh	/^at_exit() {$/;"	f
 b_value	src/color/extract_single_color.c	/^int	b_value(int color)$/;"	f
+background	src/draw/background.c	/^void background(t_imgdata *img, int col)$/;"	f
 bpp	inc/struct.h	/^	int		bpp;$/;"	m	struct:s_imgdata
 bpp	mlx-linux/mlx_int.h	/^	int				bpp;$/;"	m	struct:s_img
 bpp	mlx-opengl/mlx_png.c	/^  int		bpp;$/;"	m	struct:png_info_s	file:
@@ -180,6 +192,10 @@ bpp3	mlx-linux/test/main.c	/^int	bpp3;$/;"	v
 bpp4	mlx-linux/test/main.c	/^int	bpp4;$/;"	v
 buffer	mlx-opengl/mlx_int.h	/^  char			*buffer;$/;"	m	struct:mlx_img_list_s
 bytes_per_pixel	mlx-opengl/font.c	/^  unsigned int 	 bytes_per_pixel; \/* 2:RGB16, 3:RGB, 4:RGBA *\/ $/;"	m	struct:__anon1	file:
+calculate_delta_dist	src/ray_caster.c	/^t_vector calculate_delta_dist(t_ray r)$/;"	f
+calculate_initial_dist	src/ray_caster.c	/^t_ray calculate_initial_dist(t_player p, t_ray r)$/;"	f
+calculate_perp_wall_distance	src/ray_caster.c	/^double calculate_perp_wall_distance(t_ray r)$/;"	f
+cam_plane	inc/struct.h	/^	t_vector	cam_plane;$/;"	m	struct:s_ray
 check_length	libft/src/ft_atoi.c	/^int	check_length(const char *str)$/;"	f
 clean	mlx-linux/configure	/^clean(){$/;"	f
 close_cub3d	src/hooks/key_hooks.c	/^int	close_cub3d(void)$/;"	f
@@ -204,8 +220,10 @@ data1	mlx-linux/test/main.c	/^char	*data1;$/;"	v
 data2	mlx-linux/test/main.c	/^char	*data2;$/;"	v
 data3	mlx-linux/test/main.c	/^char	*data3;$/;"	v
 data4	mlx-linux/test/main.c	/^char	*data4;$/;"	v
+dda	src/digital_differential_analyzer.c	/^t_ray dda(t_ray r, char **map)$/;"	f
 decrgb	mlx-linux/mlx_int.h	/^	int			decrgb[6];$/;"	m	struct:s_xvar
 delta_and_inc_setup	src/draw/draw_line.c	/^t_vector_line	delta_and_inc_setup(t_vector_line line)$/;"	f
+delta_dist	inc/struct.h	/^	t_vector	delta_dist;$/;"	m	struct:s_ray
 depth	mlx-linux/mlx_int.h	/^	int			depth;$/;"	m	struct:s_xvar
 depth	mlx-opengl/mlx_png.c	/^  int		depth;$/;"	m	struct:png_info_s	file:
 dir	inc/struct.h	/^	t_vector	dir;$/;"	m	struct:s_player
@@ -215,10 +233,13 @@ do_flush	mlx-linux/mlx_int.h	/^	int			do_flush;$/;"	m	struct:s_xvar
 draw_line	src/draw/draw_line.c	/^void	draw_line(t_imgdata *img, t_vector_line line)$/;"	f
 draw_map	src/draw/draw_map.c	/^void	draw_map(t_level level, t_imgdata img)$/;"	f
 draw_pixel	src/draw/draw_pixel.c	/^void	draw_pixel(t_imgdata *img, int x, int y, int color)$/;"	f
+draw_ray	src/draw/draw_ray.c	/^void	draw_ray(t_imgdata *img, t_ray r, char **map)$/;"	f
 draw_square	src/draw/draw_square.c	/^void	draw_square(t_vector origin, t_imgdata img, char c)$/;"	f
+draw_vertical_line	src/draw/draw_ray.c	/^void	draw_vertical_line(t_imgdata *img, int x, int y[2], int color)$/;"	f
 dx	inc/struct.h	/^	int			dx;$/;"	m	struct:s_vector_line
 dy	inc/struct.h	/^	int			dy;$/;"	m	struct:s_vector_line
 e	inc/struct.h	/^	int			e;$/;"	m	struct:s_vector_line
+e_side	inc/struct.h	/^enum e_side$/;"	g
 e_state	inc/struct.h	/^enum e_state$/;"	g
 end	inc/struct.h	/^	t_vector	end;$/;"	m	struct:s_vector_line
 end_loop	mlx-linux/mlx_int.h	/^	int 		end_loop;$/;"	m	struct:s_xvar
@@ -227,6 +248,7 @@ endian1	mlx-linux/test/main.c	/^int	endian1;$/;"	v
 endian2	mlx-linux/test/main.c	/^int	endian2;$/;"	v
 endian3	mlx-linux/test/main.c	/^int	endian3;$/;"	v
 endian4	mlx-linux/test/main.c	/^int	endian4;$/;"	v
+erase_img	src/utils/erase_img.c	/^void erase_img(t_imgdata *img)$/;"	f
 error	src/console.c	/^int	error(char *str)$/;"	f
 expose_hook	mlx-linux/mlx_int.h	/^	int					(*expose_hook)();$/;"	m	struct:s_win_list
 expose_param	mlx-linux/mlx_int.h	/^	void				*expose_param;$/;"	m	struct:s_win_list
@@ -241,6 +263,7 @@ font_fshader	mlx-opengl/mlx_int.h	/^  GLuint	font_fshader;$/;"	m	struct:glsl_inf
 font_program	mlx-opengl/mlx_int.h	/^  GLuint	font_program;$/;"	m	struct:glsl_info_s
 font_vshader	mlx-opengl/mlx_int.h	/^  GLuint	font_vshader;$/;"	m	struct:glsl_info_s
 format	mlx-linux/mlx_int.h	/^	int				format;$/;"	m	struct:s_img
+fov	inc/struct.h	/^	int			fov;$/;"	m	struct:s_player
 free_tab	src/free.c	/^void free_tab(char **tab)$/;"	f
 ft_abs	libft/src/ft_abs.c	/^int	ft_abs(int n)$/;"	f
 ft_atoi	libft/src/ft_atoi.c	/^long long int	ft_atoi(const char *str)$/;"	f
@@ -320,10 +343,12 @@ get_next_line	libft/src/get_next_line/get_next_line.c	/^char	*get_next_line(int 
 get_xlib_include_path	mlx-linux/configure	/^get_xlib_include_path(){$/;"	f
 glsl_info_s	mlx-opengl/mlx_int.h	/^typedef struct	glsl_info_s$/;"	s
 glsl_info_t	mlx-opengl/mlx_int.h	/^} glsl_info_t;$/;"	t	typeref:struct:glsl_info_s
+ground	src/draw/background.c	/^void ground(t_imgdata *img, int col)$/;"	f
 height	mlx-linux/mlx_int.h	/^	int				height;$/;"	m	struct:s_img
 height	mlx-opengl/font.c	/^  unsigned int 	 height;$/;"	m	struct:__anon1	file:
 height	mlx-opengl/mlx_int.h	/^  int			height;$/;"	m	struct:mlx_img_list_s
 height	mlx-opengl/mlx_png.c	/^  unsigned int	height;$/;"	m	struct:png_info_s	file:
+hit	inc/struct.h	/^	int			hit;$/;"	m	struct:s_ray
 hook	mlx-linux/mlx_int.h	/^	int		(*hook)();$/;"	m	struct:s_event_list
 hook_resize	src/main.c	/^int hook_resize(void)$/;"	f
 hooks	mlx-linux/mlx_int.h	/^	t_event_list		hooks[MLX_MAX_EVENT];$/;"	m	struct:s_win_list
@@ -347,7 +372,7 @@ init	src/init.c	/^void	init(t_level *level)$/;"	f
 init_mlx	src/init.c	/^void	init_mlx(t_imgdata *img)$/;"	f
 interlace	mlx-opengl/mlx_png.c	/^  int		interlace;$/;"	m	struct:png_info_s	file:
 key_hook	mlx-linux/mlx_int.h	/^	int					(*key_hook)();$/;"	m	struct:s_win_list
-key_hooks	src/hooks/key_hooks.c	/^int	key_hooks(int keycode)$/;"	f
+key_hooks	src/hooks/key_hooks.c	/^int	key_hooks(int keycode, t_level *lvl)$/;"	f
 key_param	mlx-linux/mlx_int.h	/^	void				*key_param;$/;"	m	struct:s_win_list
 key_win1	mlx-linux/test/main.c	/^int	key_win1(int key,void *p)$/;"	f
 key_win2	mlx-linux/test/main.c	/^int	key_win2(int key,void *p)$/;"	f
@@ -388,6 +413,8 @@ main	mlx-linux/test/run_tests.sh	/^main(){$/;"	f
 main	src/main.c	/^int	main(int ac, char **av)$/;"	f
 main_loop_active	mlx-opengl/mlx_int.h	/^  int			main_loop_active;$/;"	m	struct:mlx_ptr_s
 map	inc/struct.h	/^	char		**map;$/;"	m	struct:s_level
+map	inc/struct.h	/^	int			map[2];$/;"	m	struct:s_ray
+map_ray_and_dir	src/ray_caster.c	/^t_ray map_ray_and_dir(t_player p, t_ray r)$/;"	f
 map_size	inc/struct.h	/^	t_vector	map_size;$/;"	m	struct:s_data
 mask	mlx-linux/mlx_int.h	/^	int		mask;$/;"	m	struct:s_event_list
 min_max_value	src/color/color_utils.c	/^int	min_max_value(int color)$/;"	f
@@ -405,6 +432,7 @@ mipng_is_type	mlx-opengl/mlx_png.c	/^int	mipng_is_type(unsigned char *ptr, char 
 mipng_magic	mlx-opengl/mlx_png.c	/^int	mipng_magic(unsigned char *ptr, int size)$/;"	f
 mipng_structure	mlx-opengl/mlx_png.c	/^int	mipng_structure(unsigned char *ptr, int size, unsigned char **hdr, unsigned char **dat)$/;"	f
 mipng_verif_hdr	mlx-opengl/mlx_png.c	/^int	mipng_verif_hdr(unsigned char *hdr, png_info_t *pi)$/;"	f
+mlx	inc/struct.h	/^	t_imgdata	mlx;$/;"	m	struct:s_level
 mlx	inc/struct.h	/^	void	*mlx;$/;"	m	struct:s_imgdata
 mlx	mlx-linux/test/main.c	/^void	*mlx;$/;"	v
 mlx	mlx-linux/test/new_win.c	/^void *mlx;$/;"	v
@@ -508,6 +536,8 @@ mouse_param	mlx-linux/mlx_int.h	/^	void				*mouse_param;$/;"	m	struct:s_win_list
 mouse_win1	mlx-linux/test/main.c	/^int	mouse_win1(int button,int x,int y, void *p)$/;"	f
 mouse_win2	mlx-linux/test/main.c	/^int	mouse_win2(int button,int x,int y, void *p)$/;"	f
 mouse_win3	mlx-linux/test/main.c	/^int	mouse_win3(int x,int y, void *p)$/;"	f
+move_backward	src/movement/player_move_and_rotate.c	/^void move_backward(t_level *lvl, double move_speed)$/;"	f
+move_forward	src/movement/player_move_and_rotate.c	/^void move_forward(t_level *lvl, double move_speed)$/;"	f
 name	inc/struct.h	/^	char		*name;$/;"	m	struct:s_level
 name	inc/struct.h	/^	char	*name;$/;"	m	struct:s_texture
 name	mlx-linux/mlx_int.h	/^	char	*name;$/;"	m	struct:s_col_name
@@ -528,6 +558,7 @@ parse_args	mlx-linux/configure	/^parse_args(){$/;"	f
 parse_file	src/parse/parse.c	/^int	parse_file(int file, t_level *lvl)$/;"	f
 parse_validity	src/parse/parse_validity.c	/^int	parse_validity(void)$/;"	f
 path	inc/struct.h	/^	char	*path;$/;"	m	struct:s_texture
+perp_wall_dist	inc/struct.h	/^	double		perp_wall_dist;$/;"	m	struct:s_ray
 pix	mlx-linux/mlx_int.h	/^	Pixmap			pix;$/;"	m	struct:s_img
 pixel_data	mlx-opengl/font.c	/^  unsigned char	 pixel_data[1140 * 20 * 4 + 1];$/;"	m	struct:__anon1	file:
 pixel_fshader	mlx-opengl/mlx_int.h	/^  GLuint	pixel_fshader;$/;"	m	struct:glsl_info_s
@@ -535,17 +566,26 @@ pixel_program	mlx-opengl/mlx_int.h	/^  GLuint	pixel_program;$/;"	m	struct:glsl_i
 pixel_vshader	mlx-opengl/mlx_int.h	/^  GLuint	pixel_vshader;$/;"	m	struct:glsl_info_s
 pixmgt	mlx-opengl/mlx_int.h	/^  int			pixmgt;$/;"	m	struct:mlx_win_list_s
 player	inc/struct.h	/^	t_player	player;$/;"	m	struct:s_level
+player_move_and_rotate	src/movement/player_move_and_rotate.c	/^void player_move_and_rotate(t_level *level, int key)$/;"	f
 png_info_s	mlx-opengl/mlx_png.c	/^typedef struct png_info_s$/;"	s	file:
 png_info_t	mlx-opengl/mlx_png.c	/^} png_info_t;$/;"	t	typeref:struct:png_info_s	file:
 populate	libft/src/ft_itoa.c	/^void	populate(char *s, int neg, long int nb, int toalloc)$/;"	f
 pos	inc/struct.h	/^	t_vector	pos;$/;"	m	struct:s_player
+print_infos	src/movement/player_move_and_rotate.c	/^void print_infos(t_level *level)$/;"	f
 print_move	src/console.c	/^void	print_move(int m)$/;"	f
 print_score	src/console.c	/^void	print_score(int min, int max)$/;"	f
 private_cmap	mlx-linux/mlx_int.h	/^	int			private_cmap;$/;"	m	struct:s_xvar
 pshm_format	mlx-linux/mlx_int.h	/^	int			pshm_format;$/;"	m	struct:s_xvar
 r_value	src/color/extract_single_color.c	/^int	r_value(int color)$/;"	f
+ray	inc/struct.h	/^	t_ray		ray;$/;"	m	struct:s_level
+ray_caster	src/ray_caster.c	/^void ray_caster(t_level level, t_imgdata *img)$/;"	f
+ray_count	inc/struct.h	/^	int			ray_count;$/;"	m	struct:s_ray
+ray_dir	inc/struct.h	/^	t_vector	ray_dir;$/;"	m	struct:s_ray
+ray_dist	inc/struct.h	/^	t_vector	ray_dist;$/;"	m	struct:s_ray
 rgbo_color	src/color/rgbo_color.c	/^int	rgbo_color(int r, int g, int b, int o)$/;"	f
 root	mlx-linux/mlx_int.h	/^	Window		root;$/;"	m	struct:s_xvar
+rotate_player	src/movement/player_move_and_rotate.c	/^void rotate_player(t_level *lvl, int rot_speed)$/;"	f
+rotate_vector	src/utils/rotate_vector.c	/^t_vector rotate_vector(t_vector v, double angle)$/;"	f
 s_col_name	mlx-linux/mlx_int.h	/^struct	s_col_name$/;"	s
 s_col_name	mlx-opengl/mlx_xpm.c	/^struct  s_col_name$/;"	s	file:
 s_data	inc/struct.h	/^typedef struct s_data$/;"	s
@@ -555,6 +595,7 @@ s_imgdata	inc/struct.h	/^typedef struct	s_imgdata{$/;"	s
 s_level	inc/struct.h	/^typedef struct s_level$/;"	s
 s_list	libft/inc/libft.h	/^typedef struct s_list$/;"	s
 s_player	inc/struct.h	/^typedef struct s_player$/;"	s
+s_ray	inc/struct.h	/^typedef struct s_ray$/;"	s
 s_texture	inc/struct.h	/^typedef struct s_texture$/;"	s
 s_vector	inc/struct.h	/^typedef struct s_vector$/;"	s
 s_vector_line	inc/struct.h	/^typedef struct s_vector_line$/;"	s
@@ -564,10 +605,12 @@ s_xpm_col	mlx-opengl/mlx_xpm.c	/^typedef struct  s_xpm_col$/;"	s	file:
 s_xvar	mlx-linux/mlx_int.h	/^typedef struct	s_xvar$/;"	s
 saved_mode	mlx-linux/mlx_ext_randr.c	/^RRMode	saved_mode = 0;$/;"	v
 screen	mlx-linux/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar
+set_fov	src/main.c	/^t_level set_fov(t_level level, double fov)$/;"	f
 set_vector2D	src/vector.c	/^void set_vector2D(t_vector *vector, int x, int y)$/;"	f
 shm	mlx-linux/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img
 shm_att_pb	mlx-linux/mlx_new_image.c	/^int	shm_att_pb(Display *d,XErrorEvent *ev)$/;"	f
 show_help	mlx-linux/configure	/^show_help(){$/;"	f
+side	inc/struct.h	/^	int			side;$/;"	m	struct:s_ray
 sigint_handler	mlx-linux/test/run_tests.sh	/^sigint_handler(){$/;"	f
 size_line	mlx-linux/mlx_int.h	/^	int				size_line;$/;"	m	struct:s_img
 sl1	mlx-linux/test/main.c	/^int	sl1;$/;"	v
@@ -577,6 +620,7 @@ sl4	mlx-linux/test/main.c	/^int	sl4;$/;"	v
 smooth_colors	src/color/line_gradient.c	/^int	smooth_colors(int color, int target_color, int pixels)$/;"	f
 start	inc/struct.h	/^	t_vector	start;$/;"	m	struct:s_vector_line
 state_incrementer	src/parse/parse.c	/^enum e_state state_incrementer(enum e_state s, int sz)$/;"	f
+step	inc/struct.h	/^	t_vector	step;$/;"	m	struct:s_ray
 strdup_exclude_endl	src/parse/parse.c	/^char	*strdup_exclude_endl(char *src)$/;"	f
 strlcpy_is_not_posix	mlx-linux/mlx_xpm.c	/^unsigned int	strlcpy_is_not_posix(char *dest, char *src, unsigned int size)$/;"	f
 switch_line	src/draw/draw_line.c	/^t_vector_line	switch_line(t_vector_line line)$/;"	f
@@ -587,6 +631,7 @@ t_imgdata	inc/struct.h	/^}				t_imgdata;$/;"	t	typeref:struct:s_imgdata
 t_level	inc/struct.h	/^}	t_level;$/;"	t	typeref:struct:s_level
 t_list	libft/inc/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
 t_player	inc/struct.h	/^}	t_player;$/;"	t	typeref:struct:s_player
+t_ray	inc/struct.h	/^}				t_ray;$/;"	t	typeref:struct:s_ray
 t_texture	inc/struct.h	/^}	t_texture;$/;"	t	typeref:struct:s_texture
 t_vector	inc/struct.h	/^}	t_vector;$/;"	t	typeref:struct:s_vector
 t_vector_line	inc/struct.h	/^}	t_vector_line;$/;"	t	typeref:struct:s_vector_line
@@ -594,9 +639,12 @@ t_win_list	mlx-linux/mlx_int.h	/^}				t_win_list;$/;"	t	typeref:struct:s_win_lis
 t_xpm_col	mlx-linux/mlx_int.h	/^}				t_xpm_col;$/;"	t	typeref:struct:s_xpm_col
 t_xpm_col	mlx-opengl/mlx_xpm.c	/^} t_xpm_col;$/;"	t	typeref:struct:s_xpm_col	file:
 t_xvar	mlx-linux/mlx_int.h	/^}				t_xvar;$/;"	t	typeref:struct:s_xvar
+terminal_mini_map	src/utils/terminal_mini_map.c	/^void	terminal_mini_map(char **map, t_level lvl)$/;"	f
 test_default_main	mlx-linux/test/run_tests.sh	/^test_default_main(){$/;"	f
 texture	inc/struct.h	/^	t_texture	*texture;$/;"	m	struct:s_data
 texture	mlx-opengl/mlx_int.h	/^  GLuint		texture;$/;"	m	struct:mlx_img_ctx_s
+tmm_extended	src/utils/terminal_mini_map.c	/^void	tmm_extended(int *i, int *j, t_level lvl)$/;"	f
+tmm_horizontal_coordinates	src/utils/terminal_mini_map.c	/^void	tmm_horizontal_coordinates(t_level lvl)$/;"	f
 type	mlx-linux/mlx_int.h	/^	int				type;$/;"	m	struct:s_img
 use_xshm	mlx-linux/mlx_int.h	/^	int			use_xshm;$/;"	m	struct:s_xvar
 vbuffer	mlx-opengl/mlx_int.h	/^  GLuint		vbuffer;$/;"	m	struct:mlx_img_ctx_s
@@ -621,7 +669,7 @@ window	mlx-linux/mlx_int.h	/^	Window				window;$/;"	m	struct:s_win_list
 winid	mlx-opengl/mlx_int.h	/^  void			*winid;$/;"	m	struct:mlx_win_list_s
 wm_delete_window	mlx-linux/mlx_int.h	/^	Atom		wm_delete_window;$/;"	m	struct:s_xvar
 wm_protocols	mlx-linux/mlx_int.h	/^	Atom		wm_protocols;$/;"	m	struct:s_xvar
-x	inc/struct.h	/^	int	x;$/;"	m	struct:s_vector
+x	inc/struct.h	/^	double	x;$/;"	m	struct:s_vector
 xpm1_x	mlx-linux/test/main.c	/^int	xpm1_x;$/;"	v
 xpm1_y	mlx-linux/test/main.c	/^int	xpm1_y;$/;"	v
-y	inc/struct.h	/^	int	y;$/;"	m	struct:s_vector
+y	inc/struct.h	/^	double	y;$/;"	m	struct:s_vector
