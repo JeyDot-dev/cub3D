@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:03:01 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/02 17:17:03 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/02 19:45:02 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ void draw_player(t_level *lvl)
 
 int	minimap_process(t_level *lvl)
 {
-	draw_minimap(lvl);
-	draw_player(lvl);
+	//draw_minimap(lvl);
+	//draw_player(lvl);
+	info("Drawing minimap...");
+	terminal_mini_map(lvl->map, *lvl);
 	return (0);
 }

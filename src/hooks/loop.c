@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/02 18:30:35 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/02 19:45:12 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void friction(t_level *lvl)
 		move_left(lvl);
 	if (lvl->player.input[0] == 1)
 		move_right(lvl);
-	printf("vel.x = %f, vel.y = %f\n", lvl->player.vel.x, lvl->player.vel.y);
 }
 
 void rotate_cam(t_level *lvl)
@@ -122,6 +121,7 @@ void rotate_cam(t_level *lvl)
 
 int player_process(t_level *lvl)
 {
+	minimap_process(lvl);
 	friction(lvl);
 	rotate_cam(lvl);
 	lvl->player.pos.x += lvl->player.vel.x;
