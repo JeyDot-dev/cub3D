@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/02 16:48:41 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/02 17:17:28 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int ac, char **av)
 	mlx_hook(level.mlx.win, 17, 1L << 3, close_cub3d, &level.mlx.mlx);
 	mlx_hook(level.mlx.win, 25, 1L << 18, hook_resize, &level);
 	mlx_loop_hook(level.mlx.mlx, minimap_process, &level);
+	mlx_loop_hook(level.mlx.mlx, player_process, &level);
 	mlx_loop(level.mlx.mlx);
 	return (0);
 }

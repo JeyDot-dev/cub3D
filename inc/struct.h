@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/02 16:59:13 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/02 17:48:54 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct s_player
 	float		rot_speed;
 	t_vector	vel;
 	float		speed;
-	int			max_speed;
+	float		max_speed;
 }	t_player;
 
 typedef struct s_level

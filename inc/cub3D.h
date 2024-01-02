@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/02 16:47:25 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/02 17:16:46 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		key_release(int keycode, t_level *lvl);
 int		close_cub3d(void);
 
 /*	HOOKS/LOOP				*/
-int 	player_move(t_level *lvl);
+int 	player_process(t_level *lvl);
 int		int_to_dir(int key);
 
 /*	DRAW/			*/

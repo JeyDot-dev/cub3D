@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:03:01 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/02 16:48:00 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/02 17:17:03 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ int	minimap_process(t_level *lvl)
 {
 	draw_minimap(lvl);
 	draw_player(lvl);
-	player_move(lvl);
 	return (0);
 }

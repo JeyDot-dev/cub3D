@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/02 17:07:18 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/02 17:51:53 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,23 @@ int	int_to_dir(int key)
 	else if (key == 1 || key == 125
 		|| key == 65364 || key == 115)
 		return (3);
+	else if (key == 101)
+		return (4);
+	else if (key == 113)
+		return (5);
 	return (0);
 }
 
 void friction(t_level *lvl)
 {
 	if (lvl->player.vel.x > 0)
-		lvl->player.vel.x -= lvl->player.speed * 2;
+		lvl->player.vel.x -= lvl->player.speed / 2;
 	else if (lvl->player.vel.x < 0)
-		lvl->player.vel.x += lvl->player.speed * 2;
-	else
-		lvl->player.vel.x = 0;
+		lvl->player.vel.x += lvl->player.speed / 2;
 	if (lvl->player.vel.y > 0)
-		lvl->player.vel.y -= lvl->player.speed * 2;
+		lvl->player.vel.y -= lvl->player.speed / 2 ;
 	else if (lvl->player.vel.y < 0)
-		lvl->player.vel.y += lvl->player.speed * 2;
-	else
-		lvl->player.vel.y = 0;
+		lvl->player.vel.y += lvl->player.speed / 2;
 	if (lvl->player.vel.x < lvl->player.max_speed && lvl->player.vel.x > -lvl->player.max_speed)
 	{
 		if (lvl->player.input[0] == 1)
@@ -61,13 +61,22 @@ void friction(t_level *lvl)
 
 void rotate_cam(t_level *lvl)
 {
+	int	rot_speed;
+
+	rot_speed = lvl->player.rot_speed;
 	if (lvl->player.input[4])
-		printf("rotate cam left\n");
+	{
+		lvl->player.dir = rotate_vector(lvl->player.dir, rot_speed);
+		lvl->ray.cam_plane = rotate_vector(lvl->ray.cam_plane, rot_speed);
+	}
 	if (lvl->player.input[5])
-		printf("rotate cam right\n");
+	{
+		lvl->player.dir = rotate_vector(lvl->player.dir, -rot_speed);
+		lvl->ray.cam_plane = rotate_vector(lvl->ray.cam_plane, -rot_speed);
+	}
 }
 
-int player_move(t_level *lvl)
+int player_process(t_level *lvl)
 {
 	friction(lvl);
 	rotate_cam(lvl);
