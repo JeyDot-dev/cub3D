@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/02 17:48:54 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/03 20:15:32 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@ typedef struct s_vector_line
 	int			color2;
 }	t_vector_line;
 
-typedef struct s_texture
-{
-	char	*name;
-	char	*path;
-}	t_texture;
-
 typedef struct	s_imgdata{
 	void	*mlx;
 	void	*win;
@@ -62,6 +56,18 @@ typedef struct	s_imgdata{
 	int		len;
 	int		endian;
 }				t_imgdata;
+
+typedef struct s_texture
+{
+	char		*name;
+	char		*path;
+	t_imgdata	img;
+	int			start_x;
+	int			pos_x;
+	int			pos_y;
+	int			width;
+	int			height;
+}	t_texture;
 
 typedef struct s_data
 {

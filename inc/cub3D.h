@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/02 18:13:01 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/03 21:48:47 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 /*	CONSOLE					*/
 int		error(char *str);
 int		info(char *str);
-
+/*	SETUP_TEXTURE	*/
+int			pick_cardinal_texture(t_ray r);
+t_texture	set_up_texture(t_texture *texture, t_ray r, t_vector pos);
 /*	RAY_CASTER				*/
 void	ray_caster(t_level lvl, t_imgdata *img);
 
@@ -81,7 +83,7 @@ void	draw_line(t_imgdata *img, t_vector_line line);
 void	draw_pixel(t_imgdata *img, int x, int y, int color);
 void	draw_map(t_level level, t_imgdata img);
 void	draw_square(t_vector origin, t_imgdata img, char c);
-void	draw_ray(t_imgdata *img, t_ray r, char **map);
+void	draw_ray(t_imgdata *img, t_ray r, t_level lvl);
 void	background(t_imgdata *img, int color);
 
 /*	COLOR/			*/
