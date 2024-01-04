@@ -18,19 +18,20 @@ LIB_D		:=	libft/ mlx-opengl/
 INC			:=	inc/ libft/inc mlx-opengl/
 #---------------Add .c / .h here \/--------------
 SRC			:=	main.c			console.c		init.c		vector.c 	free.c\
-				ray_caster.c	digital_differential_analyzer.c
-DRAW		:=	draw_line.c		draw_pixel.c	draw_square.c	draw_map.c	draw_ray.c\
+				ray_caster.c	digital_differential_analyzer.c setup_texture.c
+DRAW		:=	draw_line.c		draw_pixel.c	draw_square.c	draw_ray.c\
 				background.c
 COLOR		:=	rgbo_color.c	color_utils.c	extract_single_color.c	line_gradient.c
 PARSE		:=	parse.c 		parse_validity.c 			parse_utils.c
 MOVEMENT	:=	player_move_and_rotate.c
-HOOKS		:=	key_hooks.c
+HOOKS		:=	key_hooks.c loop.c
+MINIMAP		:=	minimap.c
 UTILS		:=	rotate_vector.c	terminal_mini_map.c	erase_img.c
 LIB			:=	ft	mlx
 FRAMEWORK	:=	OpenGL	AppKit
 #----------------------IGNORE--------------------
 #------------------------------------------------
-SRC			+=	$(PARSE:%=parse/%) $(COLOR:%=color/%) $(DRAW:%=draw/%) $(HOOKS:%=hooks/%) $(MOVEMENT:%=movement/%) $(UTILS:%=utils/%)
+SRC			+=	$(PARSE:%=parse/%) $(COLOR:%=color/%) $(DRAW:%=draw/%) $(HOOKS:%=hooks/%) $(MOVEMENT:%=movement/%) $(UTILS:%=utils/%) $(MINIMAP:%=minimap/%)
 SRC			:=	$(SRC:%=$(SRC_D)%)
 OBJ 		:=	$(SRC:$(SRC_D)%.c=$(BUILD_D)%.o)
 DEPS        :=	$(OBJ:.o=.d)

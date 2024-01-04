@@ -6,7 +6,7 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:42:55 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 16:43:10 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/03 21:47:25 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,37 @@ void	draw_vertical_line(t_imgdata *img, int x, int y[2], int color)
 		i++;
 	}
 }
-
-void	draw_ray(t_imgdata *img, t_ray r, char **map)
+int		get_pixel_color(t_imgdata img, int x, int y)
 {
-	int	y[2];
 	int	color;
+
+	color = *(int *)(img.addr + (y * img.len + x * (img.bpp / 8)));
+	return (color);
+}
+void	draw_texture_line(int y[2], int x, t_texture t, t_imgdata *img)
+{
+	double	tex_step;
+	double	tex_posy;
+	int		i;
+
+	tex_step = 1.0 * t.height / (y[1] - y[0]);
+	tex_posy = (y[0] - WIN_HEIGHT / 2 + (y[1] - y[0]) / 2) * tex_step;
+	i = y[0];
+	while (i < y[1])
+	{
+		t.pos_y = (int)tex_posy & (t.height - 1);
+		tex_posy += tex_step;
+		draw_pixel(img, x, i, get_pixel_color(t.img, t.start_x, t.pos_y));
+		tex_posy += tex_step;
+		i++;
+	}
+}
+
+void	draw_ray(t_imgdata *img, t_ray r, t_level lvl)
+{
+	int			y[2];
+	int			color;
+	t_texture	t;
 
 	y[0] = (int) -(WIN_HEIGHT / r.perp_wall_dist) / 2 + WIN_HEIGHT / 2;
 	if (y[0] < 0)
@@ -35,9 +61,11 @@ void	draw_ray(t_imgdata *img, t_ray r, char **map)
 	y[1] = (int) (WIN_HEIGHT / r.perp_wall_dist) / 2 + WIN_HEIGHT / 2;
 	if (y[1] >= WIN_HEIGHT)
 		y[1] = WIN_HEIGHT - 1;
-	if (map[r.map[1]][r.map[0]] == '1')
+	t = set_up_texture(lvl.data.texture, r, lvl.player.pos); 
+	if (t.start_x >= 0 && lvl.map[r.map[1]][r.map[0]] == '1')
 	{
-		color = rgbo_color(120, 160, 70, 0);
+		draw_texture_line(y, r.ray_count, t, img);
+		return ;
 	}
 	else
 		color = 0x0000FF;

@@ -6,10 +6,9 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:53:43 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 19:21:20 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/03 20:37:24 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "cub3D.h"
 
 t_ray map_ray_and_dir(t_player p, t_ray r)
@@ -90,7 +89,7 @@ void ray_caster(t_level level, t_imgdata *img)
 		ray = calculate_initial_dist(level.player, ray);
 		ray = dda(ray, level.map);
 		ray.perp_wall_dist = calculate_perp_wall_distance(ray);
-		draw_ray(img, ray, level.map);
+		draw_ray(img, ray, level);
 		ray.ray_count++;
 	}
 }

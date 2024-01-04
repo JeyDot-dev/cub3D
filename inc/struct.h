@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/29 09:30:23 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/03 20:15:32 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@ typedef struct s_vector_line
 	int			color2;
 }	t_vector_line;
 
-typedef struct s_texture
-{
-	char	*name;
-	char	*path;
-}	t_texture;
-
 typedef struct	s_imgdata{
 	void	*mlx;
 	void	*win;
@@ -63,6 +57,18 @@ typedef struct	s_imgdata{
 	int		endian;
 }				t_imgdata;
 
+typedef struct s_texture
+{
+	char		*name;
+	char		*path;
+	t_imgdata	img;
+	int			start_x;
+	int			pos_x;
+	int			pos_y;
+	int			width;
+	int			height;
+}	t_texture;
+
 typedef struct s_data
 {
 	t_vector	file_size;
@@ -70,6 +76,7 @@ typedef struct s_data
 	t_texture	*texture;
 	t_texture	*colors;
 }	t_data;
+
 typedef struct s_ray
 {
 	t_vector	ray_dir;
@@ -83,11 +90,17 @@ typedef struct s_ray
 	int			hit;
 	int			ray_count;
 }				t_ray;
+
 typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
 	int			fov;
+	int			input[6];
+	float		rot_speed;
+	t_vector	vel;
+	float		speed;
+	float		max_speed;
 }	t_player;
 
 typedef struct s_level
