@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/04 20:05:52 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/04 20:21:28 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,7 @@ int	parse_file(int file, t_level *lvl)
 		if (tmp[0] != '\n')
 		{
 			if (state == TEXTURE)
-			{
 				lvl->data.texture = add_texture(lvl->data.texture, tmp);
-				lvl->data.max_texture++;
-			}
 			else if (state == COLORS)
 			{
 				tmp = strdup_exclude_endl(tmp);
@@ -136,6 +133,8 @@ int	parse_file(int file, t_level *lvl)
 				tmp3 = ft_split(tmp, ' ');
 				tmp2 = ft_split(tmp3[1], ',');
 				lvl->data.floor = rgbo_color(ft_atoi(tmp2[0]), ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
+				free_tab(tmp2);
+				free_tab(tmp3);
 			}
 			else if (state == MAP)
 			{

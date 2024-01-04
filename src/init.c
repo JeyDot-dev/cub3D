@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/04 20:02:40 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/04 20:21:32 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,4 @@ void	init(t_level *level)
 	level->name = NULL;
 	level->data.texture = malloc(sizeof(t_texture));
 	level->data.texture[0].name = NULL;
-	level->data.max_texture = 0;
 }
