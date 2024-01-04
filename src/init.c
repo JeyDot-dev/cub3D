@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/04 20:23:43 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/04 20:28:29 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_mlx(t_imgdata *img)
 	info("Initializing mlx");
 	img->mlx = mlx_init();
 	img->win = mlx_new_window(img->mlx, WIN_WIDTH, WIN_HEIGHT, NAME);
-	img->img = mlx_new_image(img->mlx, WIN_WIDTH, WIN_HEIGHT);
+	img->img = mlx_new_image(img->mlx, WIN_WIDTH, GAME_HEIGHT);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->len, &img->endian);
 }
 

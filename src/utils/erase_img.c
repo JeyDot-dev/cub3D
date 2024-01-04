@@ -6,7 +6,7 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:41:01 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 16:41:13 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/04 18:16:45 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void erase_img(t_imgdata *img)
 	int	j;
 
 	i = 0;
-	while (i < WIN_HEIGHT)
+	while (i < GAME_HEIGHT)
 	{
 		j = 0;
 		while (j < WIN_WIDTH)
