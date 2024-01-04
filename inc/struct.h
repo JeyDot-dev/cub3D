@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/03 20:15:32 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/04 19:58:28 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ typedef struct s_data
 	t_vector	file_size;
 	t_vector	map_size;
 	t_texture	*texture;
-	t_texture	*colors;
+	int			max_texture;
+	int			ceiling;
+	int			floor;
 }	t_data;
 
 typedef struct s_ray

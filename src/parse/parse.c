@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/04 16:44:45 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/04 19:59:43 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,23 @@ int	parse_file(int file, t_level *lvl)
 		if (tmp[0] != '\n')
 		{
 			if (state == TEXTURE)
+			{
 				lvl->data.texture = add_texture(lvl->data.texture, tmp);
+				lvl->data.max_texture++;
+			}
 			else if (state == COLORS)
-				lvl->data.colors = add_texture(lvl->data.colors, tmp);
+			{
+				tmp = strdup_exclude_endl(tmp);
+				char **tmp3 = ft_split(tmp, ' ');
+				char **tmp2 = ft_split(tmp3[1], ',');
+				lvl->data.ceiling = rgbo_color(ft_atoi(tmp2[0]), ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
+				free(tmp);
+				tmp = get_next_line(file);
+				tmp = strdup_exclude_endl(tmp);
+				tmp3 = ft_split(tmp, ' ');
+				tmp2 = ft_split(tmp3[1], ',');
+				lvl->data.floor = rgbo_color(ft_atoi(tmp2[0]), ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
+			}
 			else if (state == MAP)
 			{
 				lvl->map = add_tab(lvl->map, tmp);
