@@ -6,7 +6,7 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:49:21 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 19:16:26 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/04 18:15:09 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "cub3D.h"
@@ -17,11 +17,11 @@ void ground(t_imgdata *img, int col)
 	int			j;
 	char		*tmp;
 
-	i = (WIN_WIDTH * WIN_HEIGHT) / 2;
+	i = (WIN_WIDTH * GAME_HEIGHT) / 2;
 	j = 0;
-	while (i < WIN_WIDTH * WIN_HEIGHT)
+	while (i < WIN_WIDTH * GAME_HEIGHT)
 	{
-		if (i % (WIN_WIDTH * WIN_HEIGHT / WIN_WIDTH * 30) == 0)
+		if (i % (WIN_WIDTH * GAME_HEIGHT / WIN_WIDTH * 30) == 0)
 			j += 3;
 		tmp = img->addr + (img->bpp / 8) * i;
 		if (col == 1)
@@ -43,9 +43,9 @@ void background(t_imgdata *img, int col)
 
 	i = 0;
 	j = 0;
-	while (i <= (WIN_WIDTH * WIN_HEIGHT) / 2)
+	while (i <= (WIN_WIDTH * GAME_HEIGHT) / 2)
 	{
-		if (i % (WIN_WIDTH * WIN_HEIGHT / WIN_WIDTH * 60) == 0)
+		if (i % (WIN_WIDTH * GAME_HEIGHT / WIN_WIDTH * 60) == 0)
 			j += 2;
 		tmp = img->addr + (img->bpp / 8) * i;
 		if (col == 1)
@@ -66,7 +66,7 @@ void background(t_imgdata *img, int col)
 	int	j;
 
 	i = 0;
-	while (i < WIN_HEIGHT)
+	while (i < GAME_HEIGHT)
 	{
 		j = 0;
 		while (j < WIN_WIDTH)

@@ -66,6 +66,7 @@ FONT_WIDTH	mlx-opengl/mlx_int.h	14;"	d
 FRAMEWORK	Makefile	/^FRAMEWORK	:=	$/;"	m
 FRAMEWORK	Makefile	/^FRAMEWORK	:=	OpenGL	AppKit$/;"	m
 FRAMEWORK	libft/Makefile	/^FRAMEWORK	:=$/;"	m
+GAME_HEIGHT	inc/cub3D.h	27;"	d
 GET_NEXT_LINE_H	libft/inc/get_next_line.h	14;"	d
 GRN	Makefile	/^GRN	= \\033[32m$/;"	m
 GRN	inc/color.h	17;"	d
