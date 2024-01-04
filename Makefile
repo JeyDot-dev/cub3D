@@ -57,7 +57,7 @@ AR          :=	ar
 ARFLAGS     :=	-r -c -s
 LDFLAGS     :=	$(addprefix -L,$(dir $(LIB_D)))
 LDLIBS      :=	$(addprefix -l,$(LIB))
-LDFMWK		:=	$(addprefix -framework ,$(FRAMEWORKS))
+LDFMWK		:=	$(addprefix -framework ,$(FRAMEWORK))
 MAKEFLAGS   += --no-print-directory
 #-----------------------------all------------------------------------
 all		:	$(NAME)

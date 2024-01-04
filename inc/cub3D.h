@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/03 21:48:47 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/04 18:27:14 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <struct.h>
 # include <color.h>
 
-# define NAME "Apex: double legends 2 - live edition"
-# define NAME_SHORT "ADL2LE"
+# define NAME "Le RealEngine 2: The first"
+# define NAME_SHORT "RE2:TF"
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 

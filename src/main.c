@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/03 21:41:28 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/04 18:25:47 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 //  	 ---pour le moment je la garde ici car elle initialise une position de base pour le joueur,
 // 		|	une fois le parsing termine a 100% cette fonction sera exclusivement utilisee pour regler le FOV
 // 		v
+
 t_level set_fov(t_level level, double fov)
 {
 	level.player.pos.x = 9;
@@ -28,8 +29,8 @@ t_level set_fov(t_level level, double fov)
 	level.ray.cam_plane.x = level.player.dir.y * tan(fov / 2 * M_PI / 180);
 	level.ray.cam_plane.y = level.player.dir.x * tan(fov / 2 * M_PI / 180);
 	return (level);
-
 }
+
 void load_default_texture(t_texture *texture, t_imgdata mlx)
 {
 	texture[0].path = ft_strdup("textures/texture1.xpm");
@@ -53,11 +54,11 @@ void load_default_texture(t_texture *texture, t_imgdata mlx)
 		exit(error("Texture not found"));
 	texture[3].img.addr = mlx_get_data_addr(texture[3].img.img, &texture[3].img.bpp, &texture[3].img.len, &texture[3].img.endian);
 }
+
 int hook_resize(void)
 {
 	return (0);
 }
-
 
 int	main(int ac, char **av)
 {

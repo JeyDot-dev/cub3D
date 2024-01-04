@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2023/12/28 02:27:23 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/04 16:44:45 by jordan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ t_texture *add_texture(t_texture *src, char *new_texture)
 	int			i;
 
 	tmp = ft_split(new_texture, ' ');
-	new.name = ft_strdup(tmp[0]);
-	new.path = ft_strdup(tmp[1]);
+	new.name = strdup_exclude_endl(tmp[0]);
+	new.path = strdup_exclude_endl(tmp[1]);
 	free_tab(tmp);
 	i = 0;
 	while (src[i].name)
