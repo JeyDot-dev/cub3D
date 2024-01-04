@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/03 21:48:47 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/04 18:29:25 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define NAME_SHORT "ADL2LE"
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
+# define GAME_HEIGHT 600
 
 /*	CONSOLE					*/
 int		error(char *str);
