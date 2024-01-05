@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/05 12:00:15 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/05 14:29:18 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	draw_pixel(t_imgdata *img, int x, int y, int color);
 void	draw_map(t_level level, t_imgdata img);
 void	draw_square(t_vector origin, t_imgdata img, char c);
 void	draw_ray(t_imgdata *img, t_ray r, t_level lvl);
-void	background(t_imgdata *img, int color);
+void	background(t_imgdata *img, int ground, int sky);
 
 /*	COLOR/			*/
 int		rgbo_color(int r, int g, int b, int o);

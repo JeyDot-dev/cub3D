@@ -184,7 +184,7 @@ addr	inc/struct.h	/^	char	*addr;$/;"	m	struct:s_imgdata
 appid	mlx-opengl/mlx_int.h	/^  void			*appid;$/;"	m	struct:mlx_ptr_s
 at_exit	mlx-linux/test/run_tests.sh	/^at_exit() {$/;"	f
 b_value	src/color/extract_single_color.c	/^int	b_value(int color)$/;"	f
-background	src/draw/background.c	/^void background(t_imgdata *img, int col)$/;"	f
+background	src/draw/background.c	/^void background(t_imgdata *img, int ground, int sky)$/;"	f
 bpp	inc/struct.h	/^	int		bpp;$/;"	m	struct:s_imgdata
 bpp	mlx-linux/mlx_int.h	/^	int				bpp;$/;"	m	struct:s_img
 bpp	mlx-opengl/mlx_png.c	/^  int		bpp;$/;"	m	struct:png_info_s	file:
@@ -232,6 +232,7 @@ dir	inc/struct.h	/^	t_vector	dir;$/;"	m	struct:s_player
 display	mlx-linux/mlx_int.h	/^	Display		*display;$/;"	m	struct:s_xvar
 display_log	mlx-opengl/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)(), void (*getlog_func)())$/;"	f
 do_flush	mlx-linux/mlx_int.h	/^	int			do_flush;$/;"	m	struct:s_xvar
+draw_ground	src/draw/background.c	/^void draw_ground(t_imgdata *img, int col)$/;"	f
 draw_line	src/draw/draw_line.c	/^void	draw_line(t_imgdata *img, t_vector_line line)$/;"	f
 draw_map	src/draw/draw_map.c	/^void	draw_map(t_level level, t_imgdata img)$/;"	f
 draw_minimap	src/minimap/minimap.c	/^void	draw_minimap(t_level *level)$/;"	f
@@ -351,7 +352,6 @@ get_pixel_color	src/draw/draw_ray.c	/^int		get_pixel_color(t_imgdata img, int x,
 get_xlib_include_path	mlx-linux/configure	/^get_xlib_include_path(){$/;"	f
 glsl_info_s	mlx-opengl/mlx_int.h	/^typedef struct	glsl_info_s$/;"	s
 glsl_info_t	mlx-opengl/mlx_int.h	/^} glsl_info_t;$/;"	t	typeref:struct:glsl_info_s
-ground	src/draw/background.c	/^void ground(t_imgdata *img, int col)$/;"	f
 height	inc/struct.h	/^	int			height;$/;"	m	struct:s_texture
 height	mlx-linux/mlx_int.h	/^	int				height;$/;"	m	struct:s_img
 height	mlx-opengl/font.c	/^  unsigned int 	 height;$/;"	m	struct:__anon1	file:

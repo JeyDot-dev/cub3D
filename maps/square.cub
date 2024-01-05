@@ -1,14 +1,14 @@
-NO ./textures/texture1.xpm
-SO ./textures/texture2.xpm
-WE ./textures/texture3.xpm
-EA ./textures/texture4.xpm
+NO ./textures/diamond_ore.xpm
+SO ./textures/stone.xpm
+WE ./textures/texture6.xpm
+EA ./textures/texture5.xpm
 NO ./textures/texture4.xpm
 SO ./textures/texture4.xpm
 WE ./textures/texture4.xpm
 EA ./textures/texture4.xpm
 
-F 220,100,0
-C 225,30,0
+F 120,100,185
+C 52,77,66
 
 1111111111111
 1000000000001
