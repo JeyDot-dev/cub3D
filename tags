@@ -196,6 +196,7 @@ buffer	mlx-opengl/mlx_int.h	/^  char			*buffer;$/;"	m	struct:mlx_img_list_s
 bytes_per_pixel	mlx-opengl/font.c	/^  unsigned int 	 bytes_per_pixel; \/* 2:RGB16, 3:RGB, 4:RGBA *\/ $/;"	m	struct:__anon1	file:
 calculate_delta_dist	src/ray_caster.c	/^t_vector calculate_delta_dist(t_ray r)$/;"	f
 calculate_initial_dist	src/ray_caster.c	/^t_ray calculate_initial_dist(t_player p, t_ray r)$/;"	f
+calculate_light	src/draw/draw_ray.c	/^int calculate_light(int color, double dist)$/;"	f
 calculate_perp_wall_distance	src/ray_caster.c	/^double calculate_perp_wall_distance(t_ray r)$/;"	f
 cam_plane	inc/struct.h	/^	t_vector	cam_plane;$/;"	m	struct:s_ray
 ceiling	inc/struct.h	/^	int			ceiling;$/;"	m	struct:s_data
@@ -240,7 +241,7 @@ draw_pixel	src/draw/draw_pixel.c	/^void	draw_pixel(t_imgdata *img, int x, int y,
 draw_player	src/minimap/minimap.c	/^void draw_player(t_level *lvl)$/;"	f
 draw_ray	src/draw/draw_ray.c	/^void	draw_ray(t_imgdata *img, t_ray r, t_level lvl)$/;"	f
 draw_square	src/draw/draw_square.c	/^void	draw_square(t_vector origin, t_imgdata img, char c)$/;"	f
-draw_texture_line	src/draw/draw_ray.c	/^void	draw_texture_line(int y[3], int x, t_texture t, t_level lvl)$/;"	f
+draw_texture_line	src/draw/draw_ray.c	/^void	draw_texture_line(int y[3], t_ray r, t_texture t, t_level lvl)$/;"	f
 draw_vertical_line	src/draw/draw_ray.c	/^void	draw_vertical_line(t_imgdata *img, int x, int y[2], int color)$/;"	f
 dx	inc/struct.h	/^	int			dx;$/;"	m	struct:s_vector_line
 dy	inc/struct.h	/^	int			dy;$/;"	m	struct:s_vector_line

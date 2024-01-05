@@ -6,7 +6,7 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:42:55 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/05 16:09:38 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/05 16:43:12 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,24 @@ int		get_pixel_color(t_imgdata img, int x, int y)
 	color = *(int *)(img.addr + (y * img.len + x * (img.bpp / 8)));
 	return (color);
 }
-void	draw_texture_line(int y[3], int x, t_texture t, t_level lvl)
+int calculate_light(int color, double dist)
+{
+	int	rgb[3];
+	if (dist == 1)
+		return (color);
+	if (dist < 0.7)
+		dist = 0.7;
+	rgb[0] = r_value(color) / dist;
+	rgb[1] = g_value(color) / dist;
+	rgb[2] = b_value(color) / dist;
+	return (rgbo_color(rgb[0], rgb[1], rgb[2], 0));
+}
+void	draw_texture_line(int y[3], t_ray r, t_texture t, t_level lvl)
 {
 	double	tex_step;
 	double	tex_posy;
 	int		i;
+	int		color;
 
 	tex_step = 1.0 * t.height / y[2];
 	tex_posy = (y[0] - lvl.player.vert_dir - GAME_HEIGHT / 2 + y[2] / 2) * tex_step; //TODO: 0 = camera y
@@ -42,8 +55,13 @@ void	draw_texture_line(int y[3], int x, t_texture t, t_level lvl)
 	while (i < y[1])
 	{
 		t.pos_y = (int)tex_posy & (t.height - 1);
+		color = get_pixel_color(t.img, t.start_x, t.pos_y);
+		color = calculate_light(color, r.perp_wall_dist);
+		if (r.side == 1)
+			color = rgbo_color(r_value(color) * 0.6, g_value(color) * 0.6, b_value(color) * 0.6, 0);
+//		color = color - r.ray_dist.x + r.ray_dist.y;
 //		tex_posy += tex_step;
-		draw_pixel(&lvl.mlx, x, i, get_pixel_color(t.img, t.start_x, t.pos_y));
+		draw_pixel(&lvl.mlx, r.ray_count, i, color);
 		tex_posy += tex_step;
 		i++;
 	}
@@ -66,12 +84,12 @@ void	draw_ray(t_imgdata *img, t_ray r, t_level lvl)
 	t = set_up_texture(lvl, r, lvl.player.pos); 
 	if (t.start_x >= 0 && lvl.map[r.map[1]][r.map[0]] == '1')
 	{
-		draw_texture_line(y, r.ray_count, t, lvl);
+		draw_texture_line(y, r, t, lvl);
 		return ;
 	}
 	else
 		color = 0x0000FF;
 	if (r.side == 1)
-		color = color / 2;
+		color = color * 0.6;
 	draw_vertical_line(img, r.ray_count, y, color);
 }
