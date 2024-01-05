@@ -6,59 +6,54 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:49:21 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/04 18:15:09 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/05 14:41:39 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "cub3D.h"
 
-void ground(t_imgdata *img, int col)
+void draw_ground(t_imgdata *img, int col)
 {
 	int			i;
 	int			j;
-	char		*tmp;
+	char	*tmp;
+	int		rgb[3];
 
-	i = (WIN_WIDTH * GAME_HEIGHT) / 2;
-	j = 0;
+	i = (WIN_WIDTH * GAME_HEIGHT) / 2 + WIN_WIDTH * 0; //TODO : change 0 to ground height (pitch)
+	j = -30;
+	rgb[0] = r_value(col);
+	rgb[1] = g_value(col);
+	rgb[2] = b_value(col);
 	while (i < WIN_WIDTH * GAME_HEIGHT)
 	{
-		if (i % (WIN_WIDTH * GAME_HEIGHT / WIN_WIDTH * 30) == 0)
-			j += 3;
+		if (i % (WIN_WIDTH * GAME_HEIGHT / WIN_WIDTH * 10) == 0)
+			j += 1;
 		tmp = img->addr + (img->bpp / 8) * i;
-		if (col == 1)
-			*(unsigned int *) tmp = rgbo_color(20 + j, 0 + j, 40 + j, 0);
-		else if (col == 2)
-			*(unsigned int *) tmp = rgbo_color(14 + j, 80 - j, 14 - j, 0);
-		else if (col == 3)
-			*(unsigned int *) tmp = rgbo_color(30 - j, 25 - j, 5 + j, 0);
-		else
-			*(unsigned int *) tmp = rgbo_color(40, 60, 60, 0);
+		*(unsigned int *) tmp = rgbo_color(rgb[0] + j, rgb[1] + j, rgb[2] + j, 0);
 		i++;
 	}
 }
-void background(t_imgdata *img, int col)
+
+void background(t_imgdata *img, int ground, int sky)
 {
 	int			i;
 	int			j;
 	char		*tmp;
+	int			rgb[3];
 
 	i = 0;
 	j = 0;
-	while (i <= (WIN_WIDTH * GAME_HEIGHT) / 2)
+	rgb[0] = r_value(sky);
+	rgb[1] = g_value(sky);
+	rgb[2] = b_value(sky);
+	while (i <= WIN_WIDTH * GAME_HEIGHT / 2 + WIN_WIDTH * 0) //TODO : change 0 to ground height (pitch)
 	{
-		if (i % (WIN_WIDTH * GAME_HEIGHT / WIN_WIDTH * 60) == 0)
-			j += 2;
+		if (i % (WIN_WIDTH * GAME_HEIGHT / WIN_WIDTH * 10) == 0)
+			j += 1;
 		tmp = img->addr + (img->bpp / 8) * i;
-		if (col == 1)
-			*(unsigned int *) tmp = rgbo_color(0 + j, 90 + j, 130 + j, 0);
-		else if (col == 2)
-			*(unsigned int *) tmp = rgbo_color(120 + j, 40 - j, 140 - j, 0);
-		else if (col == 3)
-			*(unsigned int *) tmp = rgbo_color(200 - j, 100 - j, 20 + j, 0);
-		else
-			*(unsigned int *) tmp = 0;
+			*(unsigned int *) tmp = rgbo_color(rgb[0] - j, rgb[1] - j, rgb[2] - j, 0);
 		i++;
 	}
-	ground(img, col);
+	draw_ground(img, ground);
 }
 /*void background(t_imgdata *img)
 {
