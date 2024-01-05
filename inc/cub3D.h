@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/04 20:28:19 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/05 12:00:15 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 int		error(char *str);
 int		info(char *str);
 /*	SETUP_TEXTURE	*/
-int			pick_cardinal_texture(t_ray r);
-t_texture	set_up_texture(t_texture *texture, t_ray r, t_vector pos);
+int			pick_cardinal_texture(t_ray r, int max_texture);
+t_texture	set_up_texture(t_level lvl, t_ray r, t_vector pos);
 /*	RAY_CASTER				*/
 void	ray_caster(t_level lvl, t_imgdata *img);
 

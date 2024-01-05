@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   digital_differential_analysis.c                    :+:      :+:    :+:   */
+/*   digital_differential_analyzer.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:56:05 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 16:59:07 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/05 11:58:20 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_ray dda(t_ray r, char **map)
 			r.map[1] += (int) r.step.y;
 			r.side = 1;
 		}
-		if (map[r.map[1]][r.map[0]] == '1')
-			r.hit = 1;
+		if (map[r.map[1]][r.map[0]] > '0' && map[r.map[1]][r.map[0]] <= '9')
+			r.hit = map[r.map[1]][r.map[0]] - '0';
 	}
 	return (r);
 }
