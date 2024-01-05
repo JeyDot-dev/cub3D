@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/05 14:00:16 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/05 15:56:51 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
-	int			fov;
+	int			vert_dir;
 	int			input[6];
 	float		rot_speed;
 	t_vector	vel;

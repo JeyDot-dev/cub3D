@@ -184,7 +184,7 @@ addr	inc/struct.h	/^	char	*addr;$/;"	m	struct:s_imgdata
 appid	mlx-opengl/mlx_int.h	/^  void			*appid;$/;"	m	struct:mlx_ptr_s
 at_exit	mlx-linux/test/run_tests.sh	/^at_exit() {$/;"	f
 b_value	src/color/extract_single_color.c	/^int	b_value(int color)$/;"	f
-background	src/draw/background.c	/^void background(t_imgdata *img, int ground, int sky)$/;"	f
+background	src/draw/background.c	/^void background(t_imgdata *img, int ground, int sky, int pitch)$/;"	f
 bpp	inc/struct.h	/^	int		bpp;$/;"	m	struct:s_imgdata
 bpp	mlx-linux/mlx_int.h	/^	int				bpp;$/;"	m	struct:s_img
 bpp	mlx-opengl/mlx_png.c	/^  int		bpp;$/;"	m	struct:png_info_s	file:
@@ -232,7 +232,7 @@ dir	inc/struct.h	/^	t_vector	dir;$/;"	m	struct:s_player
 display	mlx-linux/mlx_int.h	/^	Display		*display;$/;"	m	struct:s_xvar
 display_log	mlx-opengl/mlx_shaders.c	/^void display_log(GLuint object, void (*param_func)(), void (*getlog_func)())$/;"	f
 do_flush	mlx-linux/mlx_int.h	/^	int			do_flush;$/;"	m	struct:s_xvar
-draw_ground	src/draw/background.c	/^void draw_ground(t_imgdata *img, int col)$/;"	f
+draw_ground	src/draw/background.c	/^void draw_ground(t_imgdata *img, int col, int pitch)$/;"	f
 draw_line	src/draw/draw_line.c	/^void	draw_line(t_imgdata *img, t_vector_line line)$/;"	f
 draw_map	src/draw/draw_map.c	/^void	draw_map(t_level level, t_imgdata img)$/;"	f
 draw_minimap	src/minimap/minimap.c	/^void	draw_minimap(t_level *level)$/;"	f
@@ -240,7 +240,7 @@ draw_pixel	src/draw/draw_pixel.c	/^void	draw_pixel(t_imgdata *img, int x, int y,
 draw_player	src/minimap/minimap.c	/^void draw_player(t_level *lvl)$/;"	f
 draw_ray	src/draw/draw_ray.c	/^void	draw_ray(t_imgdata *img, t_ray r, t_level lvl)$/;"	f
 draw_square	src/draw/draw_square.c	/^void	draw_square(t_vector origin, t_imgdata img, char c)$/;"	f
-draw_texture_line	src/draw/draw_ray.c	/^void	draw_texture_line(int y[3], int x, t_texture t, t_imgdata *img)$/;"	f
+draw_texture_line	src/draw/draw_ray.c	/^void	draw_texture_line(int y[3], int x, t_texture t, t_level lvl)$/;"	f
 draw_vertical_line	src/draw/draw_ray.c	/^void	draw_vertical_line(t_imgdata *img, int x, int y[2], int color)$/;"	f
 dx	inc/struct.h	/^	int			dx;$/;"	m	struct:s_vector_line
 dy	inc/struct.h	/^	int			dy;$/;"	m	struct:s_vector_line
@@ -270,7 +270,6 @@ font_fshader	mlx-opengl/mlx_int.h	/^  GLuint	font_fshader;$/;"	m	struct:glsl_inf
 font_program	mlx-opengl/mlx_int.h	/^  GLuint	font_program;$/;"	m	struct:glsl_info_s
 font_vshader	mlx-opengl/mlx_int.h	/^  GLuint	font_vshader;$/;"	m	struct:glsl_info_s
 format	mlx-linux/mlx_int.h	/^	int				format;$/;"	m	struct:s_img
-fov	inc/struct.h	/^	int			fov;$/;"	m	struct:s_player
 free_tab	src/free.c	/^void free_tab(char **tab)$/;"	f
 friction	src/hooks/loop.c	/^void friction(t_level *lvl)$/;"	f
 ft_abs	libft/src/ft_abs.c	/^int	ft_abs(int n)$/;"	f
@@ -630,7 +629,7 @@ s_xpm_col	mlx-opengl/mlx_xpm.c	/^typedef struct  s_xpm_col$/;"	s	file:
 s_xvar	mlx-linux/mlx_int.h	/^typedef struct	s_xvar$/;"	s
 saved_mode	mlx-linux/mlx_ext_randr.c	/^RRMode	saved_mode = 0;$/;"	v
 screen	mlx-linux/mlx_int.h	/^	int			screen;$/;"	m	struct:s_xvar
-set_fov	src/main.c	/^t_level set_fov(t_level level, double fov)$/;"	f
+set_cam_plane	src/main.c	/^t_level set_cam_plane(t_level level)$/;"	f
 set_up_texture	src/setup_texture.c	/^t_texture	set_up_texture(t_level lvl, t_ray r, t_vector pos)$/;"	f
 set_vector2D	src/vector.c	/^void set_vector2D(t_vector *vector, int x, int y)$/;"	f
 shm	mlx-linux/mlx_int.h	/^	XShmSegmentInfo	shm;$/;"	m	struct:s_img
@@ -679,6 +678,7 @@ vbuffer	mlx-opengl/mlx_int.h	/^  GLuint		vbuffer;$/;"	m	struct:mlx_img_ctx_s
 vector2D	src/vector.c	/^t_vector vector2D(int x, int y)$/;"	f
 vel	inc/struct.h	/^	t_vector	vel;$/;"	m	struct:s_player
 vel_normalizer	src/hooks/loop.c	/^void vel_normalizer(t_level *lvl)$/;"	f
+vert_dir	inc/struct.h	/^	int			vert_dir;$/;"	m	struct:s_player
 vertexes	mlx-opengl/mlx_int.h	/^  GLfloat		vertexes[8];$/;"	m	struct:mlx_img_list_s
 vertical_line	src/draw/draw_line.c	/^void	vertical_line(t_imgdata *img, t_vector_line line)$/;"	f
 visual	mlx-linux/mlx_int.h	/^	Visual		*visual;$/;"	m	struct:s_xvar

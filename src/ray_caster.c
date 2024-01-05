@@ -6,7 +6,7 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:53:43 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/05 15:27:42 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/05 16:06:09 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "cub3D.h"
@@ -78,7 +78,7 @@ void ray_caster(t_level level, t_imgdata *img)
 	
 	ray = level.ray;
 	level.ray.ray_count = 0;
-	background(img, level.data.floor, level.data.ceiling);
+	background(img, level.data.floor, level.data.ceiling, level.player.vert_dir);
 	while (ray.ray_count < WIN_WIDTH)
 	{
 		ray.hit = 0;

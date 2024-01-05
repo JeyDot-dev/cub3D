@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/05 15:10:12 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/05 15:55:36 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@
 // 		|	une fois le parsing termine a 100% cette fonction sera exclusivement utilisee pour regler le FOV
 // 		v
 
-t_level set_fov(t_level level, double fov)
+t_level set_cam_plane(t_level level)
 {
 	level.player.pos.x = 9;
 	level.player.pos.y = 4;
 	level.player.dir.x = -1;
 	level.player.dir.y = 0;
-	level.player.fov = fov;
-	level.ray.cam_plane.x = level.player.dir.y * tan(fov / 2 * M_PI / 180);
-	level.ray.cam_plane.y = level.player.dir.x * tan(fov / 2 * M_PI / 180);
+	level.ray.cam_plane.x = level.player.dir.y * tan(110 / 2 * M_PI / 180);
+	level.ray.cam_plane.y = level.player.dir.x * tan(110 / 2 * M_PI / 180);
 	return (level);
 }
 
@@ -64,7 +63,7 @@ int	main(int ac, char **av)
 	parse(av[1], &level);
 	init_mlx(&level.mlx);
 	load_default_texture(level.data.texture, level.mlx);
-	level = set_fov(level, 110);
+	level = set_cam_plane(level);
 	mlx_hook(level.mlx.win, 2, 1L << 0, key_press, &level);
 	mlx_hook(level.mlx.win, 3, 1L << 1, key_release, &level);
 	mlx_hook(level.mlx.win, 17, 1L << 3, close_cub3d, &level.mlx.mlx);
