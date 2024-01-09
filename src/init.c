@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/05 16:12:40 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:39:08 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	init(t_level *level)
 	level->player.vel = vector2D(0, 0);
 	level->player.rot_speed = 5;
 	level->player.dir = vector2D(0, 0);
+	level->ray.ray_count = 0;
 	input_init(level);
 	level->map = NULL;
 	level->name = NULL;
