@@ -6,7 +6,7 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:53:43 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/05 16:06:09 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:36:41 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "cub3D.h"
@@ -18,6 +18,10 @@ t_ray map_ray_and_dir(t_player p, t_ray r)
 	camera_x = 2 * r.ray_count / (double)WIN_WIDTH - 1;
 	r.ray_dir.x = p.dir.x + r.cam_plane.x * camera_x;
 	r.ray_dir.y = p.dir.y + r.cam_plane.y * camera_x;
+	if (r.ray_dir.x == 0)
+		r.ray_dir.x = 1e-30;
+	if (r.ray_dir.y == 0)
+		r.ray_dir.y = 1e-30;
 	return (r);
 }
 
@@ -25,14 +29,8 @@ t_vector calculate_delta_dist(t_ray r)
 {
 	t_vector	delta_dist;
 
-	if (r.ray_dir.y == 0)
-		r.ray_dir.y = 1e30;
-	else
-		delta_dist.y = fabs(1 / r.ray_dir.y);
-	if (r.ray_dir.x == 0)
-		r.ray_dir.x = 1e30;
-	else
-		delta_dist.x = fabs(1 / r.ray_dir.x);
+	delta_dist.y = fabs(1 / r.ray_dir.y);
+	delta_dist.x = fabs(1 / r.ray_dir.x);
 	return (delta_dist);
 }
 
