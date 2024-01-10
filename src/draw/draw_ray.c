@@ -6,7 +6,7 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:42:55 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/10 14:36:58 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:35:08 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ void	draw_vertical_line(t_imgdata *img, int x, int y[2], int color)
 		i++;
 	}
 }
-int		get_pixel_color(t_imgdata img, int x, int y)
+
+int	get_pixel_color(t_imgdata img, int x, int y)
 {
 	int	color;
 
 	color = *(int *)(img.addr + (y * img.len + x * (img.bpp / 8)));
 	return (color);
 }
+
 int calculate_light(int color, double dist)
 {
 	int	rgb[3];
@@ -42,6 +44,7 @@ int calculate_light(int color, double dist)
 	rgb[2] = b_value(color) / dist;
 	return (rgbo_color(rgb[0], rgb[1], rgb[2], 0));
 }
+
 void	draw_texture_line(int y[3], t_ray r, t_texture t, t_level lvl)
 {
 	double	tex_step;

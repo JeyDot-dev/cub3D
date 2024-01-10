@@ -6,13 +6,13 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:41:01 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/04 18:16:45 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:21:31 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void erase_img(t_imgdata *img)
+void	erase_img(t_imgdata *img)
 {
 	int	i;
 	int	j;

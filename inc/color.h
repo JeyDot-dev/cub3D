@@ -6,7 +6,7 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 10:17:27 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 10:18:53 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:05:02 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,4 @@
 # define CYN "\033[0;36m"
 # define WHT "\033[0;37m"
 # define RESET "\033[0m"
-# endif
+#endif

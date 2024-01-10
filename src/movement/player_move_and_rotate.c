@@ -6,16 +6,18 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:08:20 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/02 18:13:28 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/10 17:33:17 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "cub3D.h"
-void print_infos(t_level *level)
+
+void	print_infos(t_level *level)
 {
 	terminal_mini_map(level->map, *level);
-	printf("player moved to: %f, %f\n", level->player.pos.x, level->player.pos.y);
-	printf("player dir:%f, %f\n", level->player.dir.x, level->player.dir.y);
+	printf("player moved to: %f, %f\n",
+		level->player.pos.x, level->player.pos.y);
+	printf("player dir:%f, %f\n",
+		level->player.dir.x, level->player.dir.y);
 }
 
 // void move_forward(t_level *lvl, double move_speed)
@@ -34,13 +36,13 @@ void print_infos(t_level *level)
 // 		lvl->player.pos.y -= lvl->player.dir.y * move_speed;
 // }
 
-void rotate_player(t_level *lvl, int rot_speed)
+void	rotate_player(t_level *lvl, int rot_speed)
 {
 	lvl->player.dir = rotate_vector(lvl->player.dir, rot_speed);
 	lvl->ray.cam_plane = rotate_vector(lvl->ray.cam_plane, rot_speed);
 }
 
-void player_move_and_rotate(t_level *level, int key)
+void	player_move_and_rotate(t_level *level, int key)
 {
 	int		rot_speed;
 
@@ -58,5 +60,6 @@ void player_move_and_rotate(t_level *level, int key)
 	}
 	print_infos(level);
 	ray_caster(*level, &level->mlx);
-	mlx_put_image_to_window(level->mlx.mlx, level->mlx.win, level->mlx.img, 0, 0);
+	mlx_put_image_to_window(level->mlx.mlx,
+		level->mlx.win, level->mlx.img, 0, 0);
 }

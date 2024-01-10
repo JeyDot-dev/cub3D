@@ -6,7 +6,7 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/05 15:56:51 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:10:42 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ typedef struct s_vector_line
 	int			color2;
 }	t_vector_line;
 
-typedef struct	s_imgdata{
+typedef struct s_imgdata
+{
 	void	*mlx;
 	void	*win;
 	void	*img;

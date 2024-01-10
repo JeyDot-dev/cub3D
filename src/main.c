@@ -6,20 +6,20 @@
 /*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/05 15:55:36 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:41:36 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 // Pour les masques de mlx_hook :	1L << 0 = KeyPressMask
 //									1L << 3 = ButtonRelease (pour la croix)
-// Le lien avec tous les masques et events : https://harm-smits.github.io/42docs/libs/minilibx/events.html
-
-//  	 ---pour le moment je la garde ici car elle initialise une position de base pour le joueur,
-// 		|	une fois le parsing termine a 100% cette fonction sera exclusivement utilisee pour regler le FOV
+// Le lien avec tous les masques et events : 
+// https://harm-smits.github.io/42docs/libs/minilibx/events.html
+//  	 ---pour le moment je la garde ici car elle initialise 
+//  	|	une position de base pour le joueur
 // 		v
 
-t_level set_cam_plane(t_level level)
+t_level	set_cam_plane(t_level level)
 {
 	level.player.pos.x = 9;
 	level.player.pos.y = 4;
@@ -30,16 +30,18 @@ t_level set_cam_plane(t_level level)
 	return (level);
 }
 
-void load_default_texture(t_texture *texture, t_imgdata mlx)
+void	load_default_texture(t_texture *texture, t_imgdata mlx)
 {
 	int	i;
 //TODO: Change while i < 4 to while i < max_texture
 	i = 0;
 	while (i < 4)
 	{
-		texture[i].img.img = mlx_xpm_file_to_image(mlx.mlx, texture[i].path, &texture[i].width, &texture[i].height);
+		texture[i].img.img = mlx_xpm_file_to_image(mlx.mlx, texture[i].path,
+				&texture[i].width, &texture[i].height);
 		if (texture[i].img.img == NULL)
-			printf(YEL"[WARNING] "RESET"Texture: \"%s not found\"\n", texture[i].path);
+			printf(YEL"[WARNING] "RESET"Texture: \"%s not found\"\n",
+					texture[i].path);
 		else
 			texture[i].img.addr = mlx_get_data_addr(texture[i].img.img, &texture[i].img.bpp, &texture[i].img.len, &texture[i].img.endian);
 		i++;

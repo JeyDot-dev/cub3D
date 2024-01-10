@@ -6,20 +6,21 @@
 /*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:25:20 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/29 17:04:16 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:12:54 by jsousa-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "cub3D.h"
+
 void	tmm_horizontal_coordinates(t_level lvl)
 {
 	int	j;
 
 	j = 0;
-	while(lvl.data.map_size.x > j)
+	while (lvl.data.map_size.x > j)
 		printf(BLU"%i"RESET, j++);
 	printf("\n");
 }
+
 void	tmm_extended(int *i, int *j, t_level lvl)
 {
 	if (*i == (int)lvl.player.pos.y && *j == (int)lvl.player.pos.x)
@@ -28,6 +29,7 @@ void	tmm_extended(int *i, int *j, t_level lvl)
 		(*j)++;
 	}
 }
+
 void	terminal_mini_map(char **map, t_level lvl)
 {
 	int	i;
