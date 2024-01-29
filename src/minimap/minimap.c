@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:03:01 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/29 18:16:08 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/29 21:06:41 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ int	minimap_process(t_level *lvl)
 {
 	char	*tmp;
 
-	info("Drawing minimap...");
-	terminal_mini_map(lvl->map, *lvl);
-	
+	//terminal_mini_map(lvl->map, *lvl);
+	draw_image(lvl, lvl->data.blck, vector2D(0, GAME_HEIGHT));
 	tmp = ft_itoa((int)lvl->player.pos.x);
 	tmp = add_str(tmp, ", ", 1);
 	tmp = add_str(tmp, ft_itoa((int)lvl->player.pos.y), 3);

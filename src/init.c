@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/10 13:17:27 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/29 20:51:19 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ void	init(t_level *level)
 	level->name = NULL;
 	level->data.texture = malloc(sizeof(t_texture));
 	level->data.texture[0].name = NULL;
+	level->data.blck = "./textures/blck.xpm";
 }

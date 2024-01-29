@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/10 17:09:58 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:31:04 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ t_ray		dda(t_ray r, char **map);
 void		init(t_level *level);
 void		init_mlx(t_imgdata *img);
 /*	VECTOR					*/
-t_vector	vector2D(int x, int y);
-void		set_vector2D(t_vector *vector, int x, int y);
+t_vector	vector2D(double x, double y);
+void		set_vector2D(t_vector *vector, double x, double y);
 /* FREE						*/
 void		free_tab(char **tab);
 /*	PARSE/PARSE_UTILS		*/
@@ -91,4 +91,9 @@ t_vector	rotate_vector(t_vector vector, double angle);
 void		erase_img(t_imgdata *img);
 /*	MINIMAP			*/
 int			minimap_process(t_level *lvl);
+
+/*	SHORTCUT		*/
+void		*path_to_image(t_level *l, char *path);
+void		draw_image(t_level *l, char *path, t_vector p);
+
 #endif

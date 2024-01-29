@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.c                                           :+:      :+:    :+:   */
+/*   shortcut.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 17:58:02 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/29 19:30:25 by lebojo           ###   ########.fr       */
+/*   Created: 2023/05/30 04:21:33 by lebojo            #+#    #+#             */
+/*   Updated: 2024/01/29 20:51:09 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-t_vector vector2D(double x, double y)
+void	*path_to_image(t_level *l, char *path)
 {
-	t_vector res;
+	int		x;
+	int		y;
 
-	res.x = x;
-	res.y = y;
-	return (res);
+	return (mlx_xpm_file_to_image(l->mlx.mlx, path, &x, &y));
 }
 
-void set_vector2D(t_vector *vector, double x, double y)
+void	draw_image(t_level *l, char *path, t_vector p)
 {
-	*vector = vector2D(x, y);
+	char	*img;
+
+	img = path_to_image(l, path);
+	mlx_put_image_to_window(l->mlx.mlx, l->mlx.win, img, (int)p.x, (int)p.y);
 }

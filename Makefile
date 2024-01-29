@@ -18,7 +18,8 @@ LIB_D		:=	libft/ mlx-opengl/
 INC			:=	inc/ libft/inc mlx-opengl/
 #---------------Add .c / .h here \/--------------
 SRC			:=	main.c			console.c		init.c		vector.c 	free.c\
-				ray_caster.c	digital_differential_analyzer.c setup_texture.c
+				ray_caster.c	digital_differential_analyzer.c setup_texture.c\
+				shortcut.c
 DRAW		:=	draw_line.c		draw_pixel.c	draw_square.c	draw_ray.c\
 				background.c
 COLOR		:=	rgbo_color.c	color_utils.c	extract_single_color.c	line_gradient.c
