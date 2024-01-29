@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/10 17:24:05 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:21:41 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	int_to_dir(int key)
 	else if (key == 1 || key == 125
 		|| key == 65364 || key == 115)
 		return (3);
-	else if (key == 101)
+	else if (key == 101 || key == 14)
 		return (4);
-	else if (key == 113)
+	else if (key == 113 || key == 12)
 		return (5);
 	return (0);
 }
