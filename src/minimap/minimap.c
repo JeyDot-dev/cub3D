@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:03:01 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/10 17:21:11 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:16:08 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,14 @@ void	draw_player(t_level *lvl)
 
 int	minimap_process(t_level *lvl)
 {
+	char	*tmp;
+
 	info("Drawing minimap...");
 	terminal_mini_map(lvl->map, *lvl);
+	
+	tmp = ft_itoa((int)lvl->player.pos.x);
+	tmp = add_str(tmp, ", ", 1);
+	tmp = add_str(tmp, ft_itoa((int)lvl->player.pos.y), 3);
+	mlx_string_put(lvl->mlx.mlx, lvl->mlx.win, 10, 650, 0x00FFFFFF, tmp);
 	return (0);
 }

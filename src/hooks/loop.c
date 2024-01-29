@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/29 16:21:41 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/29 18:20:00 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,14 +127,25 @@ void	rotate_cam(t_level *lvl)
 	}
 }
 
+int collision(t_level *lvl, t_vector pos)
+{
+	if (lvl->map[(int)pos.y][(int)pos.x] == '1')
+		return (1);
+	return (0);
+}
+
 int	player_process(t_level *lvl)
 {
-	minimap_process(lvl);
 	friction(lvl);
 	rotate_cam(lvl);
+	if (collision(lvl, (t_vector){lvl->player.pos.x + lvl->player.vel.x, lvl->player.pos.y}))
+		lvl->player.vel.x = 0;
+	if (collision(lvl, (t_vector){lvl->player.pos.x, lvl->player.pos.y + lvl->player.vel.y}))
+		lvl->player.vel.y = 0;
 	lvl->player.pos.x += lvl->player.vel.x;
 	lvl->player.pos.y += lvl->player.vel.y;
 	ray_caster(*lvl, &lvl->mlx);
 	mlx_put_image_to_window(lvl->mlx.mlx, lvl->mlx.win, lvl->mlx.img, 0, 0);
+	minimap_process(lvl);
 	return (0);
 }
