@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 11:30:41 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 13:15:56 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		init_mlx(t_imgdata *img);
 /*	VECTOR					*/
 t_vector	vector2D(double x, double y);
 void		set_vector2D(t_vector *vector, double x, double y);
+int			vector_equal(t_vector a, t_vector b);
 /* FREE						*/
 void		free_tab(char **tab);
 /*	PARSE/PARSE_UTILS		*/
