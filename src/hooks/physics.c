@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:26:01 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/30 18:26:40 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 18:57:07 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	friction(t_level *lvl)
 		move_forward(lvl);
 	if (lvl->player.input[3] == 1)
 		move_backward(lvl);
-	if (lvl->player.input[2] == 1)
+	if (lvl->player.input[4] == 1)
 		move_left(lvl);
-	if (lvl->player.input[0] == 1)
+	if (lvl->player.input[5] == 1)
 		move_right(lvl);
 }

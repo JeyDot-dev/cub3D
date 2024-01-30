@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/30 18:28:13 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 19:04:03 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	int_to_dir(int key)
 		return (4);
 	else if (key == 113 || key == 12)
 		return (5);
-	return (0);
+	return (6);
 }
 
 void	vel_normalizer(t_level *lvl)
@@ -57,33 +57,37 @@ void	vel_normalizer(t_level *lvl)
 		lvl->player.vel.y = 0;
 }
 
-void	rotate_cam(t_level *lvl)
+int	rotate_cam(t_level *lvl)
 {
 	int	rot_speed;
 
 	rot_speed = lvl->player.rot_speed;
-	if (lvl->player.input[4])
+	if (lvl->player.input[2])
 	{
 		lvl->player.dir = rotate_vector(lvl->player.dir, rot_speed);
 		lvl->ray.cam_plane = rotate_vector(lvl->ray.cam_plane, rot_speed);
+		return (1);
 	}
-	if (lvl->player.input[5])
+	if (lvl->player.input[0])
 	{
 		lvl->player.dir = rotate_vector(lvl->player.dir, -rot_speed);
 		lvl->ray.cam_plane = rotate_vector(lvl->ray.cam_plane, -rot_speed);
+		return (1);
 	}
+	return (0);
 }
 
 int	player_process(t_level *lvl)
 {
 	friction(lvl);
-	rotate_cam(lvl);
 	if (collision(lvl, (t_vector){lvl->player.pos.x + lvl->player.vel.x,
 			lvl->player.pos.y}))
 		lvl->player.vel.x = 0;
 	if (collision(lvl, (t_vector){lvl->player.pos.x,
 			lvl->player.pos.y + lvl->player.vel.y}))
 		lvl->player.vel.y = 0;
+	if (!rotate_cam(lvl) && vector_equal(lvl->player.vel, (t_vector){0, 0}))
+		return (0);
 	lvl->player.pos.x += lvl->player.vel.x;
 	lvl->player.pos.y += lvl->player.vel.y;
 	ray_caster(*lvl, &lvl->mlx);
