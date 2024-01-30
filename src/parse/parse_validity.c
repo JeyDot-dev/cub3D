@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 03:30:06 by jchapell          #+#    #+#             */
-/*   Updated: 2024/01/30 21:16:58 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 21:21:10 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,31 @@ int	border_check(char **map)
 	return (0);
 }
 
+int	char_check(char **map)
+{
+	t_vector	i;
+
+	set_vector2d(&i, 1, 1);
+	while (map[(int)i.y])
+	{
+		i.x = 1;
+		while (map[(int)i.y][(int)i.x])
+		{
+			if (!ft_strchr("012NSEW ", map[(int)i.y][(int)i.x]))
+				return (1);
+			i.x++;
+		}
+		i.y++;
+	}
+	return (0);
+}
+
 int	parse_validity(t_level *lvl)
 {
 	if (border_check(lvl->map))
 		return (error("Map is not closed!"));
+	if (char_check(lvl->map))
+		return (error("Invalid character in map!"));
 	info("Map ok!");
 	return (0);
 }

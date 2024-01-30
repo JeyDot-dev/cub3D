@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 21:11:25 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 21:20:26 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define NAME_SHORT "RE2:TF"
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
-# define GAME_HEIGHT 600
+# define GAME_HEIGHT 620
 
 /*	CONSOLE					*/
 int			error(char *str);

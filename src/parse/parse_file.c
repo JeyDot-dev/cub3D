@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:59:51 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/30 18:21:28 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 21:38:39 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,20 @@
 
 enum e_state	state_incrementer(enum e_state s, int sz)
 {
+	static int	once = 0;
+
 	if (sz > 1)
+	{
+		once = 0;
 		return (s);
-	if (s == TEXTURE)
+	}
+	if (sz <= 1 && once == 1)
+		return (s);
+	if (sz <= 1)
+		once = 1;
+	if (s == TEXTURE && once == 1)
 		return (COLORS);
-	else if (s == COLORS)
+	else if (s == COLORS && once == 1)
 	{
 		info("parsing map");
 		return (MAP);
@@ -67,7 +76,7 @@ int	parse_file(int file, t_level *lvl)
 	while (tmp)
 	{
 		state = state_incrementer(state, ft_strlen(tmp));
-		if (tmp[0] != '\n')
+		if (tmp[0] != '\n' && tmp[0] != '\0')
 		{
 			if (state == TEXTURE)
 				lvl->data.texture = add_texture(lvl, tmp);
