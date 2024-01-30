@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:26:04 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/30 15:09:56 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:19:25 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,17 @@ int	locate_player(t_level *lvl)
 		j = 0;
 		while (lvl->map[i][j])
 		{
-			if (lvl->map[i][j] == 'P' || lvl->map[i][j] == 'p')
+			if (ft_strchr("NSEW", lvl->map[i][j]))
 			{
 				lvl->player.pos = vector2D(j + 0.5, i + 0.5);
-				lvl->player.dir = vector2D(-1, 0);
+				if (lvl->map[i][j] == 'N')
+					lvl->player.dir = vector2D(0, -1);
+				else if (lvl->map[i][j] == 'S')
+					lvl->player.dir = vector2D(0, 1);
+				else if (lvl->map[i][j] == 'E')
+					lvl->player.dir = vector2D(1, 0);
+				else if (lvl->map[i][j] == 'W')
+					lvl->player.dir = vector2D(-1, 0);
 				return (1);
 			}
 			j++;

@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:03:01 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 13:05:40 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:21:38 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	draw_minimap(t_level *lvl)
 			{
 				if ((int)lvl->player.pos.x == x && (int)lvl->player.pos.y == y)
 					draw_player(lvl, lvl->player.dir, cursor);
-				else if (lvl->map[y][x] != '0')
+				else if (!ft_strchr("0NSEW", lvl->map[y][x]))
 					draw_image(lvl, lvl->minmap.wall, cursor);
 				else
 					draw_image(lvl, lvl->minmap.floor, cursor);
