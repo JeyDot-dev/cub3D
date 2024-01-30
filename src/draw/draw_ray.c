@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:42:55 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/10 17:35:08 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:22:03 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	draw_ray(t_imgdata *img, t_ray r, t_level lvl)
 	y[1] = y[2] / 2 + GAME_HEIGHT / 2 + lvl.player.vert_dir; //TODO: 0 = camera y
 	if (y[1] >= GAME_HEIGHT)
 		y[1] = GAME_HEIGHT - 1;
-	//TODO: Change 4 to max_texture
 	t = set_up_texture(lvl, r, lvl.player.pos); 
 	if (t.start_x >= 0 && lvl.map[r.map[1]][r.map[0]] == '1')
 	{

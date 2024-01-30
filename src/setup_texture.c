@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:47:09 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/10 13:32:32 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:21:46 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ t_texture	set_up_texture(t_level lvl, t_ray r, t_vector pos)
 	int			pick;
 	double		wall_x;
 
-//	TODO: Change 4 to max_texture
-	pick = pick_cardinal_texture(r, 4);
+	pick = pick_cardinal_texture(r, lvl.data.max_texture);
 	if (pick == -1 || lvl.data.texture[pick].img.img == NULL)
 	{
 		t.start_x = -1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/10 17:19:38 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/30 14:16:41 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,20 +120,23 @@ int	parse_file(int file, t_level *lvl)
 		if (tmp[0] != '\n')
 		{
 			if (state == TEXTURE)
+			{
 				lvl->data.texture = add_texture(lvl->data.texture, tmp);
+				lvl->data.max_texture++;
+			}
 			else if (state == COLORS)
 			{
 				tmp = strdup_exclude_endl(tmp);
 				char	**tmp3 = ft_split(tmp, ' ');
 				char	**tmp2 = ft_split(tmp3[1], ',');
-				lvl->data.ceiling = rgbo_color(ft_atoi(tmp2[0]),
+				lvl->data.floor = rgbo_color(ft_atoi(tmp2[0]),
 						ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
 				free(tmp);
 				tmp = get_next_line(file);
 				tmp = strdup_exclude_endl(tmp);
 				tmp3 = ft_split(tmp, ' ');
 				tmp2 = ft_split(tmp3[1], ',');
-				lvl->data.floor = rgbo_color(ft_atoi(tmp2[0]),
+				lvl->data.ceiling = rgbo_color(ft_atoi(tmp2[0]),
 						ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
 				free_tab(tmp2);
 				free_tab(tmp3);
