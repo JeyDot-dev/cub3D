@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/30 14:16:41 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:00:46 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,4 +167,6 @@ void	parse(char *file_path, t_level *lvl)
 		return ;
 	parse_file(file, lvl); //On met la map dans un char*
 	close(file);
+	if (locate_player(lvl) == 0)
+		exit(error("No player found"));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:26:04 by jordan            #+#    #+#             */
-/*   Updated: 2023/12/28 02:19:52 by jordan           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:08:39 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,29 @@ char	*lvl_name_extractor(char *s)
 	while (s[++i] != '.' && s[i])
 		res[i] = s[i];
 	return (res);
+}
+
+int	locate_player(t_level *lvl)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (lvl->map[i])
+	{
+		j = 0;
+		while (lvl->map[i][j])
+		{
+			if (lvl->map[i][j] == 'P' || lvl->map[i][j] == 'p')
+			{
+				lvl->player.pos = vector2D(j, i + 0.5);
+				lvl->player.dir = vector2D(-1, 0);
+				return (1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

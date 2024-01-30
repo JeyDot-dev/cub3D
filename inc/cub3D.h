@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 13:15:56 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:01:11 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void		free_tab(char **tab);
 /*	PARSE/PARSE_UTILS		*/
 char		*add_str(char *s1, char *s2, int f);
 char		*lvl_name_extractor(char *s);
+int			locate_player(t_level *lvl);
+
 /*	PARSE/PARSE_VALIDITY		*/
 // int		check_req(t_requierements r);
 // int		check_cell_exist(t_data d, char c);

@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 14:56:00 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:01:41 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 
 t_level	set_cam_plane(t_level level)
 {
-	level.player.pos.x = 9;
-	level.player.pos.y = 4;
-	level.player.dir.x = -1;
-	level.player.dir.y = 0;
+	// level.player.pos.x = 9;
+	// level.player.pos.y = 4;
+	// level.player.dir.x = -1;
+	// level.player.dir.y = 0;
 	level.ray.cam_plane.x = level.player.dir.y * tan(110 / 2 * M_PI / 180);
 	level.ray.cam_plane.y = level.player.dir.x * tan(110 / 2 * M_PI / 180);
 	return (level);
