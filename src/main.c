@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 17:41:40 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 19:19:41 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ int	mouse_move(int x, int y, t_level *lvl)
 	int		speed;
 	int		vert_speed;
 
+	if (x == WIN_WIDTH / 2 && y == GAME_HEIGHT / 2)
+	{
+		lvl->mouse = 0;
+		return (0);
+	}
+	lvl->mouse = 1;
 	speed = (x - (WIN_WIDTH / 2)) / 5;
 	vert_speed = (y - (GAME_HEIGHT / 2)) / 3;
 	lvl->player.dir = rotate_vector(lvl->player.dir, speed);

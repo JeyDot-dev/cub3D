@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/30 19:04:03 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 19:19:33 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,17 @@ int	rotate_cam(t_level *lvl)
 
 int	player_process(t_level *lvl)
 {
+	int	rot;
+
 	friction(lvl);
+	rot = rotate_cam(lvl);
 	if (collision(lvl, (t_vector){lvl->player.pos.x + lvl->player.vel.x,
 			lvl->player.pos.y}))
 		lvl->player.vel.x = 0;
 	if (collision(lvl, (t_vector){lvl->player.pos.x,
 			lvl->player.pos.y + lvl->player.vel.y}))
 		lvl->player.vel.y = 0;
-	if (!rotate_cam(lvl) && vector_equal(lvl->player.vel, (t_vector){0, 0}))
+	if (vector_equal(lvl->player.vel, (t_vector){0, 0}) && !rot && !lvl->mouse)
 		return (0);
 	lvl->player.pos.x += lvl->player.vel.x;
 	lvl->player.pos.y += lvl->player.vel.y;
