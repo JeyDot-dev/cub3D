@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/29 20:30:26 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 11:48:09 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ int	main(int ac, char **av)
 		return (error("Wrong number of arguments"));
 	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4) != 0)
 		exit(error("A map <.cub> expected"));
+	init_mlx(&level.mlx);
 	init(&level);
 	parse(av[1], &level);
-	init_mlx(&level.mlx);
 	load_default_texture(level.data.texture, level.mlx);
 	level = set_cam_plane(level);
 	mlx_hook(level.mlx.win, 2, 1L << 0, key_press, &level);

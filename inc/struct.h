@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/29 19:14:33 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 12:37:40 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ typedef struct s_data
 	t_texture	*texture;
 	int			ceiling;
 	int			floor;
-	char		*blck;
 }	t_data;
 
 typedef struct s_ray
@@ -93,6 +92,15 @@ typedef struct s_ray
 	int			hit;
 	int			ray_count;
 }				t_ray;
+
+typedef struct s_minimap
+{
+	char	*player[8];
+	char	*empty;
+	char	*wall;
+	char	*floor;
+	void	*blck;
+}	t_minimap;
 
 typedef struct s_player
 {
@@ -114,6 +122,7 @@ typedef struct s_level
 	t_player	player;
 	t_ray		ray;
 	t_imgdata	mlx;
+	t_minimap	minmap;
 }	t_level;
 
 #endif

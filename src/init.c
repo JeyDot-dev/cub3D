@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/29 20:51:19 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 12:31:53 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ void	input_init(t_level *level)
 	level->player.input[5] = 0;
 }
 
+void	init_minimap_textures(t_level *lvl)
+{
+	lvl->minmap.wall = path_to_image(lvl, "./textures/map/wall.xpm");
+	lvl->minmap.floor = path_to_image(lvl, "./textures/map/floor.xpm");
+	lvl->minmap.player[0] = path_to_image(lvl, "./textures/map/player/player_0.xpm");
+	lvl->minmap.player[1] = path_to_image(lvl, "./textures/map/player/player_1.xpm");
+	lvl->minmap.player[2] = path_to_image(lvl, "./textures/map/player/player_2.xpm");
+	lvl->minmap.player[3] = path_to_image(lvl, "./textures/map/player/player_3.xpm");
+	lvl->minmap.player[4] = path_to_image(lvl, "./textures/map/player/player_4.xpm");
+	lvl->minmap.player[5] = path_to_image(lvl, "./textures/map/player/player_5.xpm");
+	lvl->minmap.player[6] = path_to_image(lvl, "./textures/map/player/player_6.xpm");
+	lvl->minmap.player[7] = path_to_image(lvl, "./textures/map/player/player_7.xpm");
+}
+
 void	init(t_level *level)
 {
 	level->data.file_size = vector2D(-1, 0);
@@ -48,5 +62,6 @@ void	init(t_level *level)
 	level->name = NULL;
 	level->data.texture = malloc(sizeof(t_texture));
 	level->data.texture[0].name = NULL;
-	level->data.blck = "./textures/blck.xpm";
+	level->minmap.blck = path_to_image(level, "./textures/blck.xpm");
+	init_minimap_textures(level);
 }
