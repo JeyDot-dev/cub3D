@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/30 18:21:46 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 21:11:01 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,6 @@ void	parse(char *file_path, t_level *lvl)
 	close(file);
 	if (locate_player(lvl) == 0)
 		exit(error("No player found"));
+	if (parse_validity(lvl))
+		exit(error("Map is not valid"));
 }

@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 18:37:57 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 21:11:25 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char		**add_tab(char **src, char *str);
 int			parse_file(int file, t_level *lvl);
 
 /*	PARSE/PARSE_VALIDITY		*/
+int			parse_validity(t_level *lvl);
 // int		check_req(t_requierements r);
 // int		check_cell_exist(t_data d, char c);
 // void	new_line_check(t_level *l, t_vector pos, int i);
