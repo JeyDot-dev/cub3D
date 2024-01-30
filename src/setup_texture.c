@@ -6,15 +6,16 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:47:09 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 14:21:46 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 17:42:00 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int pick_cardinal_texture(t_ray r, int max_texture)
+int	pick_cardinal_texture(t_ray r, int max_texture)
 {
 	int	pick;
+
 	if (r.side == 0 && r.ray_dir.x > 0)
 		pick = 0;
 	else if (r.side == 0 && r.ray_dir.x < 0)
@@ -29,7 +30,6 @@ int pick_cardinal_texture(t_ray r, int max_texture)
 	if (pick < max_texture)
 		return (pick);
 	return (-1);
-
 }
 
 t_texture	set_up_texture(t_level lvl, t_ray r, t_vector pos)

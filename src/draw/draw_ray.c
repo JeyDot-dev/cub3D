@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:42:55 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 14:22:03 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 18:34:18 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ int	get_pixel_color(t_imgdata img, int x, int y)
 	return (color);
 }
 
-int calculate_light(int color, double dist)
+int	calculate_light(int color, double dist)
 {
 	int	rgb[3];
+
 	if (dist == 1)
 		return (color);
 	if (dist < 0.7)
@@ -53,7 +54,8 @@ void	draw_texture_line(int y[3], t_ray r, t_texture t, t_level lvl)
 	int		color;
 
 	tex_step = 1.0 * t.height / y[2];
-	tex_posy = (y[0] - lvl.player.vert_dir - GAME_HEIGHT / 2 + y[2] / 2) * tex_step; //TODO: 0 = camera y
+	tex_posy = (y[0] - lvl.player.vert_dir - GAME_HEIGHT / 2 + y[2] / 2);
+	tex_posy *= tex_step;
 	i = y[0];
 	while (i < y[1])
 	{
@@ -61,9 +63,8 @@ void	draw_texture_line(int y[3], t_ray r, t_texture t, t_level lvl)
 		color = get_pixel_color(t.img, t.start_x, t.pos_y);
 		color = calculate_light(color, r.perp_wall_dist);
 		if (r.side == 1)
-			color = rgbo_color(r_value(color) * 0.6, g_value(color) * 0.6, b_value(color) * 0.6, 0);
-//		color = color - r.ray_dist.x + r.ray_dist.y;
-//		tex_posy += tex_step;
+			color = rgbo_color(r_value(color) * 0.6,
+					g_value(color) * 0.6, b_value(color) * 0.6, 0);
 		draw_pixel(&lvl.mlx, r.ray_count, i, color);
 		tex_posy += tex_step;
 		i++;
@@ -76,14 +77,14 @@ void	draw_ray(t_imgdata *img, t_ray r, t_level lvl)
 	int			color;
 	t_texture	t;
 
-	y[2] = (int) (GAME_HEIGHT / r.perp_wall_dist) * 0.8;
-	y[0] = -y[2] / 2 + GAME_HEIGHT / 2 + lvl.player.vert_dir; //TODO: 0 = camera y
+	y[2] = (int)(GAME_HEIGHT / r.perp_wall_dist) *0.8;
+	y[0] = -y[2] / 2 + GAME_HEIGHT / 2 + lvl.player.vert_dir;
 	if (y[0] < 0)
 		y[0] = 0;
-	y[1] = y[2] / 2 + GAME_HEIGHT / 2 + lvl.player.vert_dir; //TODO: 0 = camera y
+	y[1] = y[2] / 2 + GAME_HEIGHT / 2 + lvl.player.vert_dir;
 	if (y[1] >= GAME_HEIGHT)
 		y[1] = GAME_HEIGHT - 1;
-	t = set_up_texture(lvl, r, lvl.player.pos); 
+	t = set_up_texture(lvl, r, lvl.player.pos);
 	if (t.start_x >= 0 && lvl.map[r.map[1]][r.map[0]] == '1')
 	{
 		draw_texture_line(y, r, t, lvl);

@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/30 14:17:01 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 17:42:34 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,28 @@ void	init_minimap_textures(t_level *lvl)
 {
 	lvl->minmap.wall = path_to_image(lvl, "./textures/map/wall.xpm");
 	lvl->minmap.floor = path_to_image(lvl, "./textures/map/floor.xpm");
-	lvl->minmap.player[0] = path_to_image(lvl, "./textures/map/player/player_0.xpm");
-	lvl->minmap.player[1] = path_to_image(lvl, "./textures/map/player/player_1.xpm");
-	lvl->minmap.player[2] = path_to_image(lvl, "./textures/map/player/player_2.xpm");
-	lvl->minmap.player[3] = path_to_image(lvl, "./textures/map/player/player_3.xpm");
-	lvl->minmap.player[4] = path_to_image(lvl, "./textures/map/player/player_4.xpm");
-	lvl->minmap.player[5] = path_to_image(lvl, "./textures/map/player/player_5.xpm");
-	lvl->minmap.player[6] = path_to_image(lvl, "./textures/map/player/player_6.xpm");
-	lvl->minmap.player[7] = path_to_image(lvl, "./textures/map/player/player_7.xpm");
+	lvl->minmap.player[0] = path_to_image(lvl, "./textures/map/p/player_0.xpm");
+	lvl->minmap.player[1] = path_to_image(lvl, "./textures/map/p/player_1.xpm");
+	lvl->minmap.player[2] = path_to_image(lvl, "./textures/map/p/player_2.xpm");
+	lvl->minmap.player[3] = path_to_image(lvl, "./textures/map/p/player_3.xpm");
+	lvl->minmap.player[4] = path_to_image(lvl, "./textures/map/p/player_4.xpm");
+	lvl->minmap.player[5] = path_to_image(lvl, "./textures/map/p/player_5.xpm");
+	lvl->minmap.player[6] = path_to_image(lvl, "./textures/map/p/player_6.xpm");
+	lvl->minmap.player[7] = path_to_image(lvl, "./textures/map/p/player_7.xpm");
 }
 
 void	init(t_level *level)
 {
-	level->data.file_size = vector2D(-1, 0);
-	level->data.map_size = vector2D(0, 0);
-	level->player.pos = vector2D(0, 0);
+	level->data.file_size = vector2d(-1, 0);
+	level->data.map_size = vector2d(0, 0);
+	level->player.pos = vector2d(0, 0);
 	level->data.max_texture = 0;
 	level->player.vert_dir = 0;
 	level->player.max_speed = 1;
 	level->player.speed = 0.1;
-	level->player.vel = vector2D(0, 0);
+	level->player.vel = vector2d(0, 0);
 	level->player.rot_speed = 5;
-	level->player.dir = vector2D(0, 0);
+	level->player.dir = vector2d(0, 0);
 	level->ray.ray_count = 0;
 	input_init(level);
 	level->map = NULL;

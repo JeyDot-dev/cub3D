@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   digital_differential_analyzer.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:56:05 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/05 11:58:20 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:39:26 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-t_ray dda(t_ray r, char **map)
+t_ray	dda(t_ray r, char **map)
 {
 	while (r.hit == 0)
 	{

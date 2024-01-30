@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   player_move_and_rotate.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jordan <jordan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:08:20 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/10 17:33:17 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:36:15 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	print_infos(t_level *level)
@@ -19,22 +20,6 @@ void	print_infos(t_level *level)
 	printf("player dir:%f, %f\n",
 		level->player.dir.x, level->player.dir.y);
 }
-
-// void move_forward(t_level *lvl, double move_speed)
-// {
-// 	if (lvl->map[(int)(lvl->player.pos.y + lvl->player.dir.y * move_speed)][(int)lvl->player.pos.x] == '0')
-// 		lvl->player.pos.x += lvl->player.dir.x * move_speed;
-// 	if (lvl->map[(int)lvl->player.pos.y][(int)(lvl->player.pos.x + lvl->player.dir.x * move_speed)] == '0')
-// 		lvl->player.pos.y += lvl->player.dir.y * move_speed;
-// }
-
-// void move_backward(t_level *lvl, double move_speed)
-// {
-// 	if (lvl->map[(int)(lvl->player.pos.y - lvl->player.dir.y * move_speed)][(int)lvl->player.pos.x] == '0')
-// 		lvl->player.pos.x -= lvl->player.dir.x * move_speed;
-// 	if (lvl->map[(int)lvl->player.pos.y][(int)(lvl->player.pos.x - lvl->player.dir.x * move_speed)] == '0')
-// 		lvl->player.pos.y -= lvl->player.dir.y * move_speed;
-// }
 
 void	rotate_player(t_level *lvl, int rot_speed)
 {

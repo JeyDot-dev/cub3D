@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hooks.c                                        :+:      :+:    :+:   */
+/*   physics.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/17 11:37:30 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 18:36:57 by lebojo           ###   ########.fr       */
+/*   Created: 2024/01/30 18:26:01 by lebojo            #+#    #+#             */
+/*   Updated: 2024/01/30 18:26:40 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	key_press(int keycode, t_level *lvl)
+int	collision(t_level *lvl, t_vector pos)
 {
-	lvl->player.input[int_to_dir(keycode)] = 1;
-	if (keycode == 65307 || keycode == 53)
-		close_cub3d();
+	if (!ft_strchr("0NSEW", lvl->map[(int)pos.y][(int)pos.x]))
+		return (1);
 	return (0);
 }
 
-int	key_release(int keycode, t_level *lvl)
+void	friction(t_level *lvl)
 {
-	lvl->player.input[int_to_dir(keycode)] = 0;
-	return (0);
-}
-
-int	close_cub3d(void)
-{
-	exit(0);
+	vel_normalizer(lvl);
+	if (lvl->player.input[1] == 1)
+		move_forward(lvl);
+	if (lvl->player.input[3] == 1)
+		move_backward(lvl);
+	if (lvl->player.input[2] == 1)
+		move_left(lvl);
+	if (lvl->player.input[0] == 1)
+		move_right(lvl);
 }

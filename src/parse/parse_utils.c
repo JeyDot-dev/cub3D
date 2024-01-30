@@ -6,11 +6,33 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:26:04 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/30 15:19:25 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 17:45:57 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+char	**add_tab(char **src, char *str)
+{
+	int		i;
+	char	**new_tab;
+
+	i = 0;
+	while (src && src[i])
+		i++;
+	new_tab = malloc(sizeof(char *) * (i + 2));
+	i = 0;
+	while (src && src[i])
+	{
+		new_tab[i] = strdup_exclude_endl(src[i]);
+		i++;
+	}
+	new_tab[i++] = strdup_exclude_endl(str);
+	new_tab[i] = NULL;
+	if (src)
+		free_tab(src);
+	return (new_tab);
+}
 
 char	*add_str(char *s1, char *s2, int f)
 {
@@ -56,6 +78,20 @@ char	*lvl_name_extractor(char *s)
 	return (res);
 }
 
+int	set_player_pos(t_level *lvl, int j, int i)
+{
+	lvl->player.pos = vector2d(j + 0.5, i + 0.5);
+	if (lvl->map[i][j] == 'N')
+		lvl->player.dir = vector2d(0, -1);
+	else if (lvl->map[i][j] == 'S')
+		lvl->player.dir = vector2d(0, 1);
+	else if (lvl->map[i][j] == 'E')
+		lvl->player.dir = vector2d(1, 0);
+	else if (lvl->map[i][j] == 'W')
+		lvl->player.dir = vector2d(-1, 0);
+	return (1);
+}
+
 int	locate_player(t_level *lvl)
 {
 	int		i;
@@ -69,18 +105,7 @@ int	locate_player(t_level *lvl)
 		while (lvl->map[i][j])
 		{
 			if (ft_strchr("NSEW", lvl->map[i][j]))
-			{
-				lvl->player.pos = vector2D(j + 0.5, i + 0.5);
-				if (lvl->map[i][j] == 'N')
-					lvl->player.dir = vector2D(0, -1);
-				else if (lvl->map[i][j] == 'S')
-					lvl->player.dir = vector2D(0, 1);
-				else if (lvl->map[i][j] == 'E')
-					lvl->player.dir = vector2D(1, 0);
-				else if (lvl->map[i][j] == 'W')
-					lvl->player.dir = vector2D(-1, 0);
-				return (1);
-			}
+				return (set_player_pos(lvl, j, i));
 			j++;
 		}
 		i++;

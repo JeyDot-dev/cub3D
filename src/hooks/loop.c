@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/30 15:17:09 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 18:28:13 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,46 +33,6 @@ int	int_to_dir(int key)
 	return (0);
 }
 
-void	move_forward(t_level *lvl)
-{
-	if (lvl->player.vel.x < lvl->player.max_speed
-		&& lvl->player.vel.x > -lvl->player.max_speed)
-		lvl->player.vel.x += lvl->player.dir.x * lvl->player.speed;
-	if (lvl->player.vel.y < lvl->player.max_speed
-		&& lvl->player.vel.y > -lvl->player.max_speed)
-		lvl->player.vel.y += lvl->player.dir.y * lvl->player.speed;
-}
-
-void	move_backward(t_level *lvl)
-{
-	if (lvl->player.vel.x < lvl->player.max_speed
-		&& lvl->player.vel.x > -lvl->player.max_speed)
-		lvl->player.vel.x -= lvl->player.dir.x * lvl->player.speed;
-	if (lvl->player.vel.y < lvl->player.max_speed
-		&& lvl->player.vel.y > -lvl->player.max_speed)
-		lvl->player.vel.y -= lvl->player.dir.y * lvl->player.speed;
-}
-
-void	move_left(t_level *lvl)
-{
-	if (lvl->player.vel.x < lvl->player.max_speed
-		&& lvl->player.vel.x > -lvl->player.max_speed)
-		lvl->player.vel.x -= lvl->player.dir.y * lvl->player.speed;
-	if (lvl->player.vel.y < lvl->player.max_speed
-		&& lvl->player.vel.y > -lvl->player.max_speed)
-		lvl->player.vel.y += lvl->player.dir.x * lvl->player.speed;
-}
-
-void	move_right(t_level *lvl)
-{
-	if (lvl->player.vel.x < lvl->player.max_speed
-		&& lvl->player.vel.x > -lvl->player.max_speed)
-		lvl->player.vel.x += lvl->player.dir.y * lvl->player.speed;
-	if (lvl->player.vel.y < lvl->player.max_speed
-		&& lvl->player.vel.y > -lvl->player.max_speed)
-		lvl->player.vel.y -= lvl->player.dir.x * lvl->player.speed;
-}
-
 void	vel_normalizer(t_level *lvl)
 {
 	if (lvl->player.vel.x > lvl->player.max_speed)
@@ -97,19 +57,6 @@ void	vel_normalizer(t_level *lvl)
 		lvl->player.vel.y = 0;
 }
 
-void	friction(t_level *lvl)
-{
-	vel_normalizer(lvl);
-	if (lvl->player.input[1] == 1)
-		move_forward(lvl);
-	if (lvl->player.input[3] == 1)
-		move_backward(lvl);
-	if (lvl->player.input[2] == 1)
-		move_left(lvl);
-	if (lvl->player.input[0] == 1)
-		move_right(lvl);
-}
-
 void	rotate_cam(t_level *lvl)
 {
 	int	rot_speed;
@@ -127,20 +74,15 @@ void	rotate_cam(t_level *lvl)
 	}
 }
 
-int collision(t_level *lvl, t_vector pos)
-{
-	if (!ft_strchr("0NSEW", lvl->map[(int)pos.y][(int)pos.x]))
-		return (1);
-	return (0);
-}
-
 int	player_process(t_level *lvl)
 {
 	friction(lvl);
 	rotate_cam(lvl);
-	if (collision(lvl, (t_vector){lvl->player.pos.x + lvl->player.vel.x, lvl->player.pos.y}))
+	if (collision(lvl, (t_vector){lvl->player.pos.x + lvl->player.vel.x,
+			lvl->player.pos.y}))
 		lvl->player.vel.x = 0;
-	if (collision(lvl, (t_vector){lvl->player.pos.x, lvl->player.pos.y + lvl->player.vel.y}))
+	if (collision(lvl, (t_vector){lvl->player.pos.x,
+			lvl->player.pos.y + lvl->player.vel.y}))
 		lvl->player.vel.y = 0;
 	lvl->player.pos.x += lvl->player.vel.x;
 	lvl->player.pos.y += lvl->player.vel.y;

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ray_caster.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:53:43 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/10 14:36:41 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:36:23 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "cub3D.h"
 
-t_ray map_ray_and_dir(t_player p, t_ray r)
+t_ray	map_ray_and_dir(t_player p, t_ray r)
 {
 	double	camera_x;
 
@@ -25,7 +26,7 @@ t_ray map_ray_and_dir(t_player p, t_ray r)
 	return (r);
 }
 
-t_vector calculate_delta_dist(t_ray r)
+t_vector	calculate_delta_dist(t_ray r)
 {
 	t_vector	delta_dist;
 
@@ -34,7 +35,7 @@ t_vector calculate_delta_dist(t_ray r)
 	return (delta_dist);
 }
 
-t_ray calculate_initial_dist(t_player p, t_ray r)
+t_ray	calculate_initial_dist(t_player p, t_ray r)
 {
 	if (r.ray_dir.x < 0)
 	{
@@ -59,7 +60,7 @@ t_ray calculate_initial_dist(t_player p, t_ray r)
 	return (r);
 }
 
-double calculate_perp_wall_distance(t_ray r)
+double	calculate_perp_wall_distance(t_ray r)
 {
 	double	perp_wall_dist;
 
@@ -70,13 +71,14 @@ double calculate_perp_wall_distance(t_ray r)
 	return (perp_wall_dist);
 }
 
-void ray_caster(t_level level, t_imgdata *img)
+void	ray_caster(t_level level, t_imgdata *img)
 {
 	t_ray		ray;
-	
+
 	ray = level.ray;
 	level.ray.ray_count = 0;
-	background(img, level.data.floor, level.data.ceiling, level.player.vert_dir);
+	background(img, level.data.floor,
+		level.data.ceiling, level.player.vert_dir);
 	while (ray.ray_count < WIN_WIDTH)
 	{
 		ray.hit = 0;

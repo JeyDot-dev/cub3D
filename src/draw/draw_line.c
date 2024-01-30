@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsousa-a <jsousa-a@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 12:05:40 by jsousa-a          #+#    #+#             */
-/*   Updated: 2023/12/27 14:20:21 by jsousa-a         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:40:30 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "cub3D.h"
 
 t_vector_line	switch_line(t_vector_line line)
@@ -58,7 +59,8 @@ void	horizontal_line(t_imgdata *img, t_vector_line line)
 		if (line.start.x < 1920 && line.start.y < 1080
 			&& line.start.x >= 0 && line.start.y >= 0)
 			draw_pixel(img, line.start.x, line.start.y, line.color);
-		line.color = smooth_colors(line.color, line.color2, line.end.x - line.start.x);
+		line.color = smooth_colors(line.color, line.color2,
+				line.end.x - line.start.x);
 		if (line.e > 0)
 		{
 			line.start.y += line.inc[0];
@@ -80,7 +82,8 @@ void	vertical_line(t_imgdata *img, t_vector_line line)
 		if (line.start.x < 1920 && line.start.y < 1080
 			&& line.start.x >= 0 && line.start.y >= 0)
 			draw_pixel(img, line.start.x, line.start.y, line.color);
-		line.color = smooth_colors(line.color, line.color2, line.end.y - line.start.y);
+		line.color = smooth_colors(line.color, line.color2,
+				line.end.y - line.start.y);
 		if (line.e > 0)
 		{
 			line.start.x += line.inc[0];

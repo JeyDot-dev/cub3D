@@ -6,25 +6,14 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 15:01:41 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 17:41:40 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-// Pour les masques de mlx_hook :	1L << 0 = KeyPressMask
-//									1L << 3 = ButtonRelease (pour la croix)
-// Le lien avec tous les masques et events : 
-// https://harm-smits.github.io/42docs/libs/minilibx/events.html
-//  	 ---pour le moment je la garde ici car elle initialise 
-//  	|	une position de base pour le joueur
-// 		v
 
 t_level	set_cam_plane(t_level level)
 {
-	// level.player.pos.x = 9;
-	// level.player.pos.y = 4;
-	// level.player.dir.x = -1;
-	// level.player.dir.y = 0;
 	level.ray.cam_plane.x = level.player.dir.y * tan(110 / 2 * M_PI / 180);
 	level.ray.cam_plane.y = level.player.dir.x * tan(110 / 2 * M_PI / 180);
 	return (level);
@@ -33,6 +22,7 @@ t_level	set_cam_plane(t_level level)
 void	load_default_texture(int max_texture, t_texture *texture, t_imgdata mlx)
 {
 	int	i;
+
 	i = 0;
 	while (i < max_texture)
 	{
@@ -40,18 +30,14 @@ void	load_default_texture(int max_texture, t_texture *texture, t_imgdata mlx)
 				&texture[i].width, &texture[i].height);
 		if (texture[i].img.img == NULL)
 			printf(YEL"[WARNING] "RESET"Texture: \"%s not found\"\n",
-					texture[i].path);
+				texture[i].path);
 		else
-			texture[i].img.addr = mlx_get_data_addr(texture[i].img.img, &texture[i].img.bpp, &texture[i].img.len, &texture[i].img.endian);
+			texture[i].img.addr = mlx_get_data_addr(texture[i].img.img,
+					&texture[i].img.bpp, &texture[i].img.len,
+					&texture[i].img.endian);
 		i++;
 	}
 }
-
-int hook_resize(void)
-{
-	return (0);
-}
-
 
 int	mouse_move(int x, int y, t_level *lvl)
 {
@@ -85,7 +71,6 @@ int	main(int ac, char **av)
 	mlx_hook(level.mlx.win, 17, 1L << 3, close_cub3d, &level.mlx.mlx);
 	mlx_mouse_hide();
 	mlx_hook(level.mlx.win, 6, 1L << 6, mouse_move, &level);
-	mlx_hook(level.mlx.win, 25, 1L << 18, hook_resize, &level);
 	mlx_loop_hook(level.mlx.mlx, player_process, &level);
 	mlx_loop(level.mlx.mlx);
 	return (0);
