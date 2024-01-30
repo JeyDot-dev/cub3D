@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/29 19:17:12 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:11:55 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	rotate_cam(t_level *lvl)
 
 int collision(t_level *lvl, t_vector pos)
 {
-	if (lvl->map[(int)pos.y][(int)pos.x] != '0')
+	if (!ft_strchr("0Pp", lvl->map[(int)pos.y][(int)pos.x]))
 		return (1);
 	return (0);
 }
