@@ -6,20 +6,22 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:59:51 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/31 15:14:46 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 15:59:41 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	parse_color(char *tmp, t_data *data, char type)
+void	parse_color(char *tmp, t_data *data, char type, t_level *lvl)
 {
 	char	**tmp2;
 	char	**tmp3;
+	int		w;
 
 	tmp = strdup_exclude_endl(tmp);
 	tmp3 = ft_split(tmp, ' ');
 	tmp2 = ft_split(tmp3[1], ',');
+	w = 0;
 	if (type == 'F')
 		data->floor = rgbo_color(ft_atoi(tmp2[0]),
 				ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
@@ -27,10 +29,12 @@ void	parse_color(char *tmp, t_data *data, char type)
 		data->ceiling = rgbo_color(ft_atoi(tmp2[0]),
 				ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
 	else
-		exit(error("Invalid color in map!"));
+		w = 1;
 	free(tmp);
 	free_tab(tmp2);
 	free_tab(tmp3);
+	if (w)
+		clean_exit(lvl, "Invalid color in map!", 1);
 }
 
 void	parse_file_map(char *tmp, t_level *lvl, int fat_one)
@@ -41,22 +45,22 @@ void	parse_file_map(char *tmp, t_level *lvl, int fat_one)
 	lvl->data.map_size = vector2d(fat_one, ++lvl->data.map_size.y);
 }
 
-int	parse_texture(t_data *data, char *line, int state)
+int	parse_texture(t_data *data, char *line, int state, t_level *lvl)
 {
 	if (state || !ft_strchr("FCNSEW", line[0]))
 		return (1);
 	if (check_textures_and_colors(*data, line))
-		exit (error("Double texture in map!"));
+		clean_exit(lvl, "Double texture in map!", 1);
 	if (line[0] == 'F' || line[0] == 'C')
-		parse_color(line, data, line[0]);
+		parse_color(line, data, line[0], lvl);
 	else if (line[0] == 'N' && data->texture[0].name == NULL)
-		data->texture[0] = add_texture(line);
+		data->texture[0] = add_texture(line, lvl);
 	else if (line[0] == 'S' && data->texture[1].name == NULL)
-		data->texture[1] = add_texture(line);
+		data->texture[1] = add_texture(line, lvl);
 	else if (line[0] == 'W' && data->texture[2].name == NULL)
-		data->texture[2] = add_texture(line);
+		data->texture[2] = add_texture(line, lvl);
 	else if (line[0] == 'E' && data->texture[3].name == NULL)
-		data->texture[3] = add_texture(line);
+		data->texture[3] = add_texture(line, lvl);
 	else
 		return (1);
 	return (0);
@@ -74,7 +78,7 @@ int	parse_file(int file, t_level *lvl)
 	{
 		if (tmp[0] != '\n' && tmp[0] != '\0')
 		{
-			state = parse_texture(&lvl->data, tmp, state);
+			state = parse_texture(&lvl->data, tmp, state, lvl);
 			if (state)
 				parse_file_map(tmp, lvl, fat_one);
 		}

@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/31 15:13:40 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 15:57:18 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int			vector_equal(t_vector a, t_vector b);
 
 /* FREE						*/
 void		free_tab(char **tab);
+void		clean_exit(t_level *l, char *msg, int err);
 
 /*	PARSE/PARSE_UTILS		*/
 char		*add_str(char *s1, char *s2, int f);
@@ -67,7 +68,7 @@ int			check_textures_and_colors(t_data data, char *line);
 /*	PARSE					*/
 void		parse(char *file_path, t_level *lvl);
 char		*strdup_exclude_endl(char *src);
-t_texture	add_texture(char *new_texture);
+t_texture	add_texture(char *new_texture, t_level *lvl);
 
 /*	MOVEMENT	*/
 void		rotate_player(t_level *lvl, int rot_speed);
@@ -76,7 +77,7 @@ void		player_move_and_rotate(t_level *lvl, int key);
 /*	HOOKS					*/
 int			key_press(int keycode, t_level *lvl);
 int			key_release(int keycode, t_level *lvl);
-int			close_cub3d(void);
+int			close_cub3d(t_level *lvl);
 
 /*	HOOKS/LOOP				*/
 int			player_process(t_level *lvl);

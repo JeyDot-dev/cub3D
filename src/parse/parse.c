@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/31 14:57:59 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 16:01:27 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	compare_tag(char *line, char *tag)
 	while (line[i] == tag[i] && line[i] && tag[i])
 		i++;
 	if (tag[i] || line[i])
-		printf("line: %s, tag: %s\n", line, tag);
+		return (0);
 	return (1);
 }
 
-t_texture	add_texture(char *new_texture)
+t_texture	add_texture(char *new_texture, t_level *lvl)
 {
 	t_texture	result;
 	char		**tmp;
@@ -49,7 +49,7 @@ t_texture	add_texture(char *new_texture)
 			&& !compare_tag(tmp[0], "SO")
 			&& !compare_tag(tmp[0], "WE")
 			&& !compare_tag(tmp[0], "EA")))
-		exit(error("Invalid texture in map!"));
+		clean_exit(lvl, "Invalid texture in map!", 1);
 	result.name = strdup_exclude_endl(tmp[0]);
 	result.path = strdup_exclude_endl(tmp[1]);
 	free_tab(tmp);
@@ -67,7 +67,7 @@ void	parse(char *file_path, t_level *lvl)
 	parse_file(file, lvl);
 	close(file);
 	if (locate_player(lvl) == 0)
-		exit(error("No player found"));
+		clean_exit(lvl, "No player in map!", 1);
 	if (parse_validity(lvl))
-		exit(error("Map is not valid"));
+		clean_exit(lvl, "Invalid map!", 1);
 }

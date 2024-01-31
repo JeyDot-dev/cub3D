@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 03:30:06 by jchapell          #+#    #+#             */
-/*   Updated: 2024/01/31 15:16:40 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 16:00:49 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	parse_validity(t_level *lvl)
 
 int	check_textures_and_colors(t_data data, char *line)
 {
-	printf("line: %s\n", line);
 	if ((line[0] == 'F' && data.floor != 0)
 		|| (line[0] == 'C' && data.ceiling != 0))
 		return (1);

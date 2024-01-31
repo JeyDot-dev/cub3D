@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 23:40:02 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/30 17:39:33 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 15:39:45 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,55 @@ void	free_tab(char **tab)
 	while (tab[i])
 		free(tab[i++]);
 	free(tab);
+}
+
+void	free_texture(t_level *l)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (l->data.texture[i].name)
+			free(l->data.texture[i].name);
+		if (l->data.texture[i].path)
+			free(l->data.texture[i].path);
+		if (l->data.texture[i].img.img)
+			mlx_destroy_image(l->mlx.mlx, l->data.texture[i].img.img);
+		i++;
+	}
+}
+
+void	free_minimap(t_level *l)
+{
+	int	i;
+
+	i = 0;
+	while (i < 8)
+	{
+		if (l->minmap.player[i])
+			mlx_destroy_image(l->mlx.mlx, l->minmap.player[i++]);
+	}
+	if (l->minmap.empty)
+		mlx_destroy_image(l->mlx.mlx, l->minmap.empty);
+	if (l->minmap.wall)
+		mlx_destroy_image(l->mlx.mlx, l->minmap.wall);
+	if (l->minmap.floor)
+		mlx_destroy_image(l->mlx.mlx, l->minmap.floor);
+	if (l->minmap.blck)
+		mlx_destroy_image(l->mlx.mlx, l->minmap.blck);
+}
+
+void	clean_exit(t_level *l, char *msg, int err)
+{
+	if (err)
+		error(msg);
+	else
+		info(msg);
+	free_tab(l->map);
+	free_texture(l);
+	free_minimap(l);
+	mlx_destroy_image(l->mlx.mlx, l->mlx.img);
+	mlx_destroy_window(l->mlx.mlx, l->mlx.win);
+	exit(err);
 }

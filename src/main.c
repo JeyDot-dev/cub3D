@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/31 13:56:08 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 15:51:28 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int ac, char **av)
 	level = set_cam_plane(level);
 	mlx_hook(level.mlx.win, 2, 1L << 0, key_press, &level);
 	mlx_hook(level.mlx.win, 3, 1L << 1, key_release, &level);
-	mlx_hook(level.mlx.win, 17, 1L << 3, close_cub3d, &level.mlx.mlx);
+	mlx_hook(level.mlx.win, 17, 1L << 3, close_cub3d, &level);
 	mlx_mouse_hide();
 	mlx_hook(level.mlx.win, 6, 1L << 6, mouse_move, &level);
 	mlx_loop_hook(level.mlx.mlx, player_process, &level);
