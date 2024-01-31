@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/30 19:10:01 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 14:48:36 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init(t_level *level)
 	level->data.file_size = vector2d(-1, 0);
 	level->data.map_size = vector2d(0, 0);
 	level->player.pos = vector2d(0, 0);
-	level->data.max_texture = 0;
+	level->data.max_texture = 4;
 	level->player.vert_dir = 0;
 	level->player.max_speed = 1;
 	level->player.speed = 0.1;
@@ -61,7 +61,6 @@ void	init(t_level *level)
 	input_init(level);
 	level->map = NULL;
 	level->name = NULL;
-	level->data.texture = malloc(sizeof(t_texture));
 	level->data.texture[0].name = NULL;
 	level->minmap.blck = path_to_image(level, "./textures/blck.xpm");
 	init_minimap_textures(level);

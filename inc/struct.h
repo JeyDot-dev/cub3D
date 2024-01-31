@@ -6,20 +6,12 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/30 19:16:12 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 14:43:17 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-
-enum e_state
-{
-	TEXTURE,
-	COLORS,
-	MAP,
-	ERROR
-};
 
 enum e_side
 {
@@ -74,7 +66,7 @@ typedef struct s_data
 {
 	t_vector	file_size;
 	t_vector	map_size;
-	t_texture	*texture;
+	t_texture	texture[4];
 	int			ceiling;
 	int			floor;
 	int			max_texture;

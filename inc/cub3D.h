@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 21:20:26 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 14:44:36 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int			parse_validity(t_level *lvl);
 /*	PARSE					*/
 void		parse(char *file_path, t_level *lvl);
 char		*strdup_exclude_endl(char *src);
-t_texture	*add_texture(t_level *lvl, char *new_texture);
+t_texture	add_texture(char *new_texture);
 
 /*	MOVEMENT	*/
 void		rotate_player(t_level *lvl, int rot_speed);

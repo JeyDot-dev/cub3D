@@ -6,36 +6,13 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:59:51 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/30 21:38:39 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 15:00:51 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-enum e_state	state_incrementer(enum e_state s, int sz)
-{
-	static int	once = 0;
-
-	if (sz > 1)
-	{
-		once = 0;
-		return (s);
-	}
-	if (sz <= 1 && once == 1)
-		return (s);
-	if (sz <= 1)
-		once = 1;
-	if (s == TEXTURE && once == 1)
-		return (COLORS);
-	else if (s == COLORS && once == 1)
-	{
-		info("parsing map");
-		return (MAP);
-	}
-	return (ERROR);
-}
-
-void	parse_color(char *tmp, t_level *lvl, int file)
+void	parse_color(char *tmp, t_data *data, char type)
 {
 	char	**tmp2;
 	char	**tmp3;
@@ -43,15 +20,15 @@ void	parse_color(char *tmp, t_level *lvl, int file)
 	tmp = strdup_exclude_endl(tmp);
 	tmp3 = ft_split(tmp, ' ');
 	tmp2 = ft_split(tmp3[1], ',');
-	lvl->data.floor = rgbo_color(ft_atoi(tmp2[0]),
-			ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
+	if (type == 'F')
+		data->floor = rgbo_color(ft_atoi(tmp2[0]),
+				ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
+	else if (type == 'C')
+		data->ceiling = rgbo_color(ft_atoi(tmp2[0]),
+				ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
+	else
+		exit(error("Invalid color in map!"));
 	free(tmp);
-	tmp = get_next_line(file);
-	tmp = strdup_exclude_endl(tmp);
-	tmp3 = ft_split(tmp, ' ');
-	tmp2 = ft_split(tmp3[1], ',');
-	lvl->data.ceiling = rgbo_color(ft_atoi(tmp2[0]),
-			ft_atoi(tmp2[1]), ft_atoi(tmp2[2]), 0);
 	free_tab(tmp2);
 	free_tab(tmp3);
 }
@@ -64,28 +41,40 @@ void	parse_file_map(char *tmp, t_level *lvl, int fat_one)
 	lvl->data.map_size = vector2d(fat_one, ++lvl->data.map_size.y);
 }
 
+int	parse_texture(t_data *data, char *line, int state)
+{
+	if (state || !ft_strchr("FCNSEW", line[0]))
+		return (1);
+	if (line[0] == 'F' || line[0] == 'C')
+		parse_color(line, data, line[0]);
+	else if (line[0] == 'N')
+		data->texture[0] = add_texture(line);
+	else if (line[0] == 'S')
+		data->texture[1] = add_texture(line);
+	else if (line[0] == 'W')
+		data->texture[2] = add_texture(line);
+	else if (line[0] == 'E')
+		data->texture[3] = add_texture(line);
+	else
+		return (1);
+	return (0);
+}
+
 int	parse_file(int file, t_level *lvl)
 {
-	char			*tmp;
-	int				fat_one;
-	enum e_state	state;
+	char	*tmp;
+	int		fat_one;
+	int		state;
 
-	state = TEXTURE;
 	tmp = get_next_line(file);
 	fat_one = 0;
 	while (tmp)
 	{
-		state = state_incrementer(state, ft_strlen(tmp));
 		if (tmp[0] != '\n' && tmp[0] != '\0')
 		{
-			if (state == TEXTURE)
-				lvl->data.texture = add_texture(lvl, tmp);
-			else if (state == COLORS)
-				parse_color(tmp, lvl, file);
-			else if (state == MAP)
+			state = parse_texture(&lvl->data, tmp, state);
+			if (state)
 				parse_file_map(tmp, lvl, fat_one);
-			else
-				return (error("Invalid map"));
 		}
 		free(tmp);
 		tmp = get_next_line(file);

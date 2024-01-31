@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/30 21:11:01 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 14:57:59 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,34 @@ char	*strdup_exclude_endl(char *src)
 	return (dest);
 }
 
-t_texture	*add_texture(t_level *lvl, char *new_texture)
+int	compare_tag(char *line, char *tag)
 {
-	t_texture	new;
-	t_texture	*new_tab;
+	int		i;
+
+	i = 0;
+	while (line[i] == tag[i] && line[i] && tag[i])
+		i++;
+	if (tag[i] || line[i])
+		printf("line: %s, tag: %s\n", line, tag);
+	return (1);
+}
+
+t_texture	add_texture(char *new_texture)
+{
+	t_texture	result;
 	char		**tmp;
-	int			i;
 
 	tmp = ft_split(new_texture, ' ');
-	new.name = strdup_exclude_endl(tmp[0]);
-	new.path = strdup_exclude_endl(tmp[1]);
+	if (tmp[2] != NULL || !ft_strnstr(tmp[1], ".xpm", ft_strlen(tmp[1]))
+		|| (!compare_tag(tmp[0], "NO")
+			&& !compare_tag(tmp[0], "SO")
+			&& !compare_tag(tmp[0], "WE")
+			&& !compare_tag(tmp[0], "EA")))
+		exit(error("Invalid texture in map!"));
+	result.name = strdup_exclude_endl(tmp[0]);
+	result.path = strdup_exclude_endl(tmp[1]);
 	free_tab(tmp);
-	i = 0;
-	while (lvl->data.texture[i].name)
-		i++;
-	new_tab = malloc(sizeof(t_texture) * (i + 2));
-	i = 0;
-	while (lvl->data.texture[i].name)
-	{
-		new_tab[i] = lvl->data.texture[i];
-		i++;
-	}
-	new_tab[i] = new;
-	new_tab[i + 1].name = NULL;
-	free(lvl->data.texture);
-	lvl->data.max_texture = i;
-	return (new_tab);
+	return (result);
 }
 
 void	parse(char *file_path, t_level *lvl)

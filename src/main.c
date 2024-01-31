@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 19:19:41 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 13:56:08 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ int	mouse_move(int x, int y, t_level *lvl)
 	lvl->player.dir = rotate_vector(lvl->player.dir, speed);
 	lvl->ray.cam_plane = rotate_vector(lvl->ray.cam_plane, speed);
 	lvl->player.vert_dir -= vert_speed;
+	if (lvl->player.vert_dir > 250)
+		lvl->player.vert_dir = 250;
+	else if (lvl->player.vert_dir < -250)
+		lvl->player.vert_dir = -250;
 	mlx_mouse_move(lvl->mlx.win, WIN_WIDTH / 2, GAME_HEIGHT / 2);
 	return (0);
 }
