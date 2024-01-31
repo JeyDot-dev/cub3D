@@ -1,9 +1,8 @@
 NO ./textures/diamond_ore.xpm
 SO ./textures/stone.xpm
-WE ./textures/stone.xpm
 EA ./textures/stone.xpm
 
-
+WE ./textures/stone.xpm
 
 
 

@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:59:51 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/31 15:00:51 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 15:14:46 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,17 @@ int	parse_texture(t_data *data, char *line, int state)
 {
 	if (state || !ft_strchr("FCNSEW", line[0]))
 		return (1);
+	if (check_textures_and_colors(*data, line))
+		exit (error("Double texture in map!"));
 	if (line[0] == 'F' || line[0] == 'C')
 		parse_color(line, data, line[0]);
-	else if (line[0] == 'N')
+	else if (line[0] == 'N' && data->texture[0].name == NULL)
 		data->texture[0] = add_texture(line);
-	else if (line[0] == 'S')
+	else if (line[0] == 'S' && data->texture[1].name == NULL)
 		data->texture[1] = add_texture(line);
-	else if (line[0] == 'W')
+	else if (line[0] == 'W' && data->texture[2].name == NULL)
 		data->texture[2] = add_texture(line);
-	else if (line[0] == 'E')
+	else if (line[0] == 'E' && data->texture[3].name == NULL)
 		data->texture[3] = add_texture(line);
 	else
 		return (1);

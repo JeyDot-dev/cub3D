@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/31 14:48:36 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 15:17:02 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ void	init(t_level *level)
 	level->map = NULL;
 	level->name = NULL;
 	level->data.texture[0].name = NULL;
+	level->data.texture[1].name = NULL;
+	level->data.texture[2].name = NULL;
+	level->data.texture[3].name = NULL;
 	level->minmap.blck = path_to_image(level, "./textures/blck.xpm");
 	init_minimap_textures(level);
+	level->data.floor = 0;
+	level->data.ceiling = 0;
 }

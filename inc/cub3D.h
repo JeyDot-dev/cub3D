@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:30:47 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/31 14:44:36 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 15:13:40 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,17 @@
 /*	CONSOLE					*/
 int			error(char *str);
 int			info(char *str);
+
 /*	SETUP_TEXTURE	*/
 int			pick_cardinal_texture(t_ray r, int max_texture);
 t_texture	set_up_texture(t_level lvl, t_ray r, t_vector pos);
+
 /*	RAY_CASTER				*/
 void		ray_caster(t_level lvl, t_imgdata *img);
+
 /*	DIGITAL_DIFFERENTIAL_ANALYZER	*/
 t_ray		dda(t_ray r, char **map);
+
 /*	INIT						*/
 void		init(t_level *level);
 void		init_mlx(t_imgdata *img);
@@ -43,8 +47,10 @@ void		init_mlx(t_imgdata *img);
 t_vector	vector2d(double x, double y);
 void		set_vector2d(t_vector *vector, double x, double y);
 int			vector_equal(t_vector a, t_vector b);
+
 /* FREE						*/
 void		free_tab(char **tab);
+
 /*	PARSE/PARSE_UTILS		*/
 char		*add_str(char *s1, char *s2, int f);
 char		*lvl_name_extractor(char *s);
@@ -56,11 +62,7 @@ int			parse_file(int file, t_level *lvl);
 
 /*	PARSE/PARSE_VALIDITY		*/
 int			parse_validity(t_level *lvl);
-// int		check_req(t_requierements r);
-// int		check_cell_exist(t_data d, char c);
-// void	new_line_check(t_level *l, t_vector pos, int i);
-// void	cell_checker(t_level *l, t_vector *pos, t_requierements *req, int i);
-// int		parse_validity(t_level lvl);
+int			check_textures_and_colors(t_data data, char *line);
 
 /*	PARSE					*/
 void		parse(char *file_path, t_level *lvl);
@@ -69,12 +71,13 @@ t_texture	add_texture(char *new_texture);
 
 /*	MOVEMENT	*/
 void		rotate_player(t_level *lvl, int rot_speed);
-//		 v cette fonction est temporaire v
 void		player_move_and_rotate(t_level *lvl, int key);
+
 /*	HOOKS					*/
 int			key_press(int keycode, t_level *lvl);
 int			key_release(int keycode, t_level *lvl);
 int			close_cub3d(void);
+
 /*	HOOKS/LOOP				*/
 int			player_process(t_level *lvl);
 int			int_to_dir(int key);
@@ -98,6 +101,7 @@ void		draw_pixel(t_imgdata *img, int x, int y, int color);
 void		draw_square(t_vector origin, t_imgdata img, char c);
 void		draw_ray(t_imgdata *img, t_ray r, t_level lvl);
 void		background(t_imgdata *img, int ground, int sky, int pitch);
+
 /*	COLOR/			*/
 int			rgbo_color(int r, int g, int b, int o);
 int			min_max_value(int color);
@@ -106,10 +110,12 @@ int			r_value(int color);
 int			g_value(int color);
 int			b_value(int color);
 int			o_value(int color);
+
 /*	UTILS/			*/
 void		terminal_mini_map(char **map, t_level lvl);
 t_vector	rotate_vector(t_vector vector, double angle);
 void		erase_img(t_imgdata *img);
+
 /*	MINIMAP			*/
 int			minimap_process(t_level *lvl);
 

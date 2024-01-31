@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 03:30:06 by jchapell          #+#    #+#             */
-/*   Updated: 2024/01/30 21:21:10 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/01/31 15:16:40 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,22 @@ int	parse_validity(t_level *lvl)
 	if (char_check(lvl->map))
 		return (error("Invalid character in map!"));
 	info("Map ok!");
+	return (0);
+}
+
+int	check_textures_and_colors(t_data data, char *line)
+{
+	printf("line: %s\n", line);
+	if ((line[0] == 'F' && data.floor != 0)
+		|| (line[0] == 'C' && data.ceiling != 0))
+		return (1);
+	else if (line[0] == 'N' && data.texture[0].name != NULL)
+		return (1);
+	else if (line[0] == 'S' && data.texture[1].name != NULL)
+		return (1);
+	else if (line[0] == 'W' && data.texture[2].name != NULL)
+		return (1);
+	else if (line[0] == 'E' && data.texture[3].name != NULL)
+		return (1);
 	return (0);
 }
