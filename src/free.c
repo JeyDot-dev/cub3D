@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 23:40:02 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/31 15:39:45 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/01 16:09:32 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	free_texture(t_level *l)
 			free(l->data.texture[i].name);
 		if (l->data.texture[i].path)
 			free(l->data.texture[i].path);
-		if (l->data.texture[i].img.img)
-			mlx_destroy_image(l->mlx.mlx, l->data.texture[i].img.img);
 		i++;
 	}
 }
