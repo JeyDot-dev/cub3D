@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/02/01 15:27:13 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/01 16:09:53 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,6 @@ void	init(t_level *level)
 	level->data.texture[1].path = NULL;
 	level->data.texture[2].path = NULL;
 	level->data.texture[3].path = NULL;
-	level->data.texture[0].img.img = NULL;
-	level->data.texture[1].img.img = NULL;
-	level->data.texture[2].img.img = NULL;
-	level->data.texture[3].img.img = NULL;
 	init_minimap_textures(level);
 	level->data.floor = 0;
 	level->data.ceiling = 0;
