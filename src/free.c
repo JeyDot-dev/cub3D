@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 23:40:02 by jordan            #+#    #+#             */
-/*   Updated: 2024/02/01 16:09:32 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/02 17:34:38 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_tab(char **tab)
 	int	i;
 
 	i = 0;
-	while (tab[i])
+	while (tab && tab[i])
 		free(tab[i++]);
 	free(tab);
 }
