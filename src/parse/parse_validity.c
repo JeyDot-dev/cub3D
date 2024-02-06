@@ -6,7 +6,7 @@
 /*   By: jchapell <jchapell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 03:30:06 by jchapell          #+#    #+#             */
-/*   Updated: 2024/02/06 17:56:04 by jchapell         ###   ########.fr       */
+/*   Updated: 2024/02/06 20:40:07 by jchapell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	border_check(char **map)
 {
 	t_vector	i;
 
-	set_vector2d(&i, 1, 1);
+	set_vector2d(&i, 0, 0);
 	while (map[(int)i.y])
 	{
-		i.x = 1;
+		i.x = 0;
 		while (map[(int)i.y][(int)i.x])
 		{
 			if (ft_strchr("0NSEW", map[(int)i.y][(int)i.x]))
