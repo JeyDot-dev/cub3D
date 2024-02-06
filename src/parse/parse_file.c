@@ -3,24 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jchapell <jchapell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:59:51 by lebojo            #+#    #+#             */
-/*   Updated: 2024/01/31 15:59:41 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 18:03:19 by jchapell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+char	**clean_parse_color(char *tmp, t_level *lvl)
+{
+	char	**res;
+	char	**no_space;
+	char	*tmp2;
+	int		i;
+
+	no_space = ft_split(tmp, ' ');
+	if (no_space[1] == NULL)
+	{
+		free_tab(no_space);
+		clean_exit(lvl, "Invalid color in map!", 1);
+	}
+	tmp2 = ft_strdup(no_space[1]);
+	i = 0;
+	if (no_space[2] != NULL)
+	{
+		while (no_space[++i + 1])
+			tmp2 = add_str(tmp2, no_space[i + 1], 1);
+	}
+	res = ft_split(tmp2, ',');
+	free(tmp2);
+	free_tab(no_space);
+	return (res);
+}
+
 void	parse_color(char *tmp, t_data *data, char type, t_level *lvl)
 {
 	char	**tmp2;
-	char	**tmp3;
 	int		w;
 
 	tmp = strdup_exclude_endl(tmp);
-	tmp3 = ft_split(tmp, ' ');
-	tmp2 = ft_split(tmp3[1], ',');
+	tmp2 = clean_parse_color(tmp, lvl);
 	w = 0;
 	if (type == 'F')
 		data->floor = rgbo_color(ft_atoi(tmp2[0]),
@@ -32,7 +56,6 @@ void	parse_color(char *tmp, t_data *data, char type, t_level *lvl)
 		w = 1;
 	free(tmp);
 	free_tab(tmp2);
-	free_tab(tmp3);
 	if (w)
 		clean_exit(lvl, "Invalid color in map!", 1);
 }
@@ -82,6 +105,8 @@ int	parse_file(int file, t_level *lvl)
 			if (state)
 				parse_file_map(tmp, lvl, fat_one);
 		}
+		if ((tmp[0] == '\n' || tmp[0] == '\0') && state)
+			clean_exit(lvl, "Invalid map!", 1);
 		free(tmp);
 		tmp = get_next_line(file);
 	}

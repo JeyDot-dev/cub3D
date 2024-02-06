@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jchapell <jchapell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 21:47:09 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 17:42:00 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 17:59:56 by jchapell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	pick_cardinal_texture(t_ray r, int max_texture)
 	int	pick;
 
 	if (r.side == 0 && r.ray_dir.x > 0)
-		pick = 0;
-	else if (r.side == 0 && r.ray_dir.x < 0)
-		pick = 1;
-	else if (r.side == 1 && r.ray_dir.y > 0)
 		pick = 2;
-	else if (r.side == 1 && r.ray_dir.y < 0)
+	else if (r.side == 0 && r.ray_dir.x < 0)
 		pick = 3;
+	else if (r.side == 1 && r.ray_dir.y > 0)
+		pick = 0;
+	else if (r.side == 1 && r.ray_dir.y < 0)
+		pick = 1;
 	else
 		return (-1);
 	pick = pick + (r.hit - 1) * 4;

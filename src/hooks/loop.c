@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jchapell <jchapell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/02/06 05:24:52 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 18:02:15 by jchapell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	vel_normalizer(t_level *lvl)
 		lvl->player.vel.y = 0;
 }
 
-int vert_rotate(t_level lvl, int dir)
+int	vert_rotate(t_level lvl, int dir)
 {
 	lvl.player.vert_dir += lvl.player.rot_speed * dir * 2;
 	if (lvl.player.vert_dir > 250)
@@ -72,16 +72,12 @@ int	rotate_cam(t_level *lvl)
 	int	rot_speed;
 
 	rot_speed = lvl->player.rot_speed;
-	if (lvl->player.input[2])
+	if (lvl->player.input[2] || lvl->player.input[0])
 	{
+		if (lvl->player.input[0])
+			rot_speed *= -1;
 		lvl->player.dir = rotate_vector(lvl->player.dir, rot_speed);
 		lvl->ray.cam_plane = rotate_vector(lvl->ray.cam_plane, rot_speed);
-		return (1);
-	}
-	if (lvl->player.input[0])
-	{
-		lvl->player.dir = rotate_vector(lvl->player.dir, -rot_speed);
-		lvl->ray.cam_plane = rotate_vector(lvl->ray.cam_plane, -rot_speed);
 		return (1);
 	}
 	if (lvl->player.input[6])

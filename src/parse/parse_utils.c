@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jchapell <jchapell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:26:04 by jordan            #+#    #+#             */
-/*   Updated: 2024/02/06 05:24:16 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 17:58:34 by jchapell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,16 @@ int	locate_player(t_level *lvl)
 		while (lvl->map[i][j])
 		{
 			if (ft_strchr("NSEW", lvl->map[i][j]))
-				return (set_player_pos(lvl, j, i));
+			{
+				if (lvl->player.pos.x != 0 || lvl->player.pos.y != 0)
+					clean_exit(lvl, "Multiple player in map!", 1);
+				set_player_pos(lvl, j, i);
+			}
 			j++;
 		}
 		i++;
 	}
+	if (lvl->player.pos.x != 0 && lvl->player.pos.y != 0)
+		return (1);
 	return (0);
 }

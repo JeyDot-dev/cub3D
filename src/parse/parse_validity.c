@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_validity.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jchapell <jchapell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 03:30:06 by jchapell          #+#    #+#             */
-/*   Updated: 2024/01/31 16:00:49 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 17:56:04 by jchapell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	border_check(char **map)
 		i.x = 1;
 		while (map[(int)i.y][(int)i.x])
 		{
-			if (map[(int)i.y][(int)i.x] == '0')
+			if (ft_strchr("0NSEW", map[(int)i.y][(int)i.x]))
 				if (i.y == 0 || i.x == 0 || !map[(int)i.y + 1]
 					|| !map[(int)i.y][(int)i.x + 1]
 					|| (map[(int)i.y][(int)i.x - 1] == ' '
