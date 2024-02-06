@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/02/01 16:09:53 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/05 17:12:29 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	input_init(t_level *level)
 	level->player.input[3] = 0;
 	level->player.input[4] = 0;
 	level->player.input[5] = 0;
+	level->player.input[6] = 0;
+	level->player.input[7] = 0;
+	level->player.input[8] = 0;
 }
 
 void	init_minimap_textures(t_level *lvl)

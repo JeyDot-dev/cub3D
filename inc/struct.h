@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/31 14:43:17 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/05 17:10:55 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ typedef struct s_player
 	t_vector	pos;
 	t_vector	dir;
 	int			vert_dir;
-	int			input[7];
+	int			input[9];
 	float		rot_speed;
 	t_vector	vel;
 	float		speed;

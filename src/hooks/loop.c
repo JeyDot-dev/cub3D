@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/01/30 19:19:33 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/05 17:24:14 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 int	int_to_dir(int key)
 {
-	if (key == 2 || key == 124
-		|| key == 65363 || key == 100)
-		return (2);
-	else if (key == 0 || key == 123
-		|| key == 65361 || key == 97)
-		return (0);
-	else if (key == 13 || key == 126
-		|| key == 65362 || key == 119)
-		return (1);
-	else if (key == 1 || key == 125
-		|| key == 65364 || key == 115)
-		return (3);
-	else if (key == 101 || key == 14)
-		return (4);
-	else if (key == 113 || key == 12)
+	if (key == 0)
 		return (5);
-	return (6);
+	else if (key == 1)
+		return (3);
+	else if (key == 2)
+		return (4);
+	else if (key == 13)
+		return (1);
+	else if (key == 123)
+		return (0);
+	else if (key == 124)
+		return (2);
+	else if (key == 126)
+		return (6);
+	else if (key == 125)
+		return (7);
+	return (8);
 }
 
 void	vel_normalizer(t_level *lvl)
@@ -57,6 +57,16 @@ void	vel_normalizer(t_level *lvl)
 		lvl->player.vel.y = 0;
 }
 
+int vert_rotate(int vert_dir, int rot_speed)
+{
+	vert_dir += rot_speed * 2;
+	if (vert_dir > 250)
+		vert_dir = 250;
+	else if (vert_dir < -250)
+		vert_dir = -250;
+	return (vert_dir);
+}
+
 int	rotate_cam(t_level *lvl)
 {
 	int	rot_speed;
@@ -72,6 +82,16 @@ int	rotate_cam(t_level *lvl)
 	{
 		lvl->player.dir = rotate_vector(lvl->player.dir, -rot_speed);
 		lvl->ray.cam_plane = rotate_vector(lvl->ray.cam_plane, -rot_speed);
+		return (1);
+	}
+	if (lvl->player.input[6])
+	{
+		lvl->player.vert_dir = vert_rotate(lvl->player.vert_dir, rot_speed);
+		return (1);
+	}
+	if (lvl->player.input[7])
+	{
+		lvl->player.vert_dir = vert_rotate(lvl->player.vert_dir, -rot_speed);
 		return (1);
 	}
 	return (0);
