@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:41:35 by jordan            #+#    #+#             */
-/*   Updated: 2024/02/05 17:10:55 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 04:21:26 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct s_level
 	char		**map;
 	char		*name;
 	int			mouse;
+	int			rev_ctrl;
 	t_data		data;
 	t_player	player;
 	t_ray		ray;

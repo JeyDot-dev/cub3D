@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/02/05 17:12:29 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 04:31:35 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	init(t_level *level)
 	level->data.file_size = vector2d(-1, 0);
 	level->data.map_size = vector2d(0, 0);
 	level->player.pos = vector2d(0, 0);
+	level->rev_ctrl = 1;
 	level->data.max_texture = 4;
 	level->player.vert_dir = 0;
 	level->player.max_speed = 1;
@@ -76,4 +77,5 @@ void	init(t_level *level)
 	init_minimap_textures(level);
 	level->data.floor = 0;
 	level->data.ceiling = 0;
+	mlx_mouse_move(level->mlx.win, WIN_WIDTH / 2, GAME_HEIGHT / 2);
 }
