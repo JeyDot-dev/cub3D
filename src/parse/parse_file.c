@@ -6,7 +6,7 @@
 /*   By: jchapell <jchapell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:59:51 by lebojo            #+#    #+#             */
-/*   Updated: 2024/02/06 18:03:19 by jchapell         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:12:38 by jchapell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	parse_color(char *tmp, t_data *data, char type, t_level *lvl)
 		clean_exit(lvl, "Invalid color in map!", 1);
 }
 
-void	parse_file_map(char *tmp, t_level *lvl, int fat_one)
+void	parse_file_map(char *tmp, t_level *lvl, int *fat_one)
 {
 	lvl->map = add_tab(lvl->map, tmp);
-	if ((int)ft_strlen(tmp) > fat_one)
-		fat_one = ft_strlen(tmp);
-	lvl->data.map_size = vector2d(fat_one, ++lvl->data.map_size.y);
+	if ((int)ft_strlen(tmp) > *fat_one)
+		*fat_one = ft_strlen(tmp);
+	lvl->data.map_size = vector2d(*fat_one, ++lvl->data.map_size.y);
 }
 
 int	parse_texture(t_data *data, char *line, int state, t_level *lvl)
@@ -103,7 +103,7 @@ int	parse_file(int file, t_level *lvl)
 		{
 			state = parse_texture(&lvl->data, tmp, state, lvl);
 			if (state)
-				parse_file_map(tmp, lvl, fat_one);
+				parse_file_map(tmp, lvl, &fat_one);
 		}
 		if ((tmp[0] == '\n' || tmp[0] == '\0') && state)
 			clean_exit(lvl, "Invalid map!", 1);
