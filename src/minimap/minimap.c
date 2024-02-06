@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jchapell <jchapell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:03:01 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/02/06 05:34:39 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 15:24:30 by jchapell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	write_coords(t_level *lvl)
 	tmp = add_str(tmp, ft_itoa(lvl->player.pos.y), 3);
 	mlx_string_put(lvl->mlx.mlx, lvl->mlx.win, 120,
 		GAME_HEIGHT + 60, 0x00FFFFFF, tmp);
+	free(tmp);
 	tmp = add_str("Map: ", lvl->name, 0);
 	mlx_string_put(lvl->mlx.mlx, lvl->mlx.win, 120,
 		GAME_HEIGHT + 40, 0x00FFFFFF, tmp);

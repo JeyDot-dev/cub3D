@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jchapell <jchapell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 04:19:22 by lebojo            #+#    #+#             */
-/*   Updated: 2024/02/02 17:40:41 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 16:21:18 by jchapell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void	parse(char *file_path, t_level *lvl)
 {
 	int		file;
 
-	lvl->name = lvl_name_extractor(file_path);
 	file = open(file_path, O_RDONLY);
 	if (file == -1)
-		return ;
+		clean_exit(lvl, "Invalid file path!", 1);
+	lvl->name = lvl_name_extractor(file_path);
 	parse_file(file, lvl);
 	close(file);
 	if (locate_player(lvl) == 0)
