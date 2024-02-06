@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:55:17 by jordan            #+#    #+#             */
-/*   Updated: 2024/02/06 04:31:35 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 05:27:28 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	input_init(t_level *level)
 	level->player.input[8] = 0;
 }
 
-void	init_minimap_textures(t_level *lvl)
+void	init_textures(t_level *lvl)
 {
 	lvl->minmap.blck = path_to_image(lvl, "./textures/blck.xpm");
 	lvl->minmap.wall = path_to_image(lvl, "./textures/map/wall.xpm");
@@ -47,6 +47,14 @@ void	init_minimap_textures(t_level *lvl)
 	lvl->minmap.player[5] = path_to_image(lvl, "./textures/map/p/player_5.xpm");
 	lvl->minmap.player[6] = path_to_image(lvl, "./textures/map/p/player_6.xpm");
 	lvl->minmap.player[7] = path_to_image(lvl, "./textures/map/p/player_7.xpm");
+	lvl->data.texture[0].name = NULL;
+	lvl->data.texture[1].name = NULL;
+	lvl->data.texture[2].name = NULL;
+	lvl->data.texture[3].name = NULL;
+	lvl->data.texture[0].path = NULL;
+	lvl->data.texture[1].path = NULL;
+	lvl->data.texture[2].path = NULL;
+	lvl->data.texture[3].path = NULL;
 }
 
 void	init(t_level *level)
@@ -66,15 +74,7 @@ void	init(t_level *level)
 	input_init(level);
 	level->map = NULL;
 	level->name = NULL;
-	level->data.texture[0].name = NULL;
-	level->data.texture[1].name = NULL;
-	level->data.texture[2].name = NULL;
-	level->data.texture[3].name = NULL;
-	level->data.texture[0].path = NULL;
-	level->data.texture[1].path = NULL;
-	level->data.texture[2].path = NULL;
-	level->data.texture[3].path = NULL;
-	init_minimap_textures(level);
+	init_textures(level);
 	level->data.floor = 0;
 	level->data.ceiling = 0;
 	mlx_mouse_move(level->mlx.win, WIN_WIDTH / 2, GAME_HEIGHT / 2);

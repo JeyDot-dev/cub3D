@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:12:15 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/02/06 04:30:21 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 05:24:46 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_level	set_cam_plane(t_level level)
 {
-	level.ray.cam_plane.x = level.player.dir.y * tan(110 / 2 * M_PI / 180);
+	level.ray.cam_plane.x = level.player.dir.y * tan(110 / 2 * M_PI / 180)
+		* level.rev_ctrl;
 	level.ray.cam_plane.y = level.player.dir.x * tan(110 / 2 * M_PI / 180);
 	return (level);
 }
@@ -50,7 +51,7 @@ int	mouse_move(int x, int y, t_level *lvl)
 		return (0);
 	}
 	lvl->mouse = 1;
-	speed = ((x - (WIN_WIDTH / 2)) / 5) * lvl->rev_ctrl;
+	speed = ((x - (WIN_WIDTH / 2)) / 5);
 	vert_speed = (y - (GAME_HEIGHT / 2)) / 3;
 	lvl->player.dir = rotate_vector(lvl->player.dir, speed);
 	lvl->ray.cam_plane = rotate_vector(lvl->ray.cam_plane, speed);

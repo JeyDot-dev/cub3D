@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:37:32 by jordan            #+#    #+#             */
-/*   Updated: 2024/02/06 04:27:34 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 05:24:52 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	rotate_cam(t_level *lvl)
 {
 	int	rot_speed;
 
-	rot_speed = lvl->player.rot_speed * lvl->rev_ctrl;
+	rot_speed = lvl->player.rot_speed;
 	if (lvl->player.input[2])
 	{
 		lvl->player.dir = rotate_vector(lvl->player.dir, rot_speed);

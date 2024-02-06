@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 18:03:01 by jsousa-a          #+#    #+#             */
-/*   Updated: 2024/01/30 18:25:28 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 05:34:39 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,18 @@ void	write_coords(t_level *lvl)
 	tmp = ft_itoa(lvl->player.pos.x);
 	tmp = add_str(tmp, ", ", 1);
 	tmp = add_str(tmp, ft_itoa(lvl->player.pos.y), 3);
-	mlx_string_put(lvl->mlx.mlx, lvl->mlx.win, 10,
-		GAME_HEIGHT, 0x00FFFFFF, tmp);
+	mlx_string_put(lvl->mlx.mlx, lvl->mlx.win, 120,
+		GAME_HEIGHT + 60, 0x00FFFFFF, tmp);
+	tmp = add_str("Map: ", lvl->name, 0);
+	mlx_string_put(lvl->mlx.mlx, lvl->mlx.win, 120,
+		GAME_HEIGHT + 40, 0x00FFFFFF, tmp);
 	free(tmp);
 }
 
 int	minimap_process(t_level *lvl)
 {
-	write_coords(lvl);
 	draw_image(lvl, lvl->minmap.blck, vector2d(0, GAME_HEIGHT));
+	write_coords(lvl);
 	draw_minimap(lvl);
 	return (0);
 }

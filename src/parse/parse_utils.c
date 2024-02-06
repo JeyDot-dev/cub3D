@@ -6,7 +6,7 @@
 /*   By: lebojo <lebojo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:26:04 by jordan            #+#    #+#             */
-/*   Updated: 2024/02/06 04:23:00 by lebojo           ###   ########.fr       */
+/*   Updated: 2024/02/06 05:24:16 by lebojo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	set_player_pos(t_level *lvl, int j, int i)
 {
 	lvl->player.pos = vector2d(j + 0.5, i + 0.5);
 	if (lvl->map[i][j] == 'N')
-		lvl->player.dir = vector2d(0, -1);
+		lvl->player.dir = vector2d(-0.0, -1.0);
 	else if (lvl->map[i][j] == 'S')
 		lvl->player.dir = vector2d(0, 1);
 	else if (lvl->map[i][j] == 'E')
